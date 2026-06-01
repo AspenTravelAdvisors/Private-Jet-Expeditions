@@ -296,6 +296,18 @@ const ROUTES = {
     {n:"Chiang Mai",r:"SEASIA",ll:[18.79,98.99]},{n:"Kathmandu",r:"INDIA",ll:[27.72,85.32]},
     {n:"Almaty",r:"SILK",ll:[43.24,76.92]},{n:"Stockholm",r:"EUROPE",ll:[59.33,18.07]},
     {n:"Copenhagen",r:"EUROPE",ll:[55.68,12.57]},{n:"Washington, D.C.",r:"AMERICAS",ll:[38.90,-77.04]}
+  ],
+  "wild-wonders":[
+    {n:"London",r:"EUROPE",ll:[51.50,-0.13]},{n:"Cappadocia",r:"EUROPE",ll:[38.65,34.83]},
+    {n:"Ranthambore",r:"INDIA",ll:[26.02,76.50]},{n:"Maldives",r:"INDIA",ll:[3.20,73.00]},
+    {n:"Mashatu, Botswana",r:"AFRICA",ll:[-22.20,29.05]},{n:"Victoria Falls",r:"AFRICA",ll:[-17.92,25.86]},
+    {n:"Nosy Be, Madagascar",r:"AFRICA",ll:[-13.32,48.27]},{n:"Grootbos, South Africa",r:"AFRICA",ll:[-34.55,19.43]}
+  ],
+  "hidden-horizons":[
+    {n:"Azores",r:"EUROPE",ll:[37.74,-25.68]},{n:"Algiers, Algeria",r:"AFRICA",ll:[36.75,3.06]},
+    {n:"Sofia, Bulgaria",r:"EUROPE",ll:[42.70,23.32]},{n:"Almaty, Kazakhstan",r:"SILK",ll:[43.24,76.92]},
+    {n:"Seychelles",r:"AFRICA",ll:[-4.68,55.49]},{n:"Victoria Falls",r:"AFRICA",ll:[-17.92,25.86]},
+    {n:"Accra, Ghana",r:"AFRICA",ll:[5.60,-0.19]}
   ]
 };
 
@@ -351,7 +363,33 @@ const TRIPS = [
   {d:"9/14/2027", r:"9/25/2027",  n:"Greece and Turkey by Private Jet",                      b:"signature",   g:["EUROPE"], u:"https://www.virtuoso.com/advisor/brianharris/tours/18107022/greece-and-turkey-by-private-jet"},
   // 2028
   {d:"3/10/2028", r:"4/5/2028",   n:"Around the World: A Luxury Tour by Private Jet",        b:"signature",   route:"atw-luxury", world:true, u:"https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"},
-  {d:"3/21/2028", r:"4/10/2028",  n:"International Intrigue: A Four Seasons Private Jet Experience", b:"fourseasons", route:"international-intrigue", world:true, u:"https://www.virtuoso.com/advisor/brianharris/tours/18341861/international-intrigue-a-four-seasons-private-jet-experience"}
+  {d:"3/21/2028", r:"4/10/2028",  n:"International Intrigue: A Four Seasons Private Jet Experience", b:"fourseasons", route:"international-intrigue", world:true, u:"https://www.virtuoso.com/advisor/brianharris/tours/18341861/international-intrigue-a-four-seasons-private-jet-experience"},
+  // Additional catalogue itineraries (further 2026–2028 departures; dates set on request)
+  {n:"Spain & Morocco by Private Jet",                                          b:"signature", g:["EUROPE","AFRICA"], u:"https://www.virtuoso.com/advisor/brianharris/tours/18107106/spain-and-morocco-by-private-jet"},
+  {n:"The Mediterranean by Private Jet",                                        b:"signature", g:["EUROPE"],          u:"https://www.virtuoso.com/advisor/brianharris/tours/18107121/the-mediterranean-by-private-jet"},
+  {n:"Greece, Turkey & Egypt by Private Jet",                                   b:"signature", g:["EUROPE","AFRICA"], u:"https://www.virtuoso.com/advisor/brianharris/tours/18107023/greece-turkey-and-egypt-by-private-jet"},
+  {n:"Luxury Across the Adriatic: Slovenia, Croatia, Montenegro & Albania",     b:"signature", g:["EUROPE"],          u:"https://www.virtuoso.com/advisor/brianharris/tours/18055614/luxury-across-the-adriatic-slovenia-croatia-montenegro-albania"},
+  {n:"Classic Indochina: Laos, Cambodia & Vietnam by Private Jet",              b:"signature", g:["SEASIA"],          u:"https://www.virtuoso.com/advisor/brianharris/tours/14017243/classic-indochina-laos-cambodia-and-vietnam-by-private-jet"},
+  {n:"Uncovering Hidden Indochina by Private Jet, Thailand",                    b:"signature", g:["SEASIA"],          u:"https://www.virtuoso.com/advisor/brianharris/tours/14015663/uncovering-hidden-indochina-by-private-jet-thailand"},
+  {n:"Indonesia's Cultural & Natural Highlights by Private Jet & Yacht",        b:"signature", g:["SEASIA"],          u:"https://www.virtuoso.com/advisor/brianharris/tours/15224891/indonesias-cultural-and-natural-highlights-by-private-jet-yacht"},
+  {n:"Far-Reaching Indonesia by Private Jet",                                   b:"signature", g:["SEASIA"],          u:"https://www.virtuoso.com/advisor/brianharris/tours/13123170/far-reaching-indonesia-by-private-jet"},
+  {n:"Edges of the Living World: Asia & Oceania by Private Jet",                b:"signature", g:["SEASIA","ANZ"],    u:"https://www.virtuoso.com/advisor/brianharris/tours/18368504/edges-of-the-living-world-asia-and-oceania-by-private-jet"},
+  {n:"Australia by Private Jet",                                               b:"signature", g:["ANZ"],             u:"https://www.virtuoso.com/advisor/brianharris/tours/18104719/australia-by-private-jet"},
+  {n:"Tee Off in New Zealand",                                                 b:"signature", g:["ANZ"],             u:"https://www.virtuoso.com/advisor/brianharris/tours/15499080/tee-off-in-new-zealand"},
+  {n:"China by Private Jet",                                                   b:"signature", g:["EASTASIA"],        u:"https://www.virtuoso.com/advisor/brianharris/tours/18365621/china-by-private-jet"},
+  {n:"Unknown China by Private Jet: Changbaishan to Zhangye Danxia",            b:"signature", g:["EASTASIA"],        u:"https://www.virtuoso.com/advisor/brianharris/tours/13140613/unknown-china-by-private-jet-changbaishan-to-zhangye-danxia"},
+  {n:"China's Magnificent Mountaintops by Private Jet",                         b:"signature", g:["EASTASIA"],        u:"https://www.virtuoso.com/advisor/brianharris/tours/13140585/chinas-magnificent-mountaintops-by-private-jet"},
+  {n:"China's Silk Road by Private Jet",                                        b:"signature", g:["EASTASIA","SILK"], u:"https://www.virtuoso.com/advisor/brianharris/tours/12991356/chinas-silk-road-by-private-jet"},
+  {n:"A Private Jet Journey Across Asia: China, Sri Lanka & Bhutan",            b:"signature", g:["EASTASIA","INDIA"],u:"https://www.virtuoso.com/advisor/brianharris/tours/14332236/a-private-jet-journey-across-asia-china-sri-lanka-bhutan"},
+  {n:"Personalized Panoramas: The Himalayas in India by Private Jet",          b:"signature", g:["INDIA"],           u:"https://www.virtuoso.com/advisor/brianharris/tours/15224890/personalized-panoramas-exploring-the-himalayas-in-india-by-private-jet"},
+  {n:"In Search of the Royal Bengal Tiger: India's National Parks by Private Jet", b:"signature", g:["INDIA"],       u:"https://www.virtuoso.com/advisor/brianharris/tours/15224889/in-search-of-the-royal-bengal-tiger-indias-national-parks-by-private-jet"},
+  {n:"Beaches, Waterways & Palaces by Private Jet: Cochin to Goa, India",       b:"signature", g:["INDIA"],           u:"https://www.virtuoso.com/advisor/brianharris/tours/15224884/beaches-waterways-and-palaces-by-private-jet-from-cochin-to-goa-india"},
+  {n:"Argentina, Chile & Brazil by Private Jet",                               b:"signature", g:["SAM"],             u:"https://www.virtuoso.com/advisor/brianharris/tours/18106981/argentina-chile-and-brazil-by-private-jet"},
+  {n:"Exclusive Colombia Tour",                                               b:"signature", g:["SAM"],             u:"https://www.virtuoso.com/advisor/brianharris/tours/16528768/exclusive-colombia-tour"},
+  {n:"Mexico by Private Jet",                                                  b:"signature", g:["AMERICAS"],        u:"https://www.virtuoso.com/advisor/brianharris/tours/18365628/mexico-by-private-jet"},
+  {n:"Wild Canada by Private Jet",                                             b:"signature", g:["CANADA"],          u:"https://www.virtuoso.com/advisor/brianharris/tours/18365634/wild-canada-by-private-jet"},
+  {n:"Wild Wonders: Around the World by Private Jet",                          b:"signature", route:"wild-wonders",   world:true, u:"https://www.virtuoso.com/advisor/brianharris/tours/18215265/wild-wonders-around-the-world-by-private-jet"},
+  {n:"Hidden Horizons with Geoffrey Kent: A Private Jet Journey",              b:"signature", route:"hidden-horizons",world:true, u:"https://www.virtuoso.com/advisor/brianharris/tours/18228560/hidden-horizons-with-geoffrey-kent-a-private-jet-journey"}
 ];
 
 /* ===== Normalize: attach city list + derive regions for routed trips ===== */
@@ -363,7 +401,7 @@ TRIPS.forEach(t=>{
 /* ===== Date helpers ===== */
 const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 function parseD(s){const p=s.split('/');return {m:+p[0],day:+p[1],y:+p[2]};}
-function sortKey(t){const a=parseD(t.d);return a.y*10000+a.m*100+a.day;}
+function sortKey(t){if(!t.d)return 99999999;const a=parseD(t.d);return a.y*10000+a.m*100+a.day;}
 function fmtRange(t){
   const a=parseD(t.d), b=parseD(t.r);
   const left=`${MON[a.m-1]} ${a.day}`+(a.y!==b.y?`, ${a.y}`:'');
@@ -532,7 +570,8 @@ function makeCard(t){
   } else {
     tail = `<div class="go">View itinerary ↗</div>`;
   }
-  meta.innerHTML=`<div class="nm">${t.n}</div><div class="dt">${fmtRange(t)}</div>${tail}`;
+  const dateLine = t.d ? `<div class="dt">${fmtRange(t)}</div>` : '';
+  meta.innerHTML=`<div class="nm">${t.n}</div>${dateLine}${tail}`;
   const ar=document.createElement('div');ar.className='arrow';ar.textContent='›';
   a.appendChild(lg);a.appendChild(meta);a.appendChild(ar);
   if(activeBrand && t.b===activeBrand) a.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
@@ -546,7 +585,7 @@ function makeCard(t){
 function sortTrips(trips){
   return trips.slice().sort((a,b)=>{
     if(activeBrand){ const am=a.b===activeBrand,bm=b.b===activeBrand; if(am!==bm) return am?-1:1; }
-    return sortKey(a)-sortKey(b);
+    const k=sortKey(a)-sortKey(b); return k!==0?k:a.n.localeCompare(b.n);
   });
 }
 
@@ -559,7 +598,7 @@ function openRegion(key){
   const trips=sortTrips(byRegion[key]);
   document.getElementById('pKlabel').textContent='Private jet destination';
   document.getElementById('pTitle').textContent=reg.name;
-  document.getElementById('pSub').textContent=trips.length+' private jet departure'+(trips.length>1?'s':'')+' visit here · tap a card for itinerary & pricing';
+  document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length>1?'s':'')+' reach here · tap a card for itinerary & pricing';
   const list=document.getElementById('pList');
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));
