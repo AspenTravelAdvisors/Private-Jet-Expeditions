@@ -440,8 +440,9 @@ Object.values(byRegion).forEach(arr=>arr.sort((a,b)=>sortKey(a)-sortKey(b)));
 const WORLD_TRIPS = TRIPS.filter(t=>t.world).sort((a,b)=>sortKey(a)-sortKey(b));
 
 /* ===== Map ===== */
-const map=L.map('map',{worldCopyJump:true,minZoom:2,maxZoom:8,zoomControl:true})
+const map=L.map('map',{worldCopyJump:true,minZoom:1,maxZoom:8,zoomControl:false})
   .setView([24,-10],2.4);
+L.control.zoom({position:'bottomleft'}).addTo(map);
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
   attribution:'Imagery &copy; Esri, Maxar, Earthstar Geographics &middot; Itineraries: Four Seasons, Aman, TCS, Nat Geo &middot; Departures: Brian Harris / Virtuoso',
   maxZoom:8
