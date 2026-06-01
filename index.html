@@ -580,6 +580,14 @@ function makeCard(t){
     a.addEventListener('mouseenter',()=>drawRoute(t,false));
     a.addEventListener('mouseleave',()=>{ pinnedTrip?drawRoute(pinnedTrip,false):clearRoute(); });
     a.addEventListener('click',()=>{ pinnedTrip=t; drawRoute(t,true); });
+    const trace=document.createElement('span');
+    trace.className='tracebtn';trace.setAttribute('role','button');trace.tabIndex=0;
+    trace.textContent='🗺 Trace route on map';
+    const doTrace=e=>{ e.preventDefault();e.stopPropagation();
+      pinnedTrip=t; drawRoute(t,true); document.body.classList.add('tracing'); };
+    trace.addEventListener('click',doTrace);
+    trace.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') doTrace(e); });
+    meta.appendChild(trace);
   }
   return a;
 }
@@ -594,6 +602,7 @@ function sortTrips(trips){
 const panel=document.getElementById('panel');
 function openRegion(key){
   activeView=key; pinnedTrip=null; clearRoute(); applyFilter();
+  document.body.classList.remove('tracing');
   document.getElementById('worldBtn').classList.remove('active');
   const reg=REGIONS[key];
   const trips=sortTrips(byRegion[key]);
@@ -611,6 +620,7 @@ function openRegion(key){
 /* ===== Around-the-world panel ===== */
 function openWorld(){
   activeView='__world__'; pinnedTrip=null; clearRoute();
+  document.body.classList.remove('tracing');
   document.getElementById('worldBtn').classList.add('active');
   const trips=sortTrips(WORLD_TRIPS);
   document.getElementById('pKlabel').textContent='Global jet journeys';
@@ -630,6 +640,7 @@ document.getElementById('worldCount').textContent = WORLD_TRIPS.length+' global 
 function closePanel(){
   panel.classList.remove('open'); activeView=null; pinnedTrip=null;
   clearRoute(); applyFilter();
+  document.body.classList.remove('tracing');
   document.getElementById('worldBtn').classList.remove('active');
 }
 document.getElementById('close').addEventListener('click',closePanel);
@@ -648,8 +659,25 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
   #menuToggle:active{transform:scale(.93)}
   body.rail-hidden .rail{display:none !important}
   body.rail-shown .rail{display:flex !important}
+  /* Trace-route control on Around-the-World cards */
+  .card .tracebtn{display:inline-flex;align-items:center;gap:6px;margin-top:9px;
+    padding:6px 11px;border-radius:9px;font-size:11.5px;font-weight:700;cursor:pointer;
+    color:var(--accent);background:rgba(202,164,78,.10);border:1px solid rgba(202,164,78,.45);
+    -webkit-tap-highlight-color:transparent;transition:.15s}
+  .card .tracebtn:hover{background:rgba(202,164,78,.20);border-color:var(--accent)}
+  .card .tracebtn:active{transform:scale(.97)}
+  #routeBack{display:none;position:absolute;z-index:1200;left:50%;bottom:22px;transform:translateX(-50%);
+    align-items:center;gap:7px;padding:10px 17px;border-radius:30px;cursor:pointer;
+    font-size:12.5px;font-weight:700;color:var(--ink);background:var(--panel2);
+    border:1px solid var(--line);box-shadow:var(--shadow);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  @media (max-width:640px){
+    body.tracing .panel.open{transform:translateX(102%) !important}
+    body.tracing #routeBack{display:inline-flex}
+  }
 </style>
 <button id="menuToggle" type="button" aria-label="Show or hide menus" title="Show / hide menus">☰</button>
+<div id="routeBack" role="button" tabindex="0">↑ Show journeys</div>
 <script>
 (function(){
   var btn=document.getElementById('menuToggle');
@@ -659,13 +687,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
   var mq=window.matchMedia('(max-width:640px)');
   function railVisible(){return rail&&getComputedStyle(rail).display!=='none';}
   function sync(){
-    var open=(panel&&panel.classList.contains('open'))||railVisible();
-    btn.textContent=open?'✕':'☰';
+    btn.textContent=railVisible()?'✕':'☰';
   }
+  /* Bottom-left button only shows/hides the LEFT menu. The right panel has its own ✕. */
   btn.addEventListener('click',function(){
-    if(panel&&panel.classList.contains('open')){
-      panel.classList.remove('open');
-    }else if(railVisible()){
+    if(railVisible()){
       document.body.classList.add('rail-hidden');
       document.body.classList.remove('rail-shown');
     }else{
@@ -674,6 +700,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
     }
     sync();
   });
+  var rb=document.getElementById('routeBack');
+  if(rb){ rb.addEventListener('click',function(){ document.body.classList.remove('tracing'); }); }
   if(panel){
     new MutationObserver(function(){
       if(panel.classList.contains('open')){
