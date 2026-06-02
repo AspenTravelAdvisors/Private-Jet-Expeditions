@@ -18,6 +18,18 @@
   body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow:hidden}
   #map{position:absolute;inset:0;background:#0a0d13;z-index:1}
 
+  /* ---------- Loading animation ---------- */
+  .loader{position:absolute;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 42%,rgba(202,164,78,.16),rgba(5,7,11,.92) 45%,rgba(5,7,11,.98));
+    transition:opacity .35s ease,visibility .35s ease;pointer-events:auto}
+  .loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+  .loader .loadbox{display:flex;flex-direction:column;align-items:center;gap:13px;color:var(--accent2);
+    font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700}
+  .loader .wheel{width:46px;height:46px;border-radius:50%;border:2px solid rgba(236,223,194,.18);
+    border-top-color:var(--accent);border-right-color:rgba(236,223,194,.75);
+    animation:ecaSpin .9s linear infinite;box-shadow:0 0 22px rgba(202,164,78,.18)}
+  @keyframes ecaSpin{to{transform:rotate(360deg)}}
+
   /* ---------- Title bar ---------- */
   .topbar{
     position:absolute;top:0;left:0;right:0;z-index:1000;
@@ -78,6 +90,32 @@
   .rail .reset{margin:6px 10px 12px;text-align:center;font-size:11.5px;color:var(--accent);
     cursor:pointer;padding:7px;border:1px dashed var(--line);border-radius:9px;display:none}
   .rail .reset.show{display:block}
+
+  /* ---------- Date range filter (departure month) ---------- */
+  .filterbtn{margin:11px 10px 4px;padding:11px 12px;border-radius:12px;cursor:pointer;display:flex;
+    align-items:center;gap:11px;background:linear-gradient(135deg,rgba(202,164,78,.16),rgba(202,164,78,.05));
+    border:1px solid rgba(202,164,78,.5);transition:.16s;color:var(--ink)}
+  .filterbtn:hover{background:linear-gradient(135deg,rgba(202,164,78,.26),rgba(202,164,78,.08))}
+  .filterbtn.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 18px rgba(202,164,78,.25)}
+  .filterbtn .ico{width:30px;height:30px;flex:0 0 auto;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;font-size:15px;color:#3a2c0d;background:radial-gradient(circle at 35% 30%,#fff7e6,#caa44e 60%,#7a5a1e)}
+  .filterbtn .ft{font-size:12.5px;font-weight:700;line-height:1.15}
+  .filterbtn .fs{font-size:10.5px;color:var(--accent2);margin-top:2px}
+  .datepop{position:absolute;z-index:1002;top:88px;left:264px;width:318px;max-width:calc(100vw - 286px);
+    background:rgba(17,21,29,.96);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:14px;display:none}
+  .datepop.open{display:block}
+  .datepop .dh{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+  .datepop h2{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0}
+  .datepop .clear{font-size:11.5px;color:var(--accent);cursor:pointer;white-space:nowrap}
+  .year{border-top:1px solid var(--line);padding-top:11px;margin-top:11px}
+  .year:first-of-type{border-top:0;padding-top:0;margin-top:0}
+  .year .yt{font-family:var(--serif);font-size:20px;line-height:1;color:var(--ink);margin-bottom:9px}
+  .months{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+  .month{height:30px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);
+    color:var(--muted);font-size:11.5px;cursor:pointer}
+  .month:hover{border-color:rgba(202,164,78,.65);color:var(--ink)}
+  .month.active{background:linear-gradient(135deg,#caa44e,#ffe9b0);border-color:#fff;color:#3a2c0d;font-weight:800}
 
   /* ---------- Detail panel ---------- */
   .panel{
@@ -157,6 +195,7 @@
 </head>
 <body>
 <div id="map"></div>
+<div class="loader" id="loader" aria-live="polite" aria-label="Loading private jet map"><div class="loadbox"><div class="wheel"></div><div>Loading private jet atlas</div></div></div>
 
 <div class="topbar">
   <div class="brand">
@@ -175,6 +214,13 @@
 </div>
 
 <aside class="rail">
+  <div class="filterbtn" id="dateBtn">
+    <div class="ico">&#128197;</div>
+    <div>
+      <div class="ft">Date Range</div>
+      <div class="fs" id="dateSummary">All departures</div>
+    </div>
+  </div>
   <div class="worldbtn" id="worldBtn">
     <div class="globe">&#9992;</div>
     <div>
@@ -186,6 +232,14 @@
   <div class="ops" id="opList"></div>
   <div class="reset" id="reset">&#10005; Clear filter</div>
 </aside>
+
+<div class="datepop" id="datePop">
+  <div class="dh">
+    <h2>Filter by departure month</h2>
+    <div class="clear" id="dateClear">Clear dates</div>
+  </div>
+  <div id="dateGrid"></div>
+</div>
 
 <section class="panel" id="panel">
   <div class="hero">
@@ -396,6 +450,7 @@ const TRIPS = [
 function dedupeOrder(a){const s=new Set(),o=[];a.forEach(x=>{if(!s.has(x)){s.add(x);o.push(x);}});return o;}
 TRIPS.forEach(t=>{
   if(t.route && ROUTES[t.route]){ t.cities=ROUTES[t.route]; t.g=dedupeOrder(t.cities.map(c=>c.r)); }
+  if(t.d){ const p=t.d.split('/'); t.mk=p[2]+'-'+String(+p[0]).padStart(2,'0'); }
 });
 
 /* ===== Date helpers ===== */
@@ -440,20 +495,28 @@ Object.values(byRegion).forEach(arr=>arr.sort((a,b)=>sortKey(a)-sortKey(b)));
 const WORLD_TRIPS = TRIPS.filter(t=>t.world).sort((a,b)=>sortKey(a)-sortKey(b));
 
 /* ===== Map ===== */
-const map=L.map('map',{worldCopyJump:true,minZoom:2,maxZoom:8,zoomControl:false})
+const map=L.map('map',{worldCopyJump:true,minZoom:1,maxZoom:8,zoomControl:false})
   .setView([24,-10],2.4);
 L.control.zoom({position:'bottomleft'}).addTo(map);
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
+function finishLoading(){const l=document.getElementById('loader');if(l)l.classList.add('hide');}
+const baseLayer=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
   attribution:'Imagery &copy; Esri, Maxar, Earthstar Geographics &middot; Itineraries: Four Seasons, Aman, TCS, Nat Geo &middot; Departures: Brian Harris / Virtuoso',
   maxZoom:8
 }).addTo(map);
+baseLayer.on('load',finishLoading);
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',{
   maxZoom:8,opacity:.5
 }).addTo(map);
+setTimeout(finishLoading,4500);
 
 /* ===== Build region markers ===== */
 const markers={}; // regionKey -> {marker, el, trips}
 let activeBrand=null, activeView=null, pinnedTrip=null;
+let activeMonths=new Set();
+function matchesFilters(t){
+  return (!activeBrand || t.b===activeBrand) && (!activeMonths.size || (t.mk && activeMonths.has(t.mk)));
+}
+function monthMatch(t){ return !activeMonths.size || (t.mk && activeMonths.has(t.mk)); }
 
 Object.keys(byRegion).forEach(key=>{
   const reg=REGIONS[key]; if(!reg) return;
@@ -515,6 +578,47 @@ function drawRoute(trip,fit){
   if(fit){ map.fitBounds(L.latLngBounds(lls),{padding:[70,70],maxZoom:5,animate:true,duration:.8}); }
 }
 
+/* ===== Date range filter (departure month) ===== */
+function updateDateSummary(){
+  const s=document.getElementById('dateSummary');
+  if(!activeMonths.size){ s.textContent='All departures'; return; }
+  const labels=Array.from(activeMonths).sort().map(k=>MON[+k.slice(5)-1]+' '+k.slice(0,4));
+  s.textContent=labels.length===1?labels[0]:labels.length+' months selected';
+}
+function refreshView(){ if(activeView){ activeView==='__world__'?openWorld():openRegion(activeView); } }
+function buildDateGrid(){
+  const grid=document.getElementById('dateGrid');
+  const months=Array.from(new Set(TRIPS.filter(t=>t.mk).map(t=>t.mk))).sort();
+  const years=Array.from(new Set(months.map(k=>k.slice(0,4)))).sort();
+  grid.innerHTML='';
+  years.forEach(y=>{
+    const wrap=document.createElement('div');wrap.className='year';
+    const title=document.createElement('div');title.className='yt';title.textContent=y;
+    const monthWrap=document.createElement('div');monthWrap.className='months';
+    months.filter(k=>k.startsWith(y+'-')).forEach(k=>{
+      const btn=document.createElement('button');btn.className='month';btn.type='button';btn.dataset.month=k;
+      btn.textContent=MON[+k.slice(5)-1];
+      btn.addEventListener('click',()=>{
+        if(activeMonths.has(k))activeMonths.delete(k);else activeMonths.add(k);
+        btn.classList.toggle('active',activeMonths.has(k));
+        document.getElementById('dateBtn').classList.toggle('active',!!activeMonths.size);
+        updateDateSummary();applyFilter();refreshView();
+      });
+      monthWrap.appendChild(btn);
+    });
+    wrap.appendChild(title);wrap.appendChild(monthWrap);grid.appendChild(wrap);
+  });
+}
+buildDateGrid();
+document.getElementById('dateBtn').addEventListener('click',e=>{
+  e.stopPropagation();document.getElementById('datePop').classList.toggle('open');
+});
+document.getElementById('datePop').addEventListener('click',e=>e.stopPropagation());
+document.getElementById('dateClear').addEventListener('click',()=>{
+  activeMonths.clear();document.querySelectorAll('.month').forEach(m=>m.classList.remove('active'));
+  document.getElementById('dateBtn').classList.remove('active');updateDateSummary();applyFilter();refreshView();
+});
+
 /* ===== Brand filter rail ===== */
 const opList=document.getElementById('opList');
 const brandCounts={};
@@ -543,11 +647,12 @@ function toggleBrand(key,row){
   if(activeView){ activeView==='__world__' ? openWorld() : openRegion(activeView); }
 }
 function applyFilter(){
+  const anyFilter = !!activeBrand || activeMonths.size>0;
   Object.entries(markers).forEach(([key,obj])=>{
     if(obj.el.classList.contains('route')) return;
-    const hit = activeBrand ? obj.trips.some(t=>t.b===activeBrand) : true;
-    obj.el.classList.toggle('dim', activeBrand && !hit);
-    obj.el.classList.toggle('hit', activeBrand && hit);
+    const hit = obj.trips.some(matchesFilters);
+    obj.el.classList.toggle('dim', anyFilter && !hit);
+    obj.el.classList.toggle('hit', anyFilter && hit);
   });
 }
 document.getElementById('reset').addEventListener('click',()=>{
@@ -605,10 +710,10 @@ function openRegion(key){
   document.body.classList.remove('tracing');
   document.getElementById('worldBtn').classList.remove('active');
   const reg=REGIONS[key];
-  const trips=sortTrips(byRegion[key]);
+  const trips=sortTrips(byRegion[key].filter(monthMatch));
   document.getElementById('pKlabel').textContent='Private jet destination';
   document.getElementById('pTitle').textContent=reg.name;
-  document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length>1?'s':'')+' reach here · tap a card for itinerary & pricing';
+  document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length!==1?'s':'')+' reach here · tap a card for itinerary & pricing';
   const list=document.getElementById('pList');
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));
@@ -622,10 +727,10 @@ function openWorld(){
   activeView='__world__'; pinnedTrip=null; clearRoute();
   document.body.classList.remove('tracing');
   document.getElementById('worldBtn').classList.add('active');
-  const trips=sortTrips(WORLD_TRIPS);
+  const trips=sortTrips(WORLD_TRIPS.filter(monthMatch));
   document.getElementById('pKlabel').textContent='Global jet journeys';
   document.getElementById('pTitle').textContent='Around the World';
-  document.getElementById('pSub').textContent=trips.length+' circumnavigations · hover a journey to trace its city-to-city flight path, tap for the full itinerary';
+  document.getElementById('pSub').textContent=trips.length+' circumnavigation'+(trips.length!==1?'s':'')+' · hover a journey to trace its city-to-city flight path, tap for the full itinerary';
   const list=document.getElementById('pList');
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));
@@ -642,6 +747,7 @@ function closePanel(){
   clearRoute(); applyFilter();
   document.body.classList.remove('tracing');
   document.getElementById('worldBtn').classList.remove('active');
+  document.getElementById('datePop').classList.remove('open');
 }
 document.getElementById('close').addEventListener('click',closePanel);
 map.on('click',closePanel);
@@ -650,15 +756,25 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
 
 <!-- ===== Menu show/hide toggle (mobile-friendly) ===== -->
 <style>
-  #menuToggle{position:absolute;z-index:1200;left:14px;bottom:84px;width:44px;height:44px;
-    border-radius:50%;border:1px solid var(--line);background:var(--panel2);color:var(--ink);
-    font-size:19px;line-height:1;cursor:pointer;box-shadow:var(--shadow);
-    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
-    display:flex;align-items:center;justify-content:center;padding:0}
-  #menuToggle:hover{border-color:var(--accent)}
-  #menuToggle:active{transform:scale(.93)}
-  body.rail-hidden .rail{display:none !important}
-  body.rail-shown .rail{display:flex !important}
+  /* Frosted-glass pill controls that the menus collapse into */
+  .menupill{position:absolute;z-index:1200;display:inline-flex;align-items:center;gap:9px;height:44px;
+    padding:0 16px;border-radius:30px;cursor:pointer;font-family:var(--sans);font-size:12.5px;
+    font-weight:700;letter-spacing:.3px;color:var(--ink);
+    background:rgba(17,21,29,.5);border:1px solid rgba(236,223,194,.18);box-shadow:var(--shadow);
+    -webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
+    transition:background .16s,border-color .16s,transform .12s,opacity .2s}
+  .menupill:hover{background:rgba(23,28,38,.82);border-color:var(--accent)}
+  .menupill:active{transform:scale(.95)}
+  .menupill .pi{font-size:16px;line-height:1;color:var(--accent);width:16px;text-align:center}
+  #railPill{left:14px;bottom:84px}
+  #panelPill{right:14px;bottom:84px;opacity:0;pointer-events:none}
+  body.panel-active #panelPill{opacity:1;pointer-events:auto}
+  /* Left rail fades to transparent + blurred, then collapses into its pill */
+  .rail{transition:opacity .26s ease,transform .26s ease,visibility .26s}
+  body.rail-hidden .rail{opacity:0;transform:translateX(-12px) scale(.97);visibility:hidden;pointer-events:none}
+  /* Right detail panel collapses into its pill */
+  body.panel-collapsed .panel.open{transform:translateX(105%)}
+  body.panel-collapsed #datePop{display:none}
   /* Trace-route control on Around-the-World cards */
   .card .tracebtn{display:inline-flex;align-items:center;gap:6px;margin-top:9px;
     padding:6px 11px;border-radius:9px;font-size:11.5px;font-weight:700;cursor:pointer;
@@ -674,49 +790,46 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
   @media (max-width:640px){
     body.tracing .panel.open{transform:translateX(102%) !important}
     body.tracing #routeBack{display:inline-flex}
+    .menupill .pl{display:none}
+    .menupill{padding:0;width:44px;justify-content:center}
+    body.rail-shown .rail{display:flex !important;opacity:1;visibility:visible;transform:none}
   }
 </style>
-<button id="menuToggle" type="button" aria-label="Show or hide menus" title="Show / hide menus">☰</button>
+<button id="railPill" class="menupill" type="button" aria-label="Show or hide the filters menu" title="Show / hide filters"><span class="pi">&#9776;</span><span class="pl">Filters</span></button>
+<button id="panelPill" class="menupill" type="button" aria-label="Show or hide the details panel" title="Show / hide details"><span class="pi">&#8249;</span><span class="pl">Details</span></button>
 <div id="routeBack" role="button" tabindex="0">↑ Show journeys</div>
 <script>
 (function(){
-  var btn=document.getElementById('menuToggle');
-  if(!btn)return;
+  var body=document.body;
+  var railPill=document.getElementById('railPill');
+  var panelPill=document.getElementById('panelPill');
   var panel=document.querySelector('.panel');
-  var rail=document.querySelector('.rail');
   var mq=window.matchMedia('(max-width:640px)');
-  function railVisible(){return rail&&getComputedStyle(rail).display!=='none';}
-  function sync(){
-    btn.textContent=railVisible()?'✕':'☰';
+  var railCollapsed=mq.matches;               // start collapsed on small screens
+  function setIcon(el,ch){ var p=el&&el.querySelector('.pi'); if(p)p.innerHTML=ch; }
+  function syncRail(){
+    body.classList.toggle('rail-hidden',railCollapsed);
+    body.classList.toggle('rail-shown',!railCollapsed);
+    setIcon(railPill,railCollapsed?'&#9776;':'&#10005;');
   }
-  /* Bottom-left button only shows/hides the LEFT menu. The right panel has its own ✕. */
-  btn.addEventListener('click',function(){
-    if(railVisible()){
-      document.body.classList.add('rail-hidden');
-      document.body.classList.remove('rail-shown');
-    }else{
-      document.body.classList.add('rail-shown');
-      document.body.classList.remove('rail-hidden');
-    }
-    sync();
-  });
-  var rb=document.getElementById('routeBack');
-  if(rb){ rb.addEventListener('click',function(){ document.body.classList.remove('tracing'); }); }
+  function syncPanel(){
+    setIcon(panelPill, body.classList.contains('panel-collapsed')?'&#8249;':'&#10005;');
+  }
+  railPill.addEventListener('click',function(){ railCollapsed=!railCollapsed; syncRail(); });
+  panelPill.addEventListener('click',function(){ body.classList.toggle('panel-collapsed'); syncPanel(); });
   if(panel){
     new MutationObserver(function(){
-      if(panel.classList.contains('open')){
-        if(mq.matches){
-          document.body.classList.add('rail-hidden');
-          document.body.classList.remove('rail-shown');
-        }
-      }else{
-        document.body.classList.remove('rail-hidden');
-        document.body.classList.remove('rail-shown');
-      }
-      sync();
+      var open=panel.classList.contains('open');
+      body.classList.toggle('panel-active',open);
+      if(!open){ body.classList.remove('panel-collapsed'); }
+      if(open && mq.matches){ railCollapsed=true; syncRail(); }
+      syncPanel();
     }).observe(panel,{attributes:true,attributeFilter:['class']});
   }
-  sync();
+  var rb=document.getElementById('routeBack');
+  if(rb){ rb.addEventListener('click',function(){ body.classList.remove('tracing'); }); }
+  if(mq.addEventListener){ mq.addEventListener('change',function(e){ railCollapsed=e.matches; syncRail(); }); }
+  syncRail(); syncPanel();
 })();
 </script>
 </body>
