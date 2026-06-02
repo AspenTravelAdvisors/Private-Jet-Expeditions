@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Private Jet Atlas — Where Each Journey Takes You</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="preconnect" href="https://server.arcgisonline.com" crossorigin>
+<link rel="stylesheet" href="vendor/leaflet.min.css">
 <style>
   :root{
     --bg:#0a0d13; --panel:#11151d; --panel2:#171c26; --line:#2a3340;
@@ -241,7 +242,7 @@
 
 <div class="hint">&#9992; Drag to explore &middot; tap a <b>pin</b> for departures &middot; open <b>Around the World</b> to trace global routes</div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="vendor/leaflet.min.js"></script>
 <script>
   // ── DATA LOADING ─────────────────────────────────────────────────────────
   let BRANDS, REGIONS, ROUTES, TRIPS;
@@ -299,6 +300,7 @@ function logoEl(brandKey){
   }
   if(!m.domain){ fallback(); return wrap; }
   const sources=[
+    'logos/'+m.domain+'.png',
     'https://www.google.com/s2/favicons?sz=128&domain='+m.domain,
     'https://icons.duckduckgo.com/ip3/'+m.domain+'.ico'
   ];
@@ -324,9 +326,6 @@ L.control.zoom({position:'bottomleft'}).addTo(map);
 const baseLayer=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
   attribution:'Imagery &copy; Esri, Maxar, Earthstar Geographics &middot; Itineraries: Four Seasons, Aman, TCS, Nat Geo &middot; Departures: Brian Harris / Virtuoso',
   maxZoom:8
-}).addTo(map);
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',{
-  maxZoom:8,opacity:.5
 }).addTo(map);
 
 /* ===== Build region markers ===== */
