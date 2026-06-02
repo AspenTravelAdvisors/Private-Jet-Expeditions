@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Private Jet Atlas — Where Each Journey Takes You</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root{
+    --bg:#0a0d13; --panel:#11151d; --panel2:#171c26; --line:#2a3340;
+    --ink:#f4eee2; --muted:#a9a293; --accent:#caa44e; --accent2:#ecdfc2;
+    --shadow:0 12px 44px rgba(0,0,0,.5);
+    --sans:'Segoe UI',Roboto,-apple-system,system-ui,Helvetica,Arial,sans-serif;
+    --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow:hidden}
+  #map{position:absolute;inset:0;background:#0a0d13;z-index:1}
+
+  /* ---------- Loading animation ---------- */}
+
+  /* ---------- Title bar ---------- */
+  .topbar{
+    position:absolute;top:0;left:0;right:0;z-index:1000;
+    display:flex;align-items:center;gap:14px;padding:12px 18px;
+    background:linear-gradient(180deg,rgba(5,7,11,.94),rgba(5,7,11,.55) 70%,transparent);
+    pointer-events:none;
+  }
+  .topbar .brand{pointer-events:auto;display:flex;align-items:center;gap:13px}
+  .topbar h1{font-family:var(--serif);font-size:23px;margin:0;letter-spacing:.4px;font-weight:600;line-height:1}
+  .topbar h1 span{color:var(--accent)}
+  .topbar p{margin:3px 0 0;font-size:12px;color:var(--muted)}
+  .logochip{background:#fff;border-radius:11px;flex:0 0 auto;display:flex;align-items:center;
+    justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.25)}
+  .logochip img{display:block;object-fit:contain}
+  .logochip.mark{height:46px;width:46px;background:linear-gradient(150deg,#1b1f29,#0d1017);
+    color:var(--accent);font-size:22px;box-shadow:0 4px 14px rgba(0,0,0,.5),0 0 0 1px rgba(202,164,78,.45)}
+  .logochip.ata{height:40px;padding:5px 9px}
+  .logochip.ata img{height:30px;max-width:120px}
+  .partner{pointer-events:auto;margin-left:auto;display:flex;align-items:center;gap:9px;
+    text-decoration:none;color:var(--muted);transition:.15s}
+  .partner:hover{color:var(--ink)}
+  .partner span{font-size:11px;letter-spacing:.6px;text-transform:uppercase;font-weight:600;white-space:nowrap}
+
+  /* ---------- Left rail ---------- */
+  .rail{
+    position:absolute;z-index:1000;top:78px;left:14px;width:236px;
+    background:rgba(17,21,29,.93);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);backdrop-filter:blur(8px);overflow:hidden;
+    display:flex;flex-direction:column;max-height:calc(100% - 100px)}
+  .rail h2{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);
+    margin:0;padding:13px 14px 9px}
+  .rail .ops{overflow-y:auto;padding:0 8px 8px}
+
+  /* Around-the-world toggle */
+  .worldbtn{margin:11px 10px 4px;padding:11px 12px;border-radius:12px;cursor:pointer;
+    display:flex;align-items:center;gap:11px;
+    background:linear-gradient(135deg,rgba(202,164,78,.16),rgba(202,164,78,.05));
+    border:1px solid rgba(202,164,78,.5);transition:.16s}
+  .worldbtn:hover{background:linear-gradient(135deg,rgba(202,164,78,.26),rgba(202,164,78,.08))}
+  .worldbtn.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 18px rgba(202,164,78,.25)}
+  .worldbtn .globe{width:30px;height:30px;flex:0 0 auto;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;font-size:16px;color:#3a2c0d;
+    background:radial-gradient(circle at 35% 30%,#fff7e6,#caa44e 60%,#7a5a1e)}
+  .worldbtn .wt{font-size:12.5px;font-weight:700;line-height:1.15;color:var(--ink)}
+  .worldbtn .ws{font-size:10.5px;color:var(--accent2);margin-top:2px}
+
+  .op{
+    display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:10px;cursor:pointer;
+    border:1px solid transparent;transition:.15s;margin-bottom:2px}
+  .op:hover{background:var(--panel2)}
+  .op.active{background:var(--panel2);border-color:var(--accent)}
+  .op .lg{width:30px;height:30px;border-radius:7px;background:#fff;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;font-weight:800;font-size:13px}
+  .op .lg img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+  .op .nm{font-size:12.5px;line-height:1.15;font-weight:600}
+  .op .ct{font-size:10.5px;color:var(--muted);margin-top:1px}
+  .op .dot{width:8px;height:8px;border-radius:50%;margin-left:auto;flex:0 0 auto;opacity:.9}
+  .rail .reset{margin:6px 10px 12px;text-align:center;font-size:11.5px;color:var(--accent);
+    cursor:pointer;padding:7px;border:1px dashed var(--line);border-radius:9px;display:none}
+  .rail .reset.show{display:block}
+
+  /* ---------- Date range filter (departure month) ---------- */
+  .filterbtn{margin:11px 10px 4px;padding:11px 12px;border-radius:12px;cursor:pointer;display:flex;
+    align-items:center;gap:11px;background:linear-gradient(135deg,rgba(202,164,78,.16),rgba(202,164,78,.05));
+    border:1px solid rgba(202,164,78,.5);transition:.16s;color:var(--ink)}
+  .filterbtn:hover{background:linear-gradient(135deg,rgba(202,164,78,.26),rgba(202,164,78,.08))}
+  .filterbtn.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 18px rgba(202,164,78,.25)}
+  .filterbtn .ico{width:30px;height:30px;flex:0 0 auto;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;font-size:15px;color:#3a2c0d;background:radial-gradient(circle at 35% 30%,#fff7e6,#caa44e 60%,#7a5a1e)}
+  .filterbtn .ft{font-size:12.5px;font-weight:700;line-height:1.15}
+  .filterbtn .fs{font-size:10.5px;color:var(--accent2);margin-top:2px}
+  .datepop{position:absolute;z-index:1002;top:88px;left:264px;width:318px;max-width:calc(100vw - 286px);
+    background:rgba(17,21,29,.96);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:14px;display:none}
+  .datepop.open{display:block}
+  .datepop .dh{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+  .datepop h2{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin:0}
+  .datepop .clear{font-size:11.5px;color:var(--accent);cursor:pointer;white-space:nowrap}
+  .year{border-top:1px solid var(--line);padding-top:11px;margin-top:11px}
+  .year:first-of-type{border-top:0;padding-top:0;margin-top:0}
+  .year .yt{font-family:var(--serif);font-size:20px;line-height:1;color:var(--ink);margin-bottom:9px}
+  .months{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+  .month{height:30px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);
+    color:var(--muted);font-size:11.5px;cursor:pointer}
+  .month:hover{border-color:rgba(202,164,78,.65);color:var(--ink)}
+  .month.active{background:linear-gradient(135deg,#caa44e,#ffe9b0);border-color:#fff;color:#3a2c0d;font-weight:800}
+
+  /* ---------- Detail panel ---------- */
+  .panel{
+    position:absolute;z-index:1001;top:0;right:0;height:100%;width:392px;max-width:92vw;
+    background:linear-gradient(180deg,var(--panel),#080b10);border-left:1px solid var(--line);
+    box-shadow:-12px 0 40px rgba(0,0,0,.55);transform:translateX(105%);
+    transition:transform .32s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column}
+  .panel.open{transform:none}
+  .panel .hero{position:relative;padding:24px 22px 18px;border-bottom:1px solid var(--line);
+    background:radial-gradient(120% 120% at 80% 0%,rgba(202,164,78,.20),transparent 60%)}
+  .panel .close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:8px;
+    border:1px solid var(--line);background:var(--panel2);color:var(--ink);cursor:pointer;font-size:15px}
+  .panel .klabel{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent)}
+  .panel h3{font-family:var(--serif);margin:7px 0 5px;font-size:27px;line-height:1.12;font-weight:600}
+  .panel .sub{font-size:12.5px;color:var(--muted)}
+  .panel .list{overflow-y:auto;padding:14px 16px 26px;flex:1}
+  .card{display:flex;align-items:center;gap:13px;padding:12px;border:1px solid var(--line);
+    border-radius:13px;background:var(--panel2);margin-bottom:10px;text-decoration:none;color:var(--ink);
+    transition:.16s;position:relative}
+  .card:hover{border-color:var(--accent);transform:translateY(-1px);background:#1d232f}
+  .card.world{background:linear-gradient(135deg,#1a2030,#141925)}
+  .card .lg{width:48px;height:48px;border-radius:10px;background:#fff;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;font-weight:800;font-size:15px}
+  .card .lg img{max-width:100%;max-height:100%;object-fit:contain}
+  .card .meta{min-width:0}
+  .card .meta .nm{font-size:14.5px;font-weight:700;line-height:1.18}
+  .card .meta .dt{font-size:12px;color:var(--accent2);margin-top:3px;font-variant-numeric:tabular-nums}
+  .card .meta .go{font-size:11.5px;color:var(--accent);margin-top:4px;display:flex;align-items:center;gap:5px}
+  .card .meta .rt{font-size:10.5px;color:var(--muted);margin-top:5px;line-height:1.45}
+  .card .arrow{margin-left:auto;color:var(--muted);font-size:18px;flex:0 0 auto}
+
+  /* ---------- Markers ---------- */
+  .rmarker{position:relative;transform:translate(-50%,-50%);cursor:pointer}
+  .rmarker .ring{width:var(--sz,34px);height:var(--sz,34px);border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,rgba(236,223,194,.95),rgba(202,164,78,.92) 58%,rgba(120,90,30,.92));
+    border:2px solid rgba(255,255,255,.85);box-shadow:0 0 0 4px rgba(202,164,78,.22),0 5px 16px rgba(0,0,0,.55);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#3a2c0d;
+    transition:.18s}
+  .rmarker:hover .ring{transform:scale(1.12);box-shadow:0 0 0 6px rgba(202,164,78,.3),0 6px 18px rgba(0,0,0,.6)}
+  .rmarker.dim .ring{opacity:.2;filter:grayscale(.55)}
+  .rmarker.hit .ring,.rmarker.route .ring{background:radial-gradient(circle at 35% 30%,#fff7e6,#ffe9b0 55%,#caa44e);
+    border-color:#fff;box-shadow:0 0 0 5px rgba(236,223,194,.4),0 6px 18px rgba(0,0,0,.55)}
+  .rmarker.route .ring{transform:scale(1.08)}
+  .rmarker .tag{position:absolute;left:50%;top:calc(var(--sz,34px) + 8px);transform:translateX(-50%);
+    white-space:nowrap;background:rgba(8,11,16,.92);border:1px solid var(--line);color:var(--ink);
+    font-size:11px;font-weight:600;padding:3px 8px;border-radius:7px;pointer-events:none;opacity:0;
+    transition:.15s;letter-spacing:.2px}
+  .rmarker:hover .tag{opacity:1}
+
+  /* route stop dots + tooltips */
+  .stopdot{transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#fff7e6,#caa44e 65%,#7a5a1e);
+    border:1.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.6);
+    display:flex;align-items:center;justify-content:center;font:700 10px/1 var(--sans);color:#3a2c0d}
+  .leaflet-tooltip.stoptip{background:rgba(8,11,16,.94);border:1px solid var(--line);color:var(--ink);
+    font:600 11.5px var(--sans);padding:3px 8px;border-radius:7px;box-shadow:0 3px 10px rgba(0,0,0,.55)}
+  .leaflet-tooltip.stoptip:before{border-top-color:rgba(8,11,16,.94)}
+
+  /* ---------- Help / hint ---------- */
+  .hint{position:absolute;z-index:1000;bottom:16px;left:50%;transform:translateX(-50%);
+    background:rgba(17,21,29,.92);border:1px solid var(--line);border-radius:30px;padding:8px 18px;
+    font-size:12.5px;color:var(--muted);box-shadow:var(--shadow);backdrop-filter:blur(6px);
+    max-width:92vw;text-align:center}
+  .hint b{color:var(--ink)}
+  .leaflet-popup,.leaflet-control-attribution{font-family:var(--sans)}
+  .leaflet-bar a{background:var(--panel2);color:var(--ink);border-bottom-color:var(--line)}
+  .leaflet-bar a:hover{background:#1d232f}
+
+  @media (max-width:640px){
+    .rail{display:none}
+    .panel{width:100%}
+    .topbar p{display:none}
+    .partner span{display:none}
+    .hint{display:none}
+  }
+</style>
+</head>
+<body>
+<div id="map"></div><div>Loading private jet atlas</div></div></div>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="logochip mark">&#9992;</div>
+    <div>
+      <h1>Private Jet <span>Atlas</span></h1>
+      <p>Explore every departure by region &middot; or trace the great around-the-world journeys</p>
+    </div>
+  </div>
+  <a class="partner" href="https://www.virtuoso.com/advisor/brianharris" target="_blank" rel="noopener">
+    <span>Curated&nbsp;by</span>
+    <div class="logochip ata">
+      <img src="https://images.squarespace-cdn.com/content/v1/57d86bcd46c3c49c625850a1/8c7b524b-9951-4a51-aaf2-44982357ccfe/ATA+logo+clear+2025+black.png?format=750w" alt="Aspen Travel Advisors">
+    </div>
+  </a>
+</div>
+
+<aside class="rail">
+  <div class="filterbtn" id="dateBtn">
+    <div class="ico">&#128197;</div>
+    <div>
+      <div class="ft">Date Range</div>
+      <div class="fs" id="dateSummary">All departures</div>
+    </div>
+  </div>
+  <div class="worldbtn" id="worldBtn">
+    <div class="globe">&#9992;</div>
+    <div>
+      <div class="wt">Around the World</div>
+      <div class="ws" id="worldCount"></div>
+    </div>
+  </div>
+  <h2>Filter by jet experience</h2>
+  <div class="ops" id="opList"></div>
+  <div class="reset" id="reset">&#10005; Clear filter</div>
+</aside>
+
+<div class="datepop" id="datePop">
+  <div class="dh">
+    <h2>Filter by departure month</h2>
+    <div class="clear" id="dateClear">Clear dates</div>
+  </div>
+  <div id="dateGrid"></div>
+</div>
+
+<section class="panel" id="panel">
+  <div class="hero">
+    <button class="close" id="close">&#10005;</button>
+    <div class="klabel" id="pKlabel">Private jet destination</div>
+    <h3 id="pTitle">Region</h3>
+    <div class="sub" id="pSub"></div>
+  </div>
+  <div class="list" id="pList"></div>
+</section>
+
+<div class="hint">&#9992; Drag to explore &middot; tap a <b>pin</b> for departures &middot; open <b>Around the World</b> to trace global routes</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // ── DATA LOADING ─────────────────────────────────────────────────────────
+  let BRANDS, REGIONS, ROUTES, TRIPS;
+  const _dataReady = fetch('itinerary.json')
+    .then(r => r.json())
+    .then(d => {
+      BRANDS = d.BRANDS; REGIONS = d.REGIONS; ROUTES = d.ROUTES; TRIPS = d.TRIPS;
+    });
+
+/* ===== Jet experience / brand metadata (filter rail order) ===== */
+;
+
+/* ===== Destination regions (marker placement) ===== */
+;
+
+/* ===== Around-the-world routes: ordered city stops with coordinates =====
+   n = city · r = region · ll = [lat, lng]. Sourced from each operator's
+   published itinerary (Four Seasons, Aman/Remote Lands, TCS, Nat Geo). */
+;
+
+/* ===== Departures =====
+   world trips reference a ROUTES slug (regions auto-derived from the city stops);
+   regional trips carry an explicit g[] of the continents they visit. */
+;
+
+/* ===== Normalize: attach city list + derive regions for routed trips ===== */
+function dedupeOrder(a){const s=new Set(),o=[];a.forEach(x=>{if(!s.has(x)){s.add(x);o.push(x);}});return o;}
+TRIPS.forEach(t=>{
+  if(t.route && ROUTES[t.route]){ t.cities=ROUTES[t.route]; t.g=dedupeOrder(t.cities.map(c=>c.r)); }
+  if(t.d){ const p=t.d.split('/'); t.mk=p[2]+'-'+String(+p[0]).padStart(2,'0'); }
+});
+
+/* ===== Date helpers ===== */
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function parseD(s){const p=s.split('/');return {m:+p[0],day:+p[1],y:+p[2]};}
+function sortKey(t){if(!t.d)return 99999999;const a=parseD(t.d);return a.y*10000+a.m*100+a.day;}
+function fmtRange(t){
+  const a=parseD(t.d), b=parseD(t.r);
+  const left=`${MON[a.m-1]} ${a.day}`+(a.y!==b.y?`, ${a.y}`:'');
+  const right=`${MON[b.m-1]} ${b.day}, ${b.y}`;
+  return `${left} – ${right}`;
+}
+
+/* ===== logo helper (favicon -> brand glyph) ===== */
+function logoEl(brandKey){
+  const m = BRANDS[brandKey] || {short:brandKey,domain:"",color:"#26506e"};
+  const wrap = document.createElement('div');
+  wrap.className='lg';
+  function fallback(){
+    wrap.innerHTML='';
+    wrap.style.background=m.color; wrap.style.color='#fff';
+    wrap.textContent = m.glyph || (m.short.match(/[A-Za-z]/g)||['?']).slice(0,2).join('').toUpperCase();
+  }
+  if(!m.domain){ fallback(); return wrap; }
+  const sources=[
+    'https://www.google.com/s2/favicons?sz=128&domain='+m.domain,
+    'https://icons.duckduckgo.com/ip3/'+m.domain+'.ico'
+  ];
+  const img=document.createElement('img');
+  img.loading='lazy'; img.alt=m.short; let i=0;
+  img.onerror=function(){ if(i<sources.length){ img.src=sources[i++]; } else { fallback(); } };
+  img.onload=function(){ if(img.naturalWidth<8){ img.onerror(); } };
+  img.src=sources[i++];
+  wrap.appendChild(img);
+  return wrap;
+}
+
+/* ===== Group departures by region (a trip appears in each region it visits) ===== */
+const byRegion={};
+TRIPS.forEach(t=>t.g.forEach(k=>{ (byRegion[k]=byRegion[k]||[]).push(t); }));
+Object.values(byRegion).forEach(arr=>arr.sort((a,b)=>sortKey(a)-sortKey(b)));
+const WORLD_TRIPS = TRIPS.filter(t=>t.world).sort((a,b)=>sortKey(a)-sortKey(b));
+
+/* ===== Map ===== */
+_dataReady.then(() => {
+const map=L.map('map',{worldCopyJump:true,minZoom:1,maxZoom:8,zoomControl:false})
+  .setView([24,-10],2.4);
+L.control.zoom({position:'bottomleft'}).addTo(map);
+const baseLayer=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
+  attribution:'Imagery &copy; Esri, Maxar, Earthstar Geographics &middot; Itineraries: Four Seasons, Aman, TCS, Nat Geo &middot; Departures: Brian Harris / Virtuoso',
+  maxZoom:8
+}).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',{
+  maxZoom:8,opacity:.5
+}).addTo(map);
+
+/* ===== Build region markers ===== */
+const markers={}; // regionKey -> {marker, el, trips}
+let activeBrand=null, activeView=null, pinnedTrip=null;
+let activeMonths=new Set();
+function matchesFilters(t){
+  return (!activeBrand || t.b===activeBrand) && (!activeMonths.size || (t.mk && activeMonths.has(t.mk)));
+}
+function monthMatch(t){ return !activeMonths.size || (t.mk && activeMonths.has(t.mk)); }
+
+Object.keys(byRegion).forEach(key=>{
+  const reg=REGIONS[key]; if(!reg) return;
+  const trips=byRegion[key];
+  const sz=Math.max(32,Math.min(56, 28+trips.length*1.7));
+  const el=document.createElement('div');
+  el.className='rmarker';
+  el.style.setProperty('--sz',sz+'px');
+  el.innerHTML=`<div class="ring">${trips.length}</div><div class="tag">${reg.name} &middot; ${trips.length} departure${trips.length>1?'s':''}</div>`;
+  el.addEventListener('click',e=>{e.stopPropagation();openRegion(key);});
+  const icon=L.divIcon({className:'',html:el,iconSize:[0,0]});
+  const mk=L.marker(reg.coord,{icon,riseOnHover:true}).addTo(map);
+  markers[key]={marker:mk,el,trips};
+});
+
+/* ===== Route drawing (city-to-city flight paths) ===== */
+const routeLayer=L.layerGroup().addTo(map);
+function clearRoute(){ routeLayer.clearLayers(); Object.values(markers).forEach(o=>o.el.classList.remove('route')); }
+function unroll(coords){
+  const out=[coords[0].slice()];
+  for(let i=1;i<coords.length;i++){
+    let [la,lo]=coords[i]; const prevLo=out[i-1][1];
+    while(lo-prevLo>180) lo-=360;
+    while(lo-prevLo<-180) lo+=360;
+    out.push([la,lo]);
+  }
+  return out;
+}
+function arcPts(a,b){
+  const [la1,lo1]=a,[la2,lo2]=b;
+  const mx=(lo1+lo2)/2,my=(la1+la2)/2,dx=lo2-lo1,dy=la2-la1;
+  const k=0.16;
+  const cx=mx-dy*k, cy=my+dx*k;
+  const p=[];
+  for(let t=0;t<=1.0001;t+=0.04){
+    const x=(1-t)*(1-t)*lo1+2*(1-t)*t*cx+t*t*lo2;
+    const y=(1-t)*(1-t)*la1+2*(1-t)*t*cy+t*t*la2;
+    p.push([y,x]);
+  }
+  return p;
+}
+function drawRoute(trip,fit){
+  clearRoute();
+  const stops = trip.cities
+    ? trip.cities.map(c=>({ll:c.ll,label:c.n}))
+    : trip.g.map(k=>({ll:REGIONS[k].coord,label:REGIONS[k].name}));
+  const lls=unroll(stops.map(s=>s.ll));
+  for(let i=0;i<lls.length-1;i++){
+    const pts=arcPts(lls[i],lls[i+1]);
+    L.polyline(pts,{color:'#3a2c0d',weight:6,opacity:.22,lineCap:'round'}).addTo(routeLayer);
+    L.polyline(pts,{color:'#e9cf86',weight:2.2,opacity:.95,lineCap:'round',dashArray:'1 7'}).addTo(routeLayer);
+  }
+  lls.forEach((c,i)=>{
+    const dot=L.divIcon({className:'',html:`<div class="stopdot">${i+1}</div>`,iconSize:[0,0]});
+    L.marker(c,{icon:dot,riseOnHover:true}).addTo(routeLayer)
+      .bindTooltip(`${i+1}. ${stops[i].label}`,{direction:'top',offset:[0,-9],className:'stoptip',opacity:1});
+  });
+  trip.g.forEach(k=>{ if(markers[k]) markers[k].el.classList.add('route'); });
+  if(fit){ map.fitBounds(L.latLngBounds(lls),{padding:[70,70],maxZoom:5,animate:true,duration:.8}); }
+}
+
+/* ===== Date range filter (departure month) ===== */
+function updateDateSummary(){
+  const s=document.getElementById('dateSummary');
+  if(!activeMonths.size){ s.textContent='All departures'; return; }
+  const labels=Array.from(activeMonths).sort().map(k=>MON[+k.slice(5)-1]+' '+k.slice(0,4));
+  s.textContent=labels.length===1?labels[0]:labels.length+' months selected';
+}
+function refreshView(){ if(activeView){ activeView==='__world__'?openWorld():openRegion(activeView); } }
+function buildDateGrid(){
+  const grid=document.getElementById('dateGrid');
+  const months=Array.from(new Set(TRIPS.filter(t=>t.mk).map(t=>t.mk))).sort();
+  const years=Array.from(new Set(months.map(k=>k.slice(0,4)))).sort();
+  grid.innerHTML='';
+  years.forEach(y=>{
+    const wrap=document.createElement('div');wrap.className='year';
+    const title=document.createElement('div');title.className='yt';title.textContent=y;
+    const monthWrap=document.createElement('div');monthWrap.className='months';
+    months.filter(k=>k.startsWith(y+'-')).forEach(k=>{
+      const btn=document.createElement('button');btn.className='month';btn.type='button';btn.dataset.month=k;
+      btn.textContent=MON[+k.slice(5)-1];
+      btn.addEventListener('click',()=>{
+        if(activeMonths.has(k))activeMonths.delete(k);else activeMonths.add(k);
+        btn.classList.toggle('active',activeMonths.has(k));
+        document.getElementById('dateBtn').classList.toggle('active',!!activeMonths.size);
+        updateDateSummary();applyFilter();refreshView();
+      });
+      monthWrap.appendChild(btn);
+    });
+    wrap.appendChild(title);wrap.appendChild(monthWrap);grid.appendChild(wrap);
+  });
+}
+buildDateGrid();
+document.getElementById('dateBtn').addEventListener('click',e=>{
+  e.stopPropagation();document.getElementById('datePop').classList.toggle('open');
+});
+document.getElementById('datePop').addEventListener('click',e=>e.stopPropagation());
+document.getElementById('dateClear').addEventListener('click',()=>{
+  activeMonths.clear();document.querySelectorAll('.month').forEach(m=>m.classList.remove('active'));
+  document.getElementById('dateBtn').classList.remove('active');updateDateSummary();applyFilter();refreshView();
+});
+
+/* ===== Brand filter rail ===== */
+const opList=document.getElementById('opList');
+const brandCounts={};
+TRIPS.forEach(t=>brandCounts[t.b]=(brandCounts[t.b]||0)+1);
+Object.keys(BRANDS).forEach(key=>{
+  const m=BRANDS[key];
+  const row=document.createElement('div');
+  row.className='op';
+  const lg=logoEl(key);
+  const txt=document.createElement('div');
+  const n=brandCounts[key]||0;
+  txt.innerHTML=`<div class="nm">${m.short}</div><div class="ct">${n} departure${n!==1?'s':''}</div>`;
+  const dot=document.createElement('div');dot.className='dot';dot.style.background=m.color;
+  row.appendChild(lg);row.appendChild(txt);row.appendChild(dot);
+  row.addEventListener('click',()=>toggleBrand(key,row));
+  opList.appendChild(row);
+});
+
+function toggleBrand(key,row){
+  const wasActive = activeBrand===key;
+  document.querySelectorAll('.op').forEach(r=>r.classList.remove('active'));
+  if(wasActive){ activeBrand=null; }
+  else { activeBrand=key; row.classList.add('active'); }
+  applyFilter();
+  document.getElementById('reset').classList.toggle('show', !!activeBrand);
+  if(activeView){ activeView==='__world__' ? openWorld() : openRegion(activeView); }
+}
+function applyFilter(){
+  const anyFilter = !!activeBrand || activeMonths.size>0;
+  Object.entries(markers).forEach(([key,obj])=>{
+    if(obj.el.classList.contains('route')) return;
+    const hit = obj.trips.some(matchesFilters);
+    obj.el.classList.toggle('dim', anyFilter && !hit);
+    obj.el.classList.toggle('hit', anyFilter && hit);
+  });
+}
+document.getElementById('reset').addEventListener('click',()=>{
+  activeBrand=null;document.querySelectorAll('.op').forEach(r=>r.classList.remove('active'));
+  applyFilter();document.getElementById('reset').classList.remove('show');
+  if(activeView){ activeView==='__world__' ? openWorld() : openRegion(activeView); }
+});
+
+/* ===== Card builder ===== */
+function makeCard(t){
+  const a=document.createElement('a');
+  a.className='card'+(t.world?' world':'');
+  a.href=t.u;a.target='_blank';a.rel='noopener';
+  const lg=logoEl(t.b);
+  const meta=document.createElement('div');meta.className='meta';
+  let tail;
+  if(t.world){
+    const path = t.cities ? t.cities.map(c=>c.n).join(' → ') : t.g.map(k=>REGIONS[k].ab).join(' · ');
+    const n = t.cities ? t.cities.length : t.g.length;
+    tail = `<div class="go">✈ Around the World &middot; ${n} stops ↗</div><div class="rt">${path}</div>`;
+  } else {
+    tail = `<div class="go">View itinerary ↗</div>`;
+  }
+  const dateLine = t.d ? `<div class="dt">${fmtRange(t)}</div>` : '';
+  meta.innerHTML=`<div class="nm">${t.n}</div>${dateLine}${tail}`;
+  const ar=document.createElement('div');ar.className='arrow';ar.textContent='›';
+  a.appendChild(lg);a.appendChild(meta);a.appendChild(ar);
+  if(activeBrand && t.b===activeBrand) a.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  if(t.world){
+    a.addEventListener('mouseenter',()=>drawRoute(t,false));
+    a.addEventListener('mouseleave',()=>{ pinnedTrip?drawRoute(pinnedTrip,false):clearRoute(); });
+    a.addEventListener('click',()=>{ pinnedTrip=t; drawRoute(t,true); });
+    const trace=document.createElement('span');
+    trace.className='tracebtn';trace.setAttribute('role','button');trace.tabIndex=0;
+    trace.textContent='🗺 Trace route on map';
+    const doTrace=e=>{ e.preventDefault();e.stopPropagation();
+      pinnedTrip=t; drawRoute(t,true); document.body.classList.add('tracing'); };
+    trace.addEventListener('click',doTrace);
+    trace.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') doTrace(e); });
+    meta.appendChild(trace);
+  }
+  return a;
+}
+function sortTrips(trips){
+  return trips.slice().sort((a,b)=>{
+    if(activeBrand){ const am=a.b===activeBrand,bm=b.b===activeBrand; if(am!==bm) return am?-1:1; }
+    const k=sortKey(a)-sortKey(b); return k!==0?k:a.n.localeCompare(b.n);
+  });
+}
+
+/* ===== Region detail panel ===== */
+const panel=document.getElementById('panel');
+function openRegion(key){
+  activeView=key; pinnedTrip=null; clearRoute(); applyFilter();
+  document.body.classList.remove('tracing');
+  document.getElementById('worldBtn').classList.remove('active');
+  const reg=REGIONS[key];
+  const trips=sortTrips(byRegion[key].filter(monthMatch));
+  document.getElementById('pKlabel').textContent='Private jet destination';
+  document.getElementById('pTitle').textContent=reg.name;
+  document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length!==1?'s':'')+' reach here · tap a card for itinerary & pricing';
+  const list=document.getElementById('pList');
+  list.innerHTML='';
+  trips.forEach(t=>list.appendChild(makeCard(t)));
+  panel.classList.add('open');
+  const c=reg.coord;
+  map.flyTo([c[0],c[1]], Math.max(map.getZoom(),3), {duration:.8});
+}
+
+/* ===== Around-the-world panel ===== */
+function openWorld(){
+  activeView='__world__'; pinnedTrip=null; clearRoute();
+  document.body.classList.remove('tracing');
+  document.getElementById('worldBtn').classList.add('active');
+  const trips=sortTrips(WORLD_TRIPS.filter(monthMatch));
+  document.getElementById('pKlabel').textContent='Global jet journeys';
+  document.getElementById('pTitle').textContent='Around the World';
+  document.getElementById('pSub').textContent=trips.length+' circumnavigation'+(trips.length!==1?'s':'')+' · hover a journey to trace its city-to-city flight path, tap for the full itinerary';
+  const list=document.getElementById('pList');
+  list.innerHTML='';
+  trips.forEach(t=>list.appendChild(makeCard(t)));
+  panel.classList.add('open');
+}
+document.getElementById('worldBtn').addEventListener('click',()=>{
+  if(activeView==='__world__'){ closePanel(); } else { openWorld(); }
+});
+document.getElementById('worldCount').textContent = WORLD_TRIPS.length+' global journeys';
+
+/* ===== Close handling ===== */
+function closePanel(){
+  panel.classList.remove('open'); activeView=null; pinnedTrip=null;
+  clearRoute(); applyFilter();
+  document.body.classList.remove('tracing');
+  document.getElementById('worldBtn').classList.remove('active');
+  document.getElementById('datePop').classList.remove('open');
+}
+document.getElementById('close').addEventListener('click',closePanel);
+map.on('click',closePanel);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
+});
+</script>
+
+<!-- ===== Menu show/hide toggle (mobile-friendly) ===== -->
+<style>
+  /* Frosted-glass pill controls that the menus collapse into */
+  .menupill{position:absolute;z-index:1200;display:inline-flex;align-items:center;gap:9px;height:44px;
+    padding:0 16px;border-radius:30px;cursor:pointer;font-family:var(--sans);font-size:12.5px;
+    font-weight:700;letter-spacing:.3px;color:var(--ink);
+    background:rgba(17,21,29,.5);border:1px solid rgba(236,223,194,.18);box-shadow:var(--shadow);
+    -webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
+    transition:background .16s,border-color .16s,transform .12s,opacity .2s}
+  .menupill:hover{background:rgba(23,28,38,.82);border-color:var(--accent)}
+  .menupill:active{transform:scale(.95)}
+  .menupill .pi{font-size:16px;line-height:1;color:var(--accent);width:16px;text-align:center}
+  #railPill{left:14px;bottom:84px}
+  #panelPill{right:14px;bottom:84px;opacity:0;pointer-events:none}
+  body.panel-active #panelPill{opacity:1;pointer-events:auto}
+  /* Left rail fades to transparent + blurred, then collapses into its pill */
+  .rail{transition:opacity .26s ease,transform .26s ease,visibility .26s}
+  body.rail-hidden .rail{opacity:0;transform:translateX(-12px) scale(.97);visibility:hidden;pointer-events:none}
+  /* Right detail panel collapses into its pill */
+  body.panel-collapsed .panel.open{transform:translateX(105%)}
+  body.panel-collapsed #datePop{display:none}
+  /* Trace-route control on Around-the-World cards */
+  .card .tracebtn{display:inline-flex;align-items:center;gap:6px;margin-top:9px;
+    padding:6px 11px;border-radius:9px;font-size:11.5px;font-weight:700;cursor:pointer;
+    color:var(--accent);background:rgba(202,164,78,.10);border:1px solid rgba(202,164,78,.45);
+    -webkit-tap-highlight-color:transparent;transition:.15s}
+  .card .tracebtn:hover{background:rgba(202,164,78,.20);border-color:var(--accent)}
+  .card .tracebtn:active{transform:scale(.97)}
+  #routeBack{display:none;position:absolute;z-index:1200;left:50%;bottom:22px;transform:translateX(-50%);
+    align-items:center;gap:7px;padding:10px 17px;border-radius:30px;cursor:pointer;
+    font-size:12.5px;font-weight:700;color:var(--ink);background:var(--panel2);
+    border:1px solid var(--line);box-shadow:var(--shadow);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  @media (max-width:640px){
+    body.tracing .panel.open{transform:translateX(102%) !important}
+    body.tracing #routeBack{display:inline-flex}
+    .menupill .pl{display:none}
+    .menupill{padding:0;width:44px;justify-content:center}
+    body.rail-shown .rail{display:flex !important;opacity:1;visibility:visible;transform:none}
+  }
+</style>
+<button id="railPill" class="menupill" type="button" aria-label="Show or hide the filters menu" title="Show / hide filters"><span class="pi">&#9776;</span><span class="pl">Filters</span></button>
+<button id="panelPill" class="menupill" type="button" aria-label="Show or hide the details panel" title="Show / hide details"><span class="pi">&#8249;</span><span class="pl">Details</span></button>
+<div id="routeBack" role="button" tabindex="0">↑ Show journeys</div>
+<script>
+(function(){
+  var body=document.body;
+  var railPill=document.getElementById('railPill');
+  var panelPill=document.getElementById('panelPill');
+  var panel=document.querySelector('.panel');
+  var mq=window.matchMedia('(max-width:640px)');
+  var railCollapsed=mq.matches;               // start collapsed on small screens
+  function setIcon(el,ch){ var p=el&&el.querySelector('.pi'); if(p)p.innerHTML=ch; }
+  function syncRail(){
+    body.classList.toggle('rail-hidden',railCollapsed);
+    body.classList.toggle('rail-shown',!railCollapsed);
+    setIcon(railPill,railCollapsed?'&#9776;':'&#10005;');
+  }
+  function syncPanel(){
+    setIcon(panelPill, body.classList.contains('panel-collapsed')?'&#8249;':'&#10005;');
+  }
+  railPill.addEventListener('click',function(){ railCollapsed=!railCollapsed; syncRail(); });
+  panelPill.addEventListener('click',function(){ body.classList.toggle('panel-collapsed'); syncPanel(); });
+  if(panel){
+    new MutationObserver(function(){
+      var open=panel.classList.contains('open');
+      body.classList.toggle('panel-active',open);
+      if(!open){ body.classList.remove('panel-collapsed'); }
+      if(open && mq.matches){ railCollapsed=true; syncRail(); }
+      syncPanel();
+    }).observe(panel,{attributes:true,attributeFilter:['class']});
+  }
+  var rb=document.getElementById('routeBack');
+  if(rb){ rb.addEventListener('click',function(){ body.classList.remove('tracing'); }); }
+  if(mq.addEventListener){ mq.addEventListener('change',function(e){ railCollapsed=e.matches; syncRail(); }); }
+  syncRail(); syncPanel();
+})();
+</script>
+</body>
+</html>

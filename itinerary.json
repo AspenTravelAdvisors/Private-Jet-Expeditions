@@ -1,0 +1,1640 @@
+{
+  "BRANDS": {
+    "fourseasons": {
+      "short": "Four Seasons Private Jet",
+      "domain": "fourseasons.com",
+      "color": "#1c1a17"
+    },
+    "aman": {
+      "short": "Aman Jet Expeditions",
+      "domain": "aman.com",
+      "color": "#3d463d"
+    },
+    "natgeo": {
+      "short": "National Geographic",
+      "domain": "nationalgeographic.com",
+      "color": "#ffcc00"
+    },
+    "signature": {
+      "short": "Signature Jet Journeys",
+      "domain": "",
+      "color": "#caa44e",
+      "glyph": "✈"
+    }
+  },
+  "REGIONS": {
+    "EUROPE": {
+      "name": "Europe & the Mediterranean",
+      "ab": "Europe",
+      "coord": [
+        46,
+        9
+      ]
+    },
+    "EASTASIA": {
+      "name": "Japan, China & East Asia",
+      "ab": "E. Asia",
+      "coord": [
+        36,
+        130
+      ]
+    },
+    "SEASIA": {
+      "name": "Southeast Asia",
+      "ab": "SE Asia",
+      "coord": [
+        6,
+        106
+      ]
+    },
+    "INDIA": {
+      "name": "India & South Asia",
+      "ab": "S. Asia",
+      "coord": [
+        22,
+        80
+      ]
+    },
+    "SILK": {
+      "name": "Silk Road & Central Asia",
+      "ab": "Silk Road",
+      "coord": [
+        43,
+        70
+      ]
+    },
+    "MIDEAST": {
+      "name": "Arabia & the Middle East",
+      "ab": "Arabia",
+      "coord": [
+        24,
+        46
+      ]
+    },
+    "AFRICA": {
+      "name": "Africa",
+      "ab": "Africa",
+      "coord": [
+        1,
+        21
+      ]
+    },
+    "POLY": {
+      "name": "South Pacific & Polynesia",
+      "ab": "S. Pacific",
+      "coord": [
+        -17,
+        -150
+      ]
+    },
+    "ANZ": {
+      "name": "Australia & New Zealand",
+      "ab": "Australia/NZ",
+      "coord": [
+        -28,
+        141
+      ]
+    },
+    "SAM": {
+      "name": "South America",
+      "ab": "S. America",
+      "coord": [
+        -18,
+        -62
+      ]
+    },
+    "AMERICAS": {
+      "name": "North & Central America",
+      "ab": "N. America",
+      "coord": [
+        31,
+        -99
+      ]
+    },
+    "CANADA": {
+      "name": "Canada & the Far North",
+      "ab": "Canada",
+      "coord": [
+        58,
+        -104
+      ]
+    },
+    "AURORA": {
+      "name": "Arctic, Iceland & the Aurora",
+      "ab": "Arctic",
+      "coord": [
+        66,
+        6
+      ]
+    },
+    "ANTARCTICA": {
+      "name": "Antarctica",
+      "ab": "Antarctica",
+      "coord": [
+        -70,
+        -26
+      ]
+    }
+  },
+  "ROUTES": {
+    "grand-horizons": [
+      {
+        "n": "Napa Valley",
+        "r": "AMERICAS",
+        "ll": [
+          38.5,
+          -122.3
+        ]
+      },
+      {
+        "n": "Tokyo",
+        "r": "EASTASIA",
+        "ll": [
+          35.68,
+          139.69
+        ]
+      },
+      {
+        "n": "Ha Long Bay",
+        "r": "SEASIA",
+        "ll": [
+          20.91,
+          107.18
+        ]
+      },
+      {
+        "n": "Bangkok",
+        "r": "SEASIA",
+        "ll": [
+          13.75,
+          100.5
+        ]
+      },
+      {
+        "n": "Istanbul",
+        "r": "EUROPE",
+        "ll": [
+          41.01,
+          28.98
+        ]
+      },
+      {
+        "n": "Milan",
+        "r": "EUROPE",
+        "ll": [
+          45.46,
+          9.19
+        ]
+      },
+      {
+        "n": "Mallorca",
+        "r": "EUROPE",
+        "ll": [
+          39.57,
+          2.65
+        ]
+      },
+      {
+        "n": "Lisbon",
+        "r": "EUROPE",
+        "ll": [
+          38.72,
+          -9.14
+        ]
+      },
+      {
+        "n": "Montreal",
+        "r": "CANADA",
+        "ll": [
+          45.5,
+          -73.57
+        ]
+      }
+    ],
+    "atw-luxury": [
+      {
+        "n": "Washington, D.C.",
+        "r": "AMERICAS",
+        "ll": [
+          38.9,
+          -77.04
+        ]
+      },
+      {
+        "n": "Machu Picchu",
+        "r": "SAM",
+        "ll": [
+          -13.16,
+          -72.55
+        ]
+      },
+      {
+        "n": "Easter Island",
+        "r": "SAM",
+        "ll": [
+          -27.11,
+          -109.35
+        ]
+      },
+      {
+        "n": "Mo'orea",
+        "r": "POLY",
+        "ll": [
+          -17.53,
+          -149.83
+        ]
+      },
+      {
+        "n": "Great Barrier Reef",
+        "r": "ANZ",
+        "ll": [
+          -16.92,
+          145.77
+        ]
+      },
+      {
+        "n": "Angkor Wat",
+        "r": "SEASIA",
+        "ll": [
+          13.41,
+          103.87
+        ]
+      },
+      {
+        "n": "Taj Mahal · Agra",
+        "r": "INDIA",
+        "ll": [
+          27.17,
+          78.04
+        ]
+      },
+      {
+        "n": "Serengeti",
+        "r": "AFRICA",
+        "ll": [
+          -2.33,
+          34.83
+        ]
+      },
+      {
+        "n": "Luxor",
+        "r": "AFRICA",
+        "ll": [
+          25.69,
+          32.64
+        ]
+      },
+      {
+        "n": "Marrakech",
+        "r": "AFRICA",
+        "ll": [
+          31.63,
+          -7.99
+        ]
+      }
+    ],
+    "atw-three-continents": [
+      {
+        "n": "Kyoto",
+        "r": "EASTASIA",
+        "ll": [
+          35.01,
+          135.77
+        ]
+      },
+      {
+        "n": "Palawan",
+        "r": "SEASIA",
+        "ll": [
+          10.8,
+          119.3
+        ]
+      },
+      {
+        "n": "Borobudur",
+        "r": "SEASIA",
+        "ll": [
+          -7.61,
+          110.2
+        ]
+      },
+      {
+        "n": "Maldives",
+        "r": "INDIA",
+        "ll": [
+          3.2,
+          73
+        ]
+      },
+      {
+        "n": "Serengeti, Tanzania",
+        "r": "AFRICA",
+        "ll": [
+          -2.33,
+          34.83
+        ]
+      },
+      {
+        "n": "Venice",
+        "r": "EUROPE",
+        "ll": [
+          45.44,
+          12.33
+        ]
+      },
+      {
+        "n": "Marrakech",
+        "r": "AFRICA",
+        "ll": [
+          31.63,
+          -7.99
+        ]
+      }
+    ],
+    "seven-continents": [
+      {
+        "n": "Miami",
+        "r": "AMERICAS",
+        "ll": [
+          25.76,
+          -80.19
+        ]
+      },
+      {
+        "n": "Machu Picchu",
+        "r": "SAM",
+        "ll": [
+          -13.16,
+          -72.55
+        ]
+      },
+      {
+        "n": "Easter Island",
+        "r": "SAM",
+        "ll": [
+          -27.11,
+          -109.35
+        ]
+      },
+      {
+        "n": "Papeete, Tahiti",
+        "r": "POLY",
+        "ll": [
+          -17.53,
+          -149.57
+        ]
+      },
+      {
+        "n": "Great Barrier Reef",
+        "r": "ANZ",
+        "ll": [
+          -16.92,
+          145.77
+        ]
+      },
+      {
+        "n": "Angkor Wat",
+        "r": "SEASIA",
+        "ll": [
+          13.41,
+          103.87
+        ]
+      },
+      {
+        "n": "Taj Mahal · Agra",
+        "r": "INDIA",
+        "ll": [
+          27.17,
+          78.04
+        ]
+      },
+      {
+        "n": "Zanzibar",
+        "r": "AFRICA",
+        "ll": [
+          -6.16,
+          39.2
+        ]
+      },
+      {
+        "n": "Cape Town",
+        "r": "AFRICA",
+        "ll": [
+          -33.92,
+          18.42
+        ]
+      },
+      {
+        "n": "Antarctica",
+        "r": "ANTARCTICA",
+        "ll": [
+          -71.5,
+          8.9
+        ]
+      },
+      {
+        "n": "Maasai Mara",
+        "r": "AFRICA",
+        "ll": [
+          -1.5,
+          35.14
+        ]
+      },
+      {
+        "n": "Luxor & Cairo",
+        "r": "AFRICA",
+        "ll": [
+          27.5,
+          31.6
+        ]
+      },
+      {
+        "n": "London",
+        "r": "EUROPE",
+        "ll": [
+          51.5,
+          -0.13
+        ]
+      }
+    ],
+    "world-less-traveled": [
+      {
+        "n": "London",
+        "r": "EUROPE",
+        "ll": [
+          51.5,
+          -0.13
+        ]
+      },
+      {
+        "n": "AlUla",
+        "r": "MIDEAST",
+        "ll": [
+          26.62,
+          37.92
+        ]
+      },
+      {
+        "n": "Tangier",
+        "r": "AFRICA",
+        "ll": [
+          35.76,
+          -5.83
+        ]
+      },
+      {
+        "n": "Dakar",
+        "r": "AFRICA",
+        "ll": [
+          14.69,
+          -17.44
+        ]
+      },
+      {
+        "n": "Salvador",
+        "r": "SAM",
+        "ll": [
+          -12.97,
+          -38.5
+        ]
+      },
+      {
+        "n": "Uyuni Salt Flats",
+        "r": "SAM",
+        "ll": [
+          -20.46,
+          -66.83
+        ]
+      },
+      {
+        "n": "Medellín",
+        "r": "SAM",
+        "ll": [
+          6.24,
+          -75.58
+        ]
+      },
+      {
+        "n": "Washington, D.C.",
+        "r": "AMERICAS",
+        "ll": [
+          38.9,
+          -77.04
+        ]
+      }
+    ],
+    "international-intrigue": [
+      {
+        "n": "Seattle",
+        "r": "AMERICAS",
+        "ll": [
+          47.61,
+          -122.33
+        ]
+      },
+      {
+        "n": "Kyoto",
+        "r": "EASTASIA",
+        "ll": [
+          35.01,
+          135.77
+        ]
+      },
+      {
+        "n": "Hoi An",
+        "r": "SEASIA",
+        "ll": [
+          15.88,
+          108.33
+        ]
+      },
+      {
+        "n": "Serengeti",
+        "r": "AFRICA",
+        "ll": [
+          -2.33,
+          34.83
+        ]
+      },
+      {
+        "n": "Marrakech",
+        "r": "AFRICA",
+        "ll": [
+          31.63,
+          -7.99
+        ]
+      },
+      {
+        "n": "Florence",
+        "r": "EUROPE",
+        "ll": [
+          43.77,
+          11.26
+        ]
+      },
+      {
+        "n": "Paris",
+        "r": "EUROPE",
+        "ll": [
+          48.86,
+          2.35
+        ]
+      },
+      {
+        "n": "Maldives",
+        "r": "INDIA",
+        "ll": [
+          3.2,
+          73
+        ]
+      }
+    ],
+    "new-world-icons": [
+      {
+        "n": "Hong Kong",
+        "r": "EASTASIA",
+        "ll": [
+          22.32,
+          114.17
+        ]
+      },
+      {
+        "n": "Langkawi",
+        "r": "SEASIA",
+        "ll": [
+          6.35,
+          99.8
+        ]
+      },
+      {
+        "n": "Jaipur",
+        "r": "INDIA",
+        "ll": [
+          26.91,
+          75.79
+        ]
+      },
+      {
+        "n": "Venice",
+        "r": "EUROPE",
+        "ll": [
+          45.44,
+          12.33
+        ]
+      },
+      {
+        "n": "Iceland · Blue Lagoon",
+        "r": "AURORA",
+        "ll": [
+          64.13,
+          -21.9
+        ]
+      },
+      {
+        "n": "Anguilla",
+        "r": "AMERICAS",
+        "ll": [
+          18.22,
+          -63.07
+        ]
+      },
+      {
+        "n": "Los Cabos",
+        "r": "AMERICAS",
+        "ll": [
+          22.89,
+          -109.91
+        ]
+      }
+    ],
+    "grandest-tour": [
+      {
+        "n": "Tokyo",
+        "r": "EASTASIA",
+        "ll": [
+          35.68,
+          139.69
+        ]
+      },
+      {
+        "n": "Amanoi, Vietnam",
+        "r": "SEASIA",
+        "ll": [
+          11.7,
+          109.15
+        ]
+      },
+      {
+        "n": "Phuket",
+        "r": "SEASIA",
+        "ll": [
+          7.88,
+          98.39
+        ]
+      },
+      {
+        "n": "Paro · Bhutan",
+        "r": "INDIA",
+        "ll": [
+          27.43,
+          89.42
+        ]
+      },
+      {
+        "n": "Taj Mahal · Agra",
+        "r": "INDIA",
+        "ll": [
+          27.17,
+          78.04
+        ]
+      },
+      {
+        "n": "Samarkand",
+        "r": "SILK",
+        "ll": [
+          39.65,
+          66.96
+        ]
+      },
+      {
+        "n": "Athens",
+        "r": "EUROPE",
+        "ll": [
+          37.98,
+          23.73
+        ]
+      }
+    ],
+    "timeless-encounters": [
+      {
+        "n": "Kona, Hawaii",
+        "r": "AMERICAS",
+        "ll": [
+          19.64,
+          -155.99
+        ]
+      },
+      {
+        "n": "Bora Bora",
+        "r": "POLY",
+        "ll": [
+          -16.5,
+          -151.74
+        ]
+      },
+      {
+        "n": "Sydney",
+        "r": "ANZ",
+        "ll": [
+          -33.87,
+          151.21
+        ]
+      },
+      {
+        "n": "Bali",
+        "r": "SEASIA",
+        "ll": [
+          -8.65,
+          115.22
+        ]
+      },
+      {
+        "n": "Chiang Mai",
+        "r": "SEASIA",
+        "ll": [
+          18.79,
+          98.99
+        ]
+      },
+      {
+        "n": "Dubai",
+        "r": "MIDEAST",
+        "ll": [
+          25.2,
+          55.27
+        ]
+      },
+      {
+        "n": "Taj Mahal · Agra",
+        "r": "INDIA",
+        "ll": [
+          27.17,
+          78.04
+        ]
+      },
+      {
+        "n": "Prague",
+        "r": "EUROPE",
+        "ll": [
+          50.08,
+          14.44
+        ]
+      },
+      {
+        "n": "London",
+        "r": "EUROPE",
+        "ll": [
+          51.5,
+          -0.13
+        ]
+      }
+    ],
+    "golf-around-the-world": [
+      {
+        "n": "Seattle",
+        "r": "AMERICAS",
+        "ll": [
+          47.61,
+          -122.33
+        ]
+      },
+      {
+        "n": "Tokyo",
+        "r": "EASTASIA",
+        "ll": [
+          35.68,
+          139.69
+        ]
+      },
+      {
+        "n": "Chiang Mai",
+        "r": "SEASIA",
+        "ll": [
+          18.79,
+          98.99
+        ]
+      },
+      {
+        "n": "Kathmandu",
+        "r": "INDIA",
+        "ll": [
+          27.72,
+          85.32
+        ]
+      },
+      {
+        "n": "Almaty",
+        "r": "SILK",
+        "ll": [
+          43.24,
+          76.92
+        ]
+      },
+      {
+        "n": "Stockholm",
+        "r": "EUROPE",
+        "ll": [
+          59.33,
+          18.07
+        ]
+      },
+      {
+        "n": "Copenhagen",
+        "r": "EUROPE",
+        "ll": [
+          55.68,
+          12.57
+        ]
+      },
+      {
+        "n": "Washington, D.C.",
+        "r": "AMERICAS",
+        "ll": [
+          38.9,
+          -77.04
+        ]
+      }
+    ],
+    "wild-wonders": [
+      {
+        "n": "London",
+        "r": "EUROPE",
+        "ll": [
+          51.5,
+          -0.13
+        ]
+      },
+      {
+        "n": "Cappadocia",
+        "r": "EUROPE",
+        "ll": [
+          38.65,
+          34.83
+        ]
+      },
+      {
+        "n": "Ranthambore",
+        "r": "INDIA",
+        "ll": [
+          26.02,
+          76.5
+        ]
+      },
+      {
+        "n": "Maldives",
+        "r": "INDIA",
+        "ll": [
+          3.2,
+          73
+        ]
+      },
+      {
+        "n": "Mashatu, Botswana",
+        "r": "AFRICA",
+        "ll": [
+          -22.2,
+          29.05
+        ]
+      },
+      {
+        "n": "Victoria Falls",
+        "r": "AFRICA",
+        "ll": [
+          -17.92,
+          25.86
+        ]
+      },
+      {
+        "n": "Nosy Be, Madagascar",
+        "r": "AFRICA",
+        "ll": [
+          -13.32,
+          48.27
+        ]
+      },
+      {
+        "n": "Grootbos, South Africa",
+        "r": "AFRICA",
+        "ll": [
+          -34.55,
+          19.43
+        ]
+      }
+    ],
+    "hidden-horizons": [
+      {
+        "n": "Azores",
+        "r": "EUROPE",
+        "ll": [
+          37.74,
+          -25.68
+        ]
+      },
+      {
+        "n": "Algiers, Algeria",
+        "r": "AFRICA",
+        "ll": [
+          36.75,
+          3.06
+        ]
+      },
+      {
+        "n": "Sofia, Bulgaria",
+        "r": "EUROPE",
+        "ll": [
+          42.7,
+          23.32
+        ]
+      },
+      {
+        "n": "Almaty, Kazakhstan",
+        "r": "SILK",
+        "ll": [
+          43.24,
+          76.92
+        ]
+      },
+      {
+        "n": "Seychelles",
+        "r": "AFRICA",
+        "ll": [
+          -4.68,
+          55.49
+        ]
+      },
+      {
+        "n": "Victoria Falls",
+        "r": "AFRICA",
+        "ll": [
+          -17.92,
+          25.86
+        ]
+      },
+      {
+        "n": "Accra, Ghana",
+        "r": "AFRICA",
+        "ll": [
+          5.6,
+          -0.19
+        ]
+      }
+    ]
+  },
+  "TRIPS": [
+    {
+      "d": "5/27/2026",
+      "r": "6/15/2026",
+      "n": "Kingdoms & Cultures: A Tour by Private Jet",
+      "b": "signature",
+      "g": [
+        "EUROPE",
+        "SILK"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132943/kingdoms-cultures-a-tour-by-private-jet"
+    },
+    {
+      "d": "5/31/2026",
+      "r": "6/19/2026",
+      "n": "Kingdoms & Cultures: A Tour by Private Jet",
+      "b": "signature",
+      "g": [
+        "EUROPE",
+        "SILK"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132943/kingdoms-cultures-a-tour-by-private-jet"
+    },
+    {
+      "d": "6/16/2026",
+      "r": "6/26/2026",
+      "n": "Italy by Private Jet",
+      "b": "signature",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18117121/italy-by-private-jet"
+    },
+    {
+      "d": "6/20/2026",
+      "r": "6/30/2026",
+      "n": "Japan’s Hidden Gems: An 11-Day Tour by Private Jet",
+      "b": "signature",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132981/japans-hidden-gems-an-11-day-tour-by-private-jet"
+    },
+    {
+      "d": "7/12/2026",
+      "r": "7/25/2026",
+      "n": "National Geographic African Discovery by Private Jet",
+      "b": "natgeo",
+      "g": [
+        "AFRICA"
+      ],
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips"
+    },
+    {
+      "d": "7/15/2026",
+      "r": "7/28/2026",
+      "n": "Uncharted Canada: A Small Group Expedition by Private Air",
+      "b": "signature",
+      "g": [
+        "CANADA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18366727/uncharted-canada-a-small-group-expedition-by-private-jet"
+    },
+    {
+      "d": "8/14/2026",
+      "r": "8/26/2026",
+      "n": "African Wonders: A Four Seasons Private Jet Experience",
+      "b": "fourseasons",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18341871/african-wonders-a-four-seasons-private-jet-experience"
+    },
+    {
+      "d": "8/31/2026",
+      "r": "9/23/2026",
+      "n": "Grand Horizons: A Four Seasons Private Jet Experience",
+      "b": "fourseasons",
+      "route": "grand-horizons",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18360235/grand-horizons-a-four-seasons-private-jet-experience"
+    },
+    {
+      "d": "9/22/2026",
+      "r": "10/2/2026",
+      "n": "Italy by Private Jet",
+      "b": "signature",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18117121/italy-by-private-jet"
+    },
+    {
+      "d": "9/30/2026",
+      "r": "10/13/2026",
+      "n": "Islands of Polynesia: A Small Group Expedition by Private Air",
+      "b": "signature",
+      "g": [
+        "POLY"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18459151/islands-of-polynesia-a-small-group-expedition-by-private-air"
+    },
+    {
+      "d": "10/5/2026",
+      "r": "10/25/2026",
+      "n": "South America Golf Tour by Private Jet",
+      "b": "signature",
+      "g": [
+        "AMERICAS",
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18161725/south-america-golf-tour-by-private-jet-2026"
+    },
+    {
+      "d": "10/7/2026",
+      "r": "10/18/2026",
+      "n": "India by Private Jet",
+      "b": "signature",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107034/india-by-private-jet"
+    },
+    {
+      "d": "10/7/2026",
+      "r": "10/21/2026",
+      "n": "Tibet and South Asia: A 15-Day Expedition by Private Air",
+      "b": "signature",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18366828/tibet-and-south-asia-a-15-day-expedition-by-private-air"
+    },
+    {
+      "d": "10/10/2026",
+      "r": "11/2/2026",
+      "n": "Around the World: A Luxury Tour by Private Jet",
+      "b": "signature",
+      "route": "atw-luxury",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
+    },
+    {
+      "d": "10/11/2026",
+      "r": "11/1/2026",
+      "n": "Around the World in Three Continents – Aman Jet Expeditions",
+      "b": "aman",
+      "route": "atw-three-continents",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18080414/around-the-world-in-three-continents-aman-jet-expedition-2026"
+    },
+    {
+      "d": "10/25/2026",
+      "r": "11/16/2026",
+      "n": "Photographing the World by Private Jet with National Geographic",
+      "b": "natgeo",
+      "g": [
+        "EASTASIA",
+        "INDIA",
+        "AFRICA",
+        "SAM",
+        "POLY",
+        "ANZ"
+      ],
+      "world": true,
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips"
+    },
+    {
+      "d": "10/28/2026",
+      "r": "11/21/2026",
+      "n": "Around the World: A Luxury Tour by Private Jet",
+      "b": "signature",
+      "route": "atw-luxury",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
+    },
+    {
+      "d": "11/1/2026",
+      "r": "11/14/2026",
+      "n": "Discover Southeast Asia – Aman Jet Expeditions",
+      "b": "aman",
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18080419/discover-southeast-asia-aman-jet-expeditions-2026-nov-1-14-2026"
+    },
+    {
+      "d": "11/2/2026",
+      "r": "11/25/2026",
+      "n": "Around the World: A Luxury Tour by Private Jet",
+      "b": "signature",
+      "route": "atw-luxury",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
+    },
+    {
+      "d": "11/28/2026",
+      "r": "12/22/2026",
+      "n": "Around the World: A Luxury Tour by Private Jet",
+      "b": "signature",
+      "route": "atw-luxury",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
+    },
+    {
+      "d": "11/29/2026",
+      "r": "12/20/2026",
+      "n": "Ocean to Outback: New Zealand & Australia by Private Jet",
+      "b": "signature",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132991/ocean-to-outback-exploring-new-zealand-and-australia-a-private-jet-tour"
+    },
+    {
+      "d": "11/29/2026",
+      "r": "12/10/2026",
+      "n": "Ocean to Outback: New Zealand",
+      "b": "signature",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132991/ocean-to-outback-exploring-new-zealand-and-australia-a-private-jet-tour"
+    },
+    {
+      "d": "12/2/2026",
+      "r": "12/13/2026",
+      "n": "India by Private Jet",
+      "b": "signature",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107034/india-by-private-jet"
+    },
+    {
+      "d": "12/7/2026",
+      "r": "12/20/2026",
+      "n": "Ocean to Outback: Australia & Fiji",
+      "b": "signature",
+      "g": [
+        "ANZ",
+        "POLY"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132991/ocean-to-outback-exploring-new-zealand-and-australia-a-private-jet-tour"
+    },
+    {
+      "d": "12/27/2026",
+      "r": "1/24/2027",
+      "n": "Seven Continents by Private Jet: The Ultimate Around the World Journey",
+      "b": "signature",
+      "route": "seven-continents",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18136557/the-ultimate-around-the-world-journey-seven-continents-by-private-jet"
+    },
+    {
+      "d": "12/30/2026",
+      "r": "1/14/2027",
+      "n": "Exploring Africa: A 16-Day Adventure by Private Jet",
+      "b": "signature",
+      "g": [
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18136508/exploring-africa-a-16-day-adventure-by-private-jet"
+    },
+    {
+      "d": "1/20/2027",
+      "r": "2/9/2027",
+      "n": "Uncharted Discovery: A Four Seasons Private Jet Experience",
+      "b": "fourseasons",
+      "g": [
+        "AMERICAS",
+        "SAM",
+        "ANTARCTICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18375302/uncharted-discovery-i-four-seasons-private-jet-experience"
+    },
+    {
+      "d": "1/25/2027",
+      "r": "2/11/2027",
+      "n": "A World Less Traveled: An Expedition by Private Jet",
+      "b": "signature",
+      "route": "world-less-traveled",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18367607/a-world-less-traveled-an-expedition-by-private-jet"
+    },
+    {
+      "d": "2/4/2027",
+      "r": "2/25/2027",
+      "n": "Africa: Across a Continent by Private Jet",
+      "b": "signature",
+      "g": [
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18155133/africa-across-a-continent-by-private-jet"
+    },
+    {
+      "d": "2/11/2027",
+      "r": "2/26/2027",
+      "n": "Asia Unveiled: A Four Seasons Private Jet Experience",
+      "b": "fourseasons",
+      "g": [
+        "EASTASIA",
+        "SEASIA",
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18140926/asia-unveiled-i-a-four-seasons-private-jet-experience"
+    },
+    {
+      "d": "2/21/2027",
+      "r": "3/6/2027",
+      "n": "Discover Southeast Asia – Aman Jet Expeditions",
+      "b": "aman",
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18301680/discover-southeast-asia-aman-jet-expeditions-2027-feb-21-mar-6-2027"
+    },
+    {
+      "d": "3/3/2027",
+      "r": "3/23/2027",
+      "n": "International Intrigue: A Four Seasons Private Jet Experience",
+      "b": "fourseasons",
+      "route": "international-intrigue",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18341861/international-intrigue-a-four-seasons-private-jet-experience"
+    },
+    {
+      "d": "3/8/2027",
+      "r": "3/17/2027",
+      "n": "Chasing the Aurora: A 10-Day Expedition by Private Jet",
+      "b": "signature",
+      "g": [
+        "AURORA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18144972/chasing-the-aurora-a-10-day-expedition-by-private-jet"
+    },
+    {
+      "d": "3/10/2027",
+      "r": "3/21/2027",
+      "n": "India by Private Jet",
+      "b": "signature",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365624/india-by-private-jet"
+    },
+    {
+      "d": "3/26/2027",
+      "r": "4/14/2027",
+      "n": "New World Icons: A Four Seasons Private Jet Experience",
+      "b": "fourseasons",
+      "route": "new-world-icons",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18360251/new-world-icons-a-four-seasons-private-jet-experience"
+    },
+    {
+      "d": "4/11/2027",
+      "r": "5/1/2027",
+      "n": "The Grandest Tour – Aman Jet Expeditions",
+      "b": "aman",
+      "route": "grandest-tour",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18301934/the-grandest-tour-aman-jet-expedition-2027-apr-11may-1-2027"
+    },
+    {
+      "d": "4/15/2027",
+      "r": "5/6/2027",
+      "n": "Timeless Encounters: A Four Seasons Private Jet Experience",
+      "b": "fourseasons",
+      "route": "timeless-encounters",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18339026/timeless-encounters-i-a-four-seasons-private-jet-experience"
+    },
+    {
+      "d": "5/9/2027",
+      "r": "5/21/2027",
+      "n": "China’s UNESCO Treasures – Aman Jet Expeditions",
+      "b": "aman",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18301922/chinas-unesco-treasures-aman-jet-expedition-2027-may-9-21-2027"
+    },
+    {
+      "d": "5/12/2027",
+      "r": "5/27/2027",
+      "n": "A Silk Road Journey: Threads of Ancient Civilizations by Private Jet",
+      "b": "signature",
+      "g": [
+        "SILK"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18237575/a-silk-road-journey-threads-of-ancient-civilizations-by-private-jet"
+    },
+    {
+      "d": "5/28/2027",
+      "r": "6/16/2027",
+      "n": "Golf Around the World by Private Jet",
+      "b": "signature",
+      "route": "golf-around-the-world",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18460062/golf-around-the-world-by-private-jet"
+    },
+    {
+      "d": "6/14/2027",
+      "r": "6/24/2027",
+      "n": "Wildlife & Natural Wonders: The Americas by Private Jet",
+      "b": "signature",
+      "g": [
+        "AMERICAS",
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18460819/wildlife-natural-wonders-the-americas-by-private-jet"
+    },
+    {
+      "d": "6/15/2027",
+      "r": "6/30/2027",
+      "n": "Wildlife & Natural Wonders: The Americas by Private Jet",
+      "b": "signature",
+      "g": [
+        "AMERICAS",
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18460819/wildlife-natural-wonders-the-americas-by-private-jet"
+    },
+    {
+      "d": "6/22/2027",
+      "r": "7/3/2027",
+      "n": "Greece and Turkey by Private Jet",
+      "b": "signature",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107022/greece-and-turkey-by-private-jet"
+    },
+    {
+      "d": "9/14/2027",
+      "r": "9/25/2027",
+      "n": "Greece and Turkey by Private Jet",
+      "b": "signature",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107022/greece-and-turkey-by-private-jet"
+    },
+    {
+      "d": "3/10/2028",
+      "r": "4/5/2028",
+      "n": "Around the World: A Luxury Tour by Private Jet",
+      "b": "signature",
+      "route": "atw-luxury",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
+    },
+    {
+      "d": "3/21/2028",
+      "r": "4/10/2028",
+      "n": "International Intrigue: A Four Seasons Private Jet Experience",
+      "b": "fourseasons",
+      "route": "international-intrigue",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18341861/international-intrigue-a-four-seasons-private-jet-experience"
+    },
+    {
+      "n": "Spain & Morocco by Private Jet",
+      "b": "signature",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107106/spain-and-morocco-by-private-jet"
+    },
+    {
+      "n": "The Mediterranean by Private Jet",
+      "b": "signature",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107121/the-mediterranean-by-private-jet"
+    },
+    {
+      "n": "Greece, Turkey & Egypt by Private Jet",
+      "b": "signature",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107023/greece-turkey-and-egypt-by-private-jet"
+    },
+    {
+      "n": "Luxury Across the Adriatic: Slovenia, Croatia, Montenegro & Albania",
+      "b": "signature",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18055614/luxury-across-the-adriatic-slovenia-croatia-montenegro-albania"
+    },
+    {
+      "n": "Classic Indochina: Laos, Cambodia & Vietnam by Private Jet",
+      "b": "signature",
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14017243/classic-indochina-laos-cambodia-and-vietnam-by-private-jet"
+    },
+    {
+      "n": "Uncovering Hidden Indochina by Private Jet, Thailand",
+      "b": "signature",
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14015663/uncovering-hidden-indochina-by-private-jet-thailand"
+    },
+    {
+      "n": "Indonesia's Cultural & Natural Highlights by Private Jet & Yacht",
+      "b": "signature",
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224891/indonesias-cultural-and-natural-highlights-by-private-jet-yacht"
+    },
+    {
+      "n": "Far-Reaching Indonesia by Private Jet",
+      "b": "signature",
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/13123170/far-reaching-indonesia-by-private-jet"
+    },
+    {
+      "n": "Edges of the Living World: Asia & Oceania by Private Jet",
+      "b": "signature",
+      "g": [
+        "SEASIA",
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368504/edges-of-the-living-world-asia-and-oceania-by-private-jet"
+    },
+    {
+      "n": "Australia by Private Jet",
+      "b": "signature",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18104719/australia-by-private-jet"
+    },
+    {
+      "n": "Tee Off in New Zealand",
+      "b": "signature",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15499080/tee-off-in-new-zealand"
+    },
+    {
+      "n": "China by Private Jet",
+      "b": "signature",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365621/china-by-private-jet"
+    },
+    {
+      "n": "Unknown China by Private Jet: Changbaishan to Zhangye Danxia",
+      "b": "signature",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/13140613/unknown-china-by-private-jet-changbaishan-to-zhangye-danxia"
+    },
+    {
+      "n": "China's Magnificent Mountaintops by Private Jet",
+      "b": "signature",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/13140585/chinas-magnificent-mountaintops-by-private-jet"
+    },
+    {
+      "n": "China's Silk Road by Private Jet",
+      "b": "signature",
+      "g": [
+        "EASTASIA",
+        "SILK"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/12991356/chinas-silk-road-by-private-jet"
+    },
+    {
+      "n": "A Private Jet Journey Across Asia: China, Sri Lanka & Bhutan",
+      "b": "signature",
+      "g": [
+        "EASTASIA",
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14332236/a-private-jet-journey-across-asia-china-sri-lanka-bhutan"
+    },
+    {
+      "n": "Personalized Panoramas: The Himalayas in India by Private Jet",
+      "b": "signature",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224890/personalized-panoramas-exploring-the-himalayas-in-india-by-private-jet"
+    },
+    {
+      "n": "In Search of the Royal Bengal Tiger: India's National Parks by Private Jet",
+      "b": "signature",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224889/in-search-of-the-royal-bengal-tiger-indias-national-parks-by-private-jet"
+    },
+    {
+      "n": "Beaches, Waterways & Palaces by Private Jet: Cochin to Goa, India",
+      "b": "signature",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224884/beaches-waterways-and-palaces-by-private-jet-from-cochin-to-goa-india"
+    },
+    {
+      "n": "Argentina, Chile & Brazil by Private Jet",
+      "b": "signature",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18106981/argentina-chile-and-brazil-by-private-jet"
+    },
+    {
+      "n": "Exclusive Colombia Tour",
+      "b": "signature",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/16528768/exclusive-colombia-tour"
+    },
+    {
+      "n": "Mexico by Private Jet",
+      "b": "signature",
+      "g": [
+        "AMERICAS"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365628/mexico-by-private-jet"
+    },
+    {
+      "n": "Wild Canada by Private Jet",
+      "b": "signature",
+      "g": [
+        "CANADA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365634/wild-canada-by-private-jet"
+    },
+    {
+      "n": "Wild Wonders: Around the World by Private Jet",
+      "b": "signature",
+      "route": "wild-wonders",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18215265/wild-wonders-around-the-world-by-private-jet"
+    },
+    {
+      "n": "Hidden Horizons with Geoffrey Kent: A Private Jet Journey",
+      "b": "signature",
+      "route": "hidden-horizons",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18228560/hidden-horizons-with-geoffrey-kent-a-private-jet-journey"
+    }
+  ]
+}
