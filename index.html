@@ -18,7 +18,6 @@
   body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow:hidden}
   #map{position:absolute;inset:0;background:#0a0d13;z-index:1}
 
-  /* ---------- Loading animation ---------- */}
 
   /* ---------- Title bar ---------- */
   .topbar{
@@ -184,7 +183,7 @@
 </style>
 </head>
 <body>
-<div id="map"></div><div>Loading private jet atlas</div></div></div>
+<div id="map"></div>
 
 <div class="topbar">
   <div class="brand">
@@ -252,6 +251,8 @@
       BRANDS = d.BRANDS; REGIONS = d.REGIONS; ROUTES = d.ROUTES; TRIPS = d.TRIPS;
     });
 
+_dataReady.then(() => {
+
 /* ===== Jet experience / brand metadata (filter rail order) ===== */
 ;
 
@@ -317,7 +318,6 @@ Object.values(byRegion).forEach(arr=>arr.sort((a,b)=>sortKey(a)-sortKey(b)));
 const WORLD_TRIPS = TRIPS.filter(t=>t.world).sort((a,b)=>sortKey(a)-sortKey(b));
 
 /* ===== Map ===== */
-_dataReady.then(() => {
 const map=L.map('map',{worldCopyJump:true,minZoom:1,maxZoom:8,zoomControl:false})
   .setView([24,-10],2.4);
 L.control.zoom({position:'bottomleft'}).addTo(map);
