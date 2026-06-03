@@ -330,7 +330,7 @@ const baseLayer=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/service
 
 /* ===== Build region markers ===== */
 const markers={}; // regionKey -> {marker, el, trips}
-let activeBrand=null, activeView=null, pinnedTrip=null;
+let activeBrand=null, activeView=null, pinnedTrip=null, routeLocked=false;
 let activeMonths=new Set();
 function matchesFilters(t){
   return (!activeBrand || t.b===activeBrand) && (!activeMonths.size || (t.mk && activeMonths.has(t.mk)));
@@ -394,7 +394,12 @@ function drawRoute(trip,fit){
       .bindTooltip(`${i+1}. ${stops[i].label}`,{direction:'top',offset:[0,-9],className:'stoptip',opacity:1});
   });
   trip.g.forEach(k=>{ if(markers[k]) markers[k].el.classList.add('route'); });
-  if(fit){ map.fitBounds(L.latLngBounds(lls),{padding:[70,70],maxZoom:5,animate:true,duration:.8}); }
+  if(fit){
+    const small=window.matchMedia('(max-width:640px)').matches;
+    const panelOpen=document.getElementById('panel').classList.contains('open');
+    const padR=(!small&&panelOpen)?420:70; // keep tour clear of the right-hand panel
+    map.fitBounds(L.latLngBounds(lls),{paddingTopLeft:[70,90],paddingBottomRight:[padR,70],maxZoom:5,animate:true,duration:.8});
+  }
 }
 
 /* ===== Date range filter (departure month) ===== */
@@ -404,7 +409,7 @@ function updateDateSummary(){
   const labels=Array.from(activeMonths).sort().map(k=>MON[+k.slice(5)-1]+' '+k.slice(0,4));
   s.textContent=labels.length===1?labels[0]:labels.length+' months selected';
 }
-function refreshView(){ if(activeView){ activeView==='__world__'?openWorld():openRegion(activeView); } }
+function refreshView(){ routeLocked=false; document.body.classList.remove('tracing'); if(activeView){ activeView==='__world__'?openWorld():openRegion(activeView); } }
 function buildDateGrid(){
   const grid=document.getElementById('dateGrid');
   const months=Array.from(new Set(TRIPS.filter(t=>t.mk).map(t=>t.mk))).sort();
@@ -457,6 +462,7 @@ Object.keys(BRANDS).forEach(key=>{
 });
 
 function toggleBrand(key,row){
+  routeLocked=false; document.body.classList.remove('tracing');
   const wasActive = activeBrand===key;
   document.querySelectorAll('.op').forEach(r=>r.classList.remove('active'));
   if(wasActive){ activeBrand=null; }
@@ -475,6 +481,7 @@ function applyFilter(){
   });
 }
 document.getElementById('reset').addEventListener('click',()=>{
+  routeLocked=false; document.body.classList.remove('tracing');
   activeBrand=null;document.querySelectorAll('.op').forEach(r=>r.classList.remove('active'));
   applyFilter();document.getElementById('reset').classList.remove('show');
   if(activeView){ activeView==='__world__' ? openWorld() : openRegion(activeView); }
@@ -508,7 +515,7 @@ function makeCard(t){
     trace.className='tracebtn';trace.setAttribute('role','button');trace.tabIndex=0;
     trace.textContent='🗺 Trace route on map';
     const doTrace=e=>{ e.preventDefault();e.stopPropagation();
-      pinnedTrip=t; drawRoute(t,true); document.body.classList.add('tracing'); };
+      pinnedTrip=t; routeLocked=true; document.body.classList.add('tracing'); drawRoute(t,true); };
     trace.addEventListener('click',doTrace);
     trace.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') doTrace(e); });
     meta.appendChild(trace);
@@ -525,8 +532,9 @@ function sortTrips(trips){
 /* ===== Region detail panel ===== */
 const panel=document.getElementById('panel');
 function openRegion(key){
-  activeView=key; pinnedTrip=null; clearRoute(); applyFilter();
-  document.body.classList.remove('tracing');
+  activeView=key;
+  if(!routeLocked){ pinnedTrip=null; clearRoute(); document.body.classList.remove('tracing'); }
+  applyFilter();
   document.getElementById('worldBtn').classList.remove('active');
   const reg=REGIONS[key];
   const trips=sortTrips(byRegion[key].filter(monthMatch));
@@ -537,13 +545,15 @@ function openRegion(key){
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));
   panel.classList.add('open');
-  const c=reg.coord;
-  map.flyTo([c[0],c[1]], Math.max(map.getZoom(),3), {duration:.8});
+  if(!routeLocked){
+    const c=reg.coord;
+    map.flyTo([c[0],c[1]], Math.max(map.getZoom(),3), {duration:.8});
+  }
 }
 
 /* ===== Around-the-world panel ===== */
 function openWorld(){
-  activeView='__world__'; pinnedTrip=null; clearRoute();
+  activeView='__world__'; pinnedTrip=null; routeLocked=false; clearRoute();
   document.body.classList.remove('tracing');
   document.getElementById('worldBtn').classList.add('active');
   const trips=sortTrips(WORLD_TRIPS.filter(monthMatch));
@@ -562,14 +572,18 @@ document.getElementById('worldCount').textContent = WORLD_TRIPS.length+' global 
 
 /* ===== Close handling ===== */
 function closePanel(){
-  panel.classList.remove('open'); activeView=null; pinnedTrip=null;
+  panel.classList.remove('open'); activeView=null; pinnedTrip=null; routeLocked=false;
   clearRoute(); applyFilter();
   document.body.classList.remove('tracing');
   document.getElementById('worldBtn').classList.remove('active');
   document.getElementById('datePop').classList.remove('open');
 }
 document.getElementById('close').addEventListener('click',closePanel);
-map.on('click',closePanel);
+map.on('click',()=>{
+  // While a route is locked, panning/tapping the map must not remove it.
+  if(routeLocked){ document.getElementById('datePop').classList.remove('open'); return; }
+  closePanel();
+});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
 });
 </script>
@@ -595,6 +609,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
   /* Right detail panel collapses into its pill */
   body.panel-collapsed .panel.open{transform:translateX(105%)}
   body.panel-collapsed #datePop{display:none}
+  /* While tracing a route, darken region pins so the flight path stands out
+     (pins stay clickable — opacity doesn't block pointer events) */
+  body.tracing .rmarker{opacity:.28;transition:opacity .3s ease}
+  body.tracing .rmarker:hover{opacity:.85}
+  body.tracing .rmarker.route{opacity:1}
   /* Trace-route control on Around-the-World cards */
   .card .tracebtn{display:inline-flex;align-items:center;gap:6px;margin-top:9px;
     padding:6px 11px;border-radius:9px;font-size:11.5px;font-weight:700;cursor:pointer;
