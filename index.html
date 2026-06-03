@@ -333,9 +333,11 @@ const markers={}; // regionKey -> {marker, el, trips}
 let activeBrand=null, activeView=null, pinnedTrip=null, routeLocked=false;
 let activeMonths=new Set();
 function matchesFilters(t){
-  return (!activeBrand || t.b===activeBrand) && (!activeMonths.size || (t.mk && activeMonths.has(t.mk)));
+  return (!activeBrand || t.b===activeBrand) && (t.onDemand || !activeMonths.size || (t.mk && activeMonths.has(t.mk)));
 }
-function monthMatch(t){ return !activeMonths.size || (t.mk && activeMonths.has(t.mk)); }
+/* on-demand trips (no fixed departure) always pass the month filter so they
+   sit at the bottom of every selected month */
+function monthMatch(t){ return t.onDemand || !activeMonths.size || (t.mk && activeMonths.has(t.mk)); }
 
 Object.keys(byRegion).forEach(key=>{
   const reg=REGIONS[key]; if(!reg) return;
@@ -502,7 +504,7 @@ function makeCard(t){
   } else {
     tail = `<div class="go">View itinerary ↗</div>`;
   }
-  const dateLine = t.d ? `<div class="dt">${fmtRange(t)}</div>` : '';
+  const dateLine = t.d ? `<div class="dt">${fmtRange(t)}</div>` : (t.onDemand ? `<div class="dt">On Demand</div>` : '');
   meta.innerHTML=`<div class="nm">${t.n}</div>${dateLine}${tail}`;
   const ar=document.createElement('div');ar.className='arrow';ar.textContent='›';
   a.appendChild(lg);a.appendChild(meta);a.appendChild(ar);

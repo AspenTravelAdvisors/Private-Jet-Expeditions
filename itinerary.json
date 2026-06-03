@@ -20,6 +20,16 @@
       "domain": "",
       "color": "#caa44e",
       "glyph": "✈"
+    },
+    "ak": {
+      "short": "Abercrombie & Kent",
+      "domain": "abercrombiekent.com",
+      "color": "#1f3a5f"
+    },
+    "seasonz": {
+      "short": "Seasonz New Zealand",
+      "domain": "seasonz.co.nz",
+      "color": "#2e6b4f"
     }
   },
   "REGIONS": {
@@ -997,7 +1007,7 @@
       "d": "6/16/2026",
       "r": "6/26/2026",
       "n": "Italy by Private Jet",
-      "b": "signature",
+      "b": "ak",
       "g": [
         "EUROPE"
       ],
@@ -1012,6 +1022,16 @@
         "EASTASIA"
       ],
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132981/japans-hidden-gems-an-11-day-tour-by-private-jet"
+    },
+    {
+      "d": "6/22/2026",
+      "r": "7/3/2026",
+      "n": "Greece and Turkey by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107022/greece-and-turkey-by-private-jet"
     },
     {
       "d": "7/12/2026",
@@ -1054,14 +1074,76 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18360235/grand-horizons-a-four-seasons-private-jet-experience"
     },
     {
+      "d": "9/8/2026",
+      "r": "9/20/2026",
+      "n": "Greece, Turkey & Egypt by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107023/greece-turkey-and-egypt-by-private-jet"
+    },
+    {
+      "d": "9/8/2026",
+      "r": "9/20/2026",
+      "n": "The Mediterranean by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107121/the-mediterranean-by-private-jet"
+    },
+    {
+      "d": "9/14/2026",
+      "r": "9/25/2026",
+      "n": "Greece and Turkey by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107022/greece-and-turkey-by-private-jet"
+    },
+    {
+      "d": "9/15/2026",
+      "r": "9/27/2026",
+      "n": "The Mediterranean by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107121/the-mediterranean-by-private-jet"
+    },
+    {
+      "d": "9/16/2026",
+      "r": "9/27/2026",
+      "n": "Argentina, Chile & Brazil by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18106981/argentina-chile-and-brazil-by-private-jet"
+    },
+    {
       "d": "9/22/2026",
       "r": "10/2/2026",
       "n": "Italy by Private Jet",
-      "b": "signature",
+      "b": "ak",
       "g": [
         "EUROPE"
       ],
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18117121/italy-by-private-jet"
+    },
+    {
+      "d": "9/29/2026",
+      "r": "10/11/2026",
+      "n": "Spain & Morocco by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107106/spain-and-morocco-by-private-jet"
     },
     {
       "d": "9/30/2026",
@@ -1088,7 +1170,7 @@
       "d": "10/7/2026",
       "r": "10/18/2026",
       "n": "India by Private Jet",
-      "b": "signature",
+      "b": "ak",
       "g": [
         "INDIA"
       ],
@@ -1123,6 +1205,37 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18080414/around-the-world-in-three-continents-aman-jet-expedition-2026"
     },
     {
+      "d": "10/13/2026",
+      "r": "10/25/2026",
+      "n": "Spain & Morocco by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107106/spain-and-morocco-by-private-jet"
+    },
+    {
+      "d": "10/15/2026",
+      "r": "10/26/2026",
+      "n": "Argentina, Chile & Brazil by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18106981/argentina-chile-and-brazil-by-private-jet"
+    },
+    {
+      "d": "10/19/2026",
+      "r": "10/29/2026",
+      "n": "Australia by Private Jet",
+      "b": "ak",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18104719/australia-by-private-jet"
+    },
+    {
       "d": "10/25/2026",
       "r": "11/16/2026",
       "n": "Photographing the World by Private Jet with National Geographic",
@@ -1137,6 +1250,17 @@
       ],
       "world": true,
       "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips"
+    },
+    {
+      "d": "10/26/2026",
+      "r": "11/7/2026",
+      "n": "Greece, Turkey & Egypt by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107023/greece-turkey-and-egypt-by-private-jet"
     },
     {
       "d": "10/28/2026",
@@ -1167,6 +1291,17 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
     },
     {
+      "d": "11/11/2026",
+      "r": "11/23/2026",
+      "n": "Greece, Turkey & Egypt by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107023/greece-turkey-and-egypt-by-private-jet"
+    },
+    {
       "d": "11/28/2026",
       "r": "12/22/2026",
       "n": "Around the World: A Luxury Tour by Private Jet",
@@ -1174,16 +1309,6 @@
       "route": "atw-luxury",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
-    },
-    {
-      "d": "11/29/2026",
-      "r": "12/20/2026",
-      "n": "Ocean to Outback: New Zealand & Australia by Private Jet",
-      "b": "signature",
-      "g": [
-        "ANZ"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132991/ocean-to-outback-exploring-new-zealand-and-australia-a-private-jet-tour"
     },
     {
       "d": "11/29/2026",
@@ -1196,10 +1321,20 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132991/ocean-to-outback-exploring-new-zealand-and-australia-a-private-jet-tour"
     },
     {
+      "d": "11/29/2026",
+      "r": "12/20/2026",
+      "n": "Ocean to Outback: New Zealand & Australia by Private Jet",
+      "b": "signature",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132991/ocean-to-outback-exploring-new-zealand-and-australia-a-private-jet-tour"
+    },
+    {
       "d": "12/2/2026",
       "r": "12/13/2026",
       "n": "India by Private Jet",
-      "b": "signature",
+      "b": "ak",
       "g": [
         "INDIA"
       ],
@@ -1257,14 +1392,34 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18367607/a-world-less-traveled-an-expedition-by-private-jet"
     },
     {
+      "d": "1/25/2027",
+      "r": "2/5/2027",
+      "n": "Mexico by Private Jet",
+      "b": "ak",
+      "g": [
+        "AMERICAS"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365628/mexico-by-private-jet"
+    },
+    {
       "d": "2/4/2027",
       "r": "2/25/2027",
       "n": "Africa: Across a Continent by Private Jet",
-      "b": "signature",
+      "b": "ak",
       "g": [
         "AFRICA"
       ],
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18155133/africa-across-a-continent-by-private-jet"
+    },
+    {
+      "d": "2/4/2027",
+      "r": "2/14/2027",
+      "n": "Australia by Private Jet",
+      "b": "ak",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365620/australia-by-private-jet"
     },
     {
       "d": "2/11/2027",
@@ -1277,6 +1432,16 @@
         "INDIA"
       ],
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18140926/asia-unveiled-i-a-four-seasons-private-jet-experience"
+    },
+    {
+      "d": "2/13/2027",
+      "r": "2/24/2027",
+      "n": "Argentina, Chile & Brazil by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365619/argentina-chile-and-brazil-by-private-jet"
     },
     {
       "d": "2/21/2027",
@@ -1298,6 +1463,16 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18341861/international-intrigue-a-four-seasons-private-jet-experience"
     },
     {
+      "d": "3/4/2027",
+      "r": "3/14/2027",
+      "n": "Australia by Private Jet",
+      "b": "ak",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365620/australia-by-private-jet"
+    },
+    {
       "d": "3/8/2027",
       "r": "3/17/2027",
       "n": "Chasing the Aurora: A 10-Day Expedition by Private Jet",
@@ -1308,14 +1483,45 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18144972/chasing-the-aurora-a-10-day-expedition-by-private-jet"
     },
     {
+      "d": "3/9/2027",
+      "r": "3/21/2027",
+      "n": "Spain & Morocco by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368915/spain-and-morocco-by-private-jet"
+    },
+    {
       "d": "3/10/2027",
       "r": "3/21/2027",
       "n": "India by Private Jet",
-      "b": "signature",
+      "b": "ak",
       "g": [
         "INDIA"
       ],
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365624/india-by-private-jet"
+    },
+    {
+      "d": "3/11/2027",
+      "r": "3/22/2027",
+      "n": "Argentina, Chile & Brazil by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365619/argentina-chile-and-brazil-by-private-jet"
+    },
+    {
+      "d": "3/15/2027",
+      "r": "3/26/2027",
+      "n": "Mexico by Private Jet",
+      "b": "ak",
+      "g": [
+        "AMERICAS"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365628/mexico-by-private-jet"
     },
     {
       "d": "3/26/2027",
@@ -1327,6 +1533,16 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18360251/new-world-icons-a-four-seasons-private-jet-experience"
     },
     {
+      "d": "3/29/2027",
+      "r": "4/9/2027",
+      "n": "Mexico by Private Jet",
+      "b": "ak",
+      "g": [
+        "AMERICAS"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365628/mexico-by-private-jet"
+    },
+    {
       "d": "4/11/2027",
       "r": "5/1/2027",
       "n": "The Grandest Tour – Aman Jet Expeditions",
@@ -1336,6 +1552,16 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18301934/the-grandest-tour-aman-jet-expedition-2027-apr-11may-1-2027"
     },
     {
+      "d": "4/12/2027",
+      "r": "4/23/2027",
+      "n": "China by Private Jet",
+      "b": "ak",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365621/china-by-private-jet"
+    },
+    {
       "d": "4/15/2027",
       "r": "5/6/2027",
       "n": "Timeless Encounters: A Four Seasons Private Jet Experience",
@@ -1343,6 +1569,27 @@
       "route": "timeless-encounters",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18339026/timeless-encounters-i-a-four-seasons-private-jet-experience"
+    },
+    {
+      "d": "5/3/2027",
+      "r": "5/14/2027",
+      "n": "Greece and Turkey by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368914/greece-and-turkey-by-private-jet"
+    },
+    {
+      "d": "5/3/2027",
+      "r": "5/14/2027",
+      "n": "Greece, Turkey & Egypt by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18381504/greece-turkey-and-egypt-by-private-jet"
     },
     {
       "d": "5/9/2027",
@@ -1365,6 +1612,16 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18237575/a-silk-road-journey-threads-of-ancient-civilizations-by-private-jet"
     },
     {
+      "d": "5/17/2027",
+      "r": "5/28/2027",
+      "n": "China by Private Jet",
+      "b": "ak",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365621/china-by-private-jet"
+    },
+    {
       "d": "5/28/2027",
       "r": "6/16/2027",
       "n": "Golf Around the World by Private Jet",
@@ -1372,6 +1629,47 @@
       "route": "golf-around-the-world",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18460062/golf-around-the-world-by-private-jet"
+    },
+    {
+      "d": "6/7/2027",
+      "r": "6/18/2027",
+      "n": "Greece and Turkey by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368914/greece-and-turkey-by-private-jet"
+    },
+    {
+      "d": "6/7/2027",
+      "r": "6/18/2027",
+      "n": "Greece, Turkey & Egypt by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18381504/greece-turkey-and-egypt-by-private-jet"
+    },
+    {
+      "d": "6/7/2027",
+      "r": "6/17/2027",
+      "n": "Italy by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365625/italy-by-private-jet"
+    },
+    {
+      "d": "6/14/2027",
+      "r": "6/24/2027",
+      "n": "Italy by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365625/italy-by-private-jet"
     },
     {
       "d": "6/14/2027",
@@ -1386,6 +1684,16 @@
     },
     {
       "d": "6/15/2027",
+      "r": "6/27/2027",
+      "n": "South America Wildlife Adventure by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18377225/south-america-wildlife-adventure-by-private-jet"
+    },
+    {
+      "d": "6/15/2027",
       "r": "6/30/2027",
       "n": "Wildlife & Natural Wonders: The Americas by Private Jet",
       "b": "signature",
@@ -1396,24 +1704,266 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18460819/wildlife-natural-wonders-the-americas-by-private-jet"
     },
     {
-      "d": "6/22/2027",
-      "r": "7/3/2027",
+      "d": "6/21/2027",
+      "r": "7/2/2027",
       "n": "Greece and Turkey by Private Jet",
-      "b": "signature",
+      "b": "ak",
       "g": [
         "EUROPE"
       ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107022/greece-and-turkey-by-private-jet"
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368914/greece-and-turkey-by-private-jet"
     },
     {
-      "d": "9/14/2027",
-      "r": "9/25/2027",
-      "n": "Greece and Turkey by Private Jet",
-      "b": "signature",
+      "d": "6/21/2027",
+      "r": "7/2/2027",
+      "n": "Greece, Turkey & Egypt by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18381504/greece-turkey-and-egypt-by-private-jet"
+    },
+    {
+      "d": "7/1/2027",
+      "r": "7/13/2027",
+      "n": "Wild Canada by Private Jet",
+      "b": "ak",
+      "g": [
+        "CANADA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365634/wild-canada-by-private-jet"
+    },
+    {
+      "d": "7/14/2027",
+      "r": "7/26/2027",
+      "n": "Wild Canada by Private Jet",
+      "b": "ak",
+      "g": [
+        "CANADA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365634/wild-canada-by-private-jet"
+    },
+    {
+      "d": "7/20/2027",
+      "r": "8/1/2027",
+      "n": "South America Wildlife Adventure by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18377225/south-america-wildlife-adventure-by-private-jet"
+    },
+    {
+      "d": "7/29/2027",
+      "r": "8/10/2027",
+      "n": "Wild Canada by Private Jet",
+      "b": "ak",
+      "g": [
+        "CANADA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365634/wild-canada-by-private-jet"
+    },
+    {
+      "d": "8/12/2027",
+      "r": "8/24/2027",
+      "n": "Wild Canada by Private Jet",
+      "b": "ak",
+      "g": [
+        "CANADA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365634/wild-canada-by-private-jet"
+    },
+    {
+      "d": "8/24/2027",
+      "r": "9/5/2027",
+      "n": "South America Wildlife Adventure by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18377225/south-america-wildlife-adventure-by-private-jet"
+    },
+    {
+      "d": "9/4/2027",
+      "r": "9/29/2027",
+      "n": "Wild Wonders: Around the World by Private Jet",
+      "b": "ak",
+      "route": "wild-wonders",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18215265/wild-wonders-around-the-world-by-private-jet"
+    },
+    {
+      "d": "9/6/2027",
+      "r": "9/16/2027",
+      "n": "Italy by Private Jet",
+      "b": "ak",
       "g": [
         "EUROPE"
       ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107022/greece-and-turkey-by-private-jet"
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365625/italy-by-private-jet"
+    },
+    {
+      "d": "9/28/2027",
+      "r": "10/10/2027",
+      "n": "South America Wildlife Adventure by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18377225/south-america-wildlife-adventure-by-private-jet"
+    },
+    {
+      "d": "9/13/2027",
+      "r": "9/24/2027",
+      "n": "Greece and Turkey by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368914/greece-and-turkey-by-private-jet"
+    },
+    {
+      "d": "9/13/2027",
+      "r": "9/24/2027",
+      "n": "Greece, Turkey & Egypt by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18381504/greece-turkey-and-egypt-by-private-jet"
+    },
+    {
+      "d": "9/20/2027",
+      "r": "10/1/2027",
+      "n": "China by Private Jet",
+      "b": "ak",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365621/china-by-private-jet"
+    },
+    {
+      "d": "9/20/2027",
+      "r": "9/30/2027",
+      "n": "Italy by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365625/italy-by-private-jet"
+    },
+    {
+      "d": "9/28/2027",
+      "r": "10/10/2027",
+      "n": "Spain & Morocco by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368915/spain-and-morocco-by-private-jet"
+    },
+    {
+      "d": "10/4/2027",
+      "r": "10/15/2027",
+      "n": "Argentina, Chile & Brazil by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365619/argentina-chile-and-brazil-by-private-jet"
+    },
+    {
+      "d": "10/6/2027",
+      "r": "10/17/2027",
+      "n": "India by Private Jet",
+      "b": "ak",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365624/india-by-private-jet"
+    },
+    {
+      "d": "10/14/2027",
+      "r": "10/24/2027",
+      "n": "Australia by Private Jet",
+      "b": "ak",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365620/australia-by-private-jet"
+    },
+    {
+      "d": "10/14/2027",
+      "r": "11/8/2027",
+      "n": "Hidden Horizons with Geoffrey Kent: A Private Jet Journey",
+      "b": "ak",
+      "route": "hidden-horizons",
+      "world": true,
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18228560/hidden-horizons-with-geoffrey-kent-a-private-jet-journey"
+    },
+    {
+      "d": "10/18/2027",
+      "r": "10/29/2027",
+      "n": "China by Private Jet",
+      "b": "ak",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365621/china-by-private-jet"
+    },
+    {
+      "d": "10/23/2027",
+      "r": "11/4/2027",
+      "n": "Spain & Morocco by Private Jet",
+      "b": "ak",
+      "g": [
+        "EUROPE",
+        "AFRICA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368915/spain-and-morocco-by-private-jet"
+    },
+    {
+      "d": "11/1/2027",
+      "r": "11/12/2027",
+      "n": "Argentina, Chile & Brazil by Private Jet",
+      "b": "ak",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365619/argentina-chile-and-brazil-by-private-jet"
+    },
+    {
+      "d": "11/10/2027",
+      "r": "11/21/2027",
+      "n": "India by Private Jet",
+      "b": "ak",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365624/india-by-private-jet"
+    },
+    {
+      "d": "11/11/2027",
+      "r": "11/21/2027",
+      "n": "Australia by Private Jet",
+      "b": "ak",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365620/australia-by-private-jet"
+    },
+    {
+      "d": "12/1/2027",
+      "r": "12/12/2027",
+      "n": "India by Private Jet",
+      "b": "ak",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365624/india-by-private-jet"
     },
     {
       "d": "3/10/2028",
@@ -1434,111 +1984,21 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18341861/international-intrigue-a-four-seasons-private-jet-experience"
     },
     {
-      "n": "Spain & Morocco by Private Jet",
+      "n": "A Private Jet Journey Across Asia: China, Sri Lanka & Bhutan",
       "b": "signature",
       "g": [
-        "EUROPE",
-        "AFRICA"
+        "EASTASIA",
+        "INDIA"
       ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107106/spain-and-morocco-by-private-jet"
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14332236/a-private-jet-journey-across-asia-china-sri-lanka-bhutan"
     },
     {
-      "n": "The Mediterranean by Private Jet",
+      "n": "Beaches, Waterways & Palaces by Private Jet: Cochin to Goa, India",
       "b": "signature",
       "g": [
-        "EUROPE"
+        "INDIA"
       ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107121/the-mediterranean-by-private-jet"
-    },
-    {
-      "n": "Greece, Turkey & Egypt by Private Jet",
-      "b": "signature",
-      "g": [
-        "EUROPE",
-        "AFRICA"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18107023/greece-turkey-and-egypt-by-private-jet"
-    },
-    {
-      "n": "Luxury Across the Adriatic: Slovenia, Croatia, Montenegro & Albania",
-      "b": "signature",
-      "g": [
-        "EUROPE"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18055614/luxury-across-the-adriatic-slovenia-croatia-montenegro-albania"
-    },
-    {
-      "n": "Classic Indochina: Laos, Cambodia & Vietnam by Private Jet",
-      "b": "signature",
-      "g": [
-        "SEASIA"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14017243/classic-indochina-laos-cambodia-and-vietnam-by-private-jet"
-    },
-    {
-      "n": "Uncovering Hidden Indochina by Private Jet, Thailand",
-      "b": "signature",
-      "g": [
-        "SEASIA"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14015663/uncovering-hidden-indochina-by-private-jet-thailand"
-    },
-    {
-      "n": "Indonesia's Cultural & Natural Highlights by Private Jet & Yacht",
-      "b": "signature",
-      "g": [
-        "SEASIA"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224891/indonesias-cultural-and-natural-highlights-by-private-jet-yacht"
-    },
-    {
-      "n": "Far-Reaching Indonesia by Private Jet",
-      "b": "signature",
-      "g": [
-        "SEASIA"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/13123170/far-reaching-indonesia-by-private-jet"
-    },
-    {
-      "n": "Edges of the Living World: Asia & Oceania by Private Jet",
-      "b": "signature",
-      "g": [
-        "SEASIA",
-        "ANZ"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368504/edges-of-the-living-world-asia-and-oceania-by-private-jet"
-    },
-    {
-      "n": "Australia by Private Jet",
-      "b": "signature",
-      "g": [
-        "ANZ"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18104719/australia-by-private-jet"
-    },
-    {
-      "n": "Tee Off in New Zealand",
-      "b": "signature",
-      "g": [
-        "ANZ"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15499080/tee-off-in-new-zealand"
-    },
-    {
-      "n": "China by Private Jet",
-      "b": "signature",
-      "g": [
-        "EASTASIA"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365621/china-by-private-jet"
-    },
-    {
-      "n": "Unknown China by Private Jet: Changbaishan to Zhangye Danxia",
-      "b": "signature",
-      "g": [
-        "EASTASIA"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/13140613/unknown-china-by-private-jet-changbaishan-to-zhangye-danxia"
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224884/beaches-waterways-and-palaces-by-private-jet-from-cochin-to-goa-india"
     },
     {
       "n": "China's Magnificent Mountaintops by Private Jet",
@@ -1558,45 +2018,21 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/12991356/chinas-silk-road-by-private-jet"
     },
     {
-      "n": "A Private Jet Journey Across Asia: China, Sri Lanka & Bhutan",
+      "n": "Classic Indochina: Laos, Cambodia & Vietnam by Private Jet",
       "b": "signature",
       "g": [
-        "EASTASIA",
-        "INDIA"
+        "SEASIA"
       ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14332236/a-private-jet-journey-across-asia-china-sri-lanka-bhutan"
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14017243/classic-indochina-laos-cambodia-and-vietnam-by-private-jet"
     },
     {
-      "n": "Personalized Panoramas: The Himalayas in India by Private Jet",
+      "n": "Edges of the Living World: Asia & Oceania by Private Jet",
       "b": "signature",
       "g": [
-        "INDIA"
+        "SEASIA",
+        "ANZ"
       ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224890/personalized-panoramas-exploring-the-himalayas-in-india-by-private-jet"
-    },
-    {
-      "n": "In Search of the Royal Bengal Tiger: India's National Parks by Private Jet",
-      "b": "signature",
-      "g": [
-        "INDIA"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224889/in-search-of-the-royal-bengal-tiger-indias-national-parks-by-private-jet"
-    },
-    {
-      "n": "Beaches, Waterways & Palaces by Private Jet: Cochin to Goa, India",
-      "b": "signature",
-      "g": [
-        "INDIA"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224884/beaches-waterways-and-palaces-by-private-jet-from-cochin-to-goa-india"
-    },
-    {
-      "n": "Argentina, Chile & Brazil by Private Jet",
-      "b": "signature",
-      "g": [
-        "SAM"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18106981/argentina-chile-and-brazil-by-private-jet"
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18368504/edges-of-the-living-world-asia-and-oceania-by-private-jet"
     },
     {
       "n": "Exclusive Colombia Tour",
@@ -1607,34 +2043,69 @@
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/16528768/exclusive-colombia-tour"
     },
     {
-      "n": "Mexico by Private Jet",
+      "n": "Far-Reaching Indonesia by Private Jet",
       "b": "signature",
       "g": [
-        "AMERICAS"
+        "SEASIA"
       ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365628/mexico-by-private-jet"
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/13123170/far-reaching-indonesia-by-private-jet"
     },
     {
-      "n": "Wild Canada by Private Jet",
+      "n": "In Search of the Royal Bengal Tiger: India's National Parks by Private Jet",
       "b": "signature",
       "g": [
-        "CANADA"
+        "INDIA"
       ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18365634/wild-canada-by-private-jet"
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224889/in-search-of-the-royal-bengal-tiger-indias-national-parks-by-private-jet"
     },
     {
-      "n": "Wild Wonders: Around the World by Private Jet",
+      "n": "Indonesia's Cultural & Natural Highlights by Private Jet & Yacht",
       "b": "signature",
-      "route": "wild-wonders",
-      "world": true,
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18215265/wild-wonders-around-the-world-by-private-jet"
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224891/indonesias-cultural-and-natural-highlights-by-private-jet-yacht"
     },
     {
-      "n": "Hidden Horizons with Geoffrey Kent: A Private Jet Journey",
+      "n": "Luxury Across the Adriatic: Slovenia, Croatia, Montenegro & Albania",
       "b": "signature",
-      "route": "hidden-horizons",
-      "world": true,
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18228560/hidden-horizons-with-geoffrey-kent-a-private-jet-journey"
+      "g": [
+        "EUROPE"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18055614/luxury-across-the-adriatic-slovenia-croatia-montenegro-albania"
+    },
+    {
+      "n": "Personalized Panoramas: The Himalayas in India by Private Jet",
+      "b": "signature",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224890/personalized-panoramas-exploring-the-himalayas-in-india-by-private-jet"
+    },
+    {
+      "n": "Tee Off in New Zealand",
+      "b": "seasonz",
+      "g": [
+        "ANZ"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15499080/tee-off-in-new-zealand",
+      "onDemand": true
+    },
+    {
+      "n": "Uncovering Hidden Indochina by Private Jet, Thailand",
+      "b": "signature",
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14015663/uncovering-hidden-indochina-by-private-jet-thailand"
+    },
+    {
+      "n": "Unknown China by Private Jet: Changbaishan to Zhangye Danxia",
+      "b": "signature",
+      "g": [
+        "EASTASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/13140613/unknown-china-by-private-jet-changbaishan-to-zhangye-danxia"
     }
   ]
 }
