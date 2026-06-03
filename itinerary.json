@@ -21,6 +21,11 @@
       "color": "#caa44e",
       "glyph": "✈"
     },
+    "remotelands": {
+      "short": "Remote Lands",
+      "domain": "remotelands.com",
+      "color": "#b08d57"
+    },
     "ak": {
       "short": "Abercrombie & Kent",
       "domain": "abercrombiekent.com",
@@ -987,28 +992,6 @@
   },
   "TRIPS": [
     {
-      "d": "5/27/2026",
-      "r": "6/15/2026",
-      "n": "Kingdoms & Cultures: A Tour by Private Jet",
-      "b": "signature",
-      "g": [
-        "EUROPE",
-        "SILK"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132943/kingdoms-cultures-a-tour-by-private-jet"
-    },
-    {
-      "d": "5/31/2026",
-      "r": "6/19/2026",
-      "n": "Kingdoms & Cultures: A Tour by Private Jet",
-      "b": "signature",
-      "g": [
-        "EUROPE",
-        "SILK"
-      ],
-      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18132943/kingdoms-cultures-a-tour-by-private-jet"
-    },
-    {
       "d": "6/16/2026",
       "r": "6/26/2026",
       "n": "Italy by Private Jet",
@@ -1022,7 +1005,7 @@
       "d": "6/20/2026",
       "r": "6/30/2026",
       "n": "Japan’s Hidden Gems: An 11-Day Tour by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "EASTASIA"
       ],
@@ -1319,7 +1302,7 @@
       "d": "11/29/2026",
       "r": "12/10/2026",
       "n": "Ocean to Outback: New Zealand",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "ANZ"
       ],
@@ -1329,7 +1312,7 @@
       "d": "11/29/2026",
       "r": "12/20/2026",
       "n": "Ocean to Outback: New Zealand & Australia by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "ANZ"
       ],
@@ -1349,7 +1332,7 @@
       "d": "12/7/2026",
       "r": "12/20/2026",
       "n": "Ocean to Outback: Australia & Fiji",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "ANZ",
         "POLY"
@@ -1391,7 +1374,7 @@
       "d": "1/25/2027",
       "r": "2/11/2027",
       "n": "A World Less Traveled: An Expedition by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "route": "world-less-traveled",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18367607/a-world-less-traveled-an-expedition-by-private-jet"
@@ -1990,7 +1973,7 @@
     },
     {
       "n": "A Private Jet Journey Across Asia: China, Sri Lanka & Bhutan",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "EASTASIA",
         "INDIA"
@@ -1999,7 +1982,7 @@
     },
     {
       "n": "Beaches, Waterways & Palaces by Private Jet: Cochin to Goa, India",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "INDIA"
       ],
@@ -2007,7 +1990,7 @@
     },
     {
       "n": "China's Magnificent Mountaintops by Private Jet",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "EASTASIA"
       ],
@@ -2015,7 +1998,7 @@
     },
     {
       "n": "China's Silk Road by Private Jet",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "EASTASIA",
         "SILK"
@@ -2024,7 +2007,7 @@
     },
     {
       "n": "Classic Indochina: Laos, Cambodia & Vietnam by Private Jet",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "SEASIA"
       ],
@@ -2032,7 +2015,7 @@
     },
     {
       "n": "Edges of the Living World: Asia & Oceania by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "SEASIA",
         "ANZ"
@@ -2049,7 +2032,7 @@
     },
     {
       "n": "Far-Reaching Indonesia by Private Jet",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "SEASIA"
       ],
@@ -2057,7 +2040,7 @@
     },
     {
       "n": "In Search of the Royal Bengal Tiger: India's National Parks by Private Jet",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "INDIA"
       ],
@@ -2065,7 +2048,7 @@
     },
     {
       "n": "Indonesia's Cultural & Natural Highlights by Private Jet & Yacht",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "SEASIA"
       ],
@@ -2081,7 +2064,7 @@
     },
     {
       "n": "Personalized Panoramas: The Himalayas in India by Private Jet",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "INDIA"
       ],
@@ -2098,7 +2081,7 @@
     },
     {
       "n": "Uncovering Hidden Indochina by Private Jet, Thailand",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "SEASIA"
       ],
@@ -2106,7 +2089,7 @@
     },
     {
       "n": "Unknown China by Private Jet: Changbaishan to Zhangye Danxia",
-      "b": "signature",
+      "b": "remotelands",
       "g": [
         "EASTASIA"
       ],
