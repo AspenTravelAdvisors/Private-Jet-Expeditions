@@ -30,6 +30,11 @@
       "short": "Seasonz New Zealand",
       "domain": "seasonz.co.nz",
       "color": "#2e6b4f"
+    },
+    "tcs": {
+      "short": "TCS World Travel",
+      "domain": "tcsworldtravel.com",
+      "color": "#0f6d75"
     }
   },
   "REGIONS": {
@@ -1047,7 +1052,7 @@
       "d": "7/15/2026",
       "r": "7/28/2026",
       "n": "Uncharted Canada: A Small Group Expedition by Private Air",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "CANADA"
       ],
@@ -1149,7 +1154,7 @@
       "d": "9/30/2026",
       "r": "10/13/2026",
       "n": "Islands of Polynesia: A Small Group Expedition by Private Air",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "POLY"
       ],
@@ -1159,7 +1164,7 @@
       "d": "10/5/2026",
       "r": "10/25/2026",
       "n": "South America Golf Tour by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "AMERICAS",
         "SAM"
@@ -1180,7 +1185,7 @@
       "d": "10/7/2026",
       "r": "10/21/2026",
       "n": "Tibet and South Asia: A 15-Day Expedition by Private Air",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "INDIA"
       ],
@@ -1190,7 +1195,7 @@
       "d": "10/10/2026",
       "r": "11/2/2026",
       "n": "Around the World: A Luxury Tour by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "route": "atw-luxury",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
@@ -1266,7 +1271,7 @@
       "d": "10/28/2026",
       "r": "11/21/2026",
       "n": "Around the World: A Luxury Tour by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "route": "atw-luxury",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
@@ -1285,7 +1290,7 @@
       "d": "11/2/2026",
       "r": "11/25/2026",
       "n": "Around the World: A Luxury Tour by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "route": "atw-luxury",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
@@ -1305,7 +1310,7 @@
       "d": "11/28/2026",
       "r": "12/22/2026",
       "n": "Around the World: A Luxury Tour by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "route": "atw-luxury",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
@@ -1355,7 +1360,7 @@
       "d": "12/27/2026",
       "r": "1/24/2027",
       "n": "Seven Continents by Private Jet: The Ultimate Around the World Journey",
-      "b": "signature",
+      "b": "tcs",
       "route": "seven-continents",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18136557/the-ultimate-around-the-world-journey-seven-continents-by-private-jet"
@@ -1364,7 +1369,7 @@
       "d": "12/30/2026",
       "r": "1/14/2027",
       "n": "Exploring Africa: A 16-Day Adventure by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "AFRICA"
       ],
@@ -1476,7 +1481,7 @@
       "d": "3/8/2027",
       "r": "3/17/2027",
       "n": "Chasing the Aurora: A 10-Day Expedition by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "AURORA"
       ],
@@ -1605,7 +1610,7 @@
       "d": "5/12/2027",
       "r": "5/27/2027",
       "n": "A Silk Road Journey: Threads of Ancient Civilizations by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "SILK"
       ],
@@ -1625,7 +1630,7 @@
       "d": "5/28/2027",
       "r": "6/16/2027",
       "n": "Golf Around the World by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "route": "golf-around-the-world",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/18460062/golf-around-the-world-by-private-jet"
@@ -1675,7 +1680,7 @@
       "d": "6/14/2027",
       "r": "6/24/2027",
       "n": "Wildlife & Natural Wonders: The Americas by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "AMERICAS",
         "SAM"
@@ -1696,7 +1701,7 @@
       "d": "6/15/2027",
       "r": "6/30/2027",
       "n": "Wildlife & Natural Wonders: The Americas by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "g": [
         "AMERICAS",
         "SAM"
@@ -1969,7 +1974,7 @@
       "d": "3/10/2028",
       "r": "4/5/2028",
       "n": "Around the World: A Luxury Tour by Private Jet",
-      "b": "signature",
+      "b": "tcs",
       "route": "atw-luxury",
       "world": true,
       "u": "https://www.virtuoso.com/advisor/brianharris/tours/17901102/around-the-world-a-luxury-tour-by-private-jet"
