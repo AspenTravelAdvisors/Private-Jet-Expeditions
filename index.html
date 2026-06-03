@@ -332,12 +332,18 @@ const baseLayer=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/service
 const markers={}; // regionKey -> {marker, el, trips}
 let activeBrand=null, activeView=null, pinnedTrip=null, routeLocked=false;
 let activeMonths=new Set();
+function isPastTrip(t){
+  if(t.onDemand || !t.d) return false;
+  const p=t.d.split('/'), td=new Date(); td.setHours(0,0,0,0);
+  return new Date(+p[2],+p[0]-1,+p[1]) < td;
+}
 function matchesFilters(t){
+  if(isPastTrip(t)) return false;
   return (!activeBrand || t.b===activeBrand) && (t.onDemand || !activeMonths.size || (t.mk && activeMonths.has(t.mk)));
 }
 /* on-demand trips (no fixed departure) always pass the month filter so they
    sit at the bottom of every selected month */
-function monthMatch(t){ return t.onDemand || !activeMonths.size || (t.mk && activeMonths.has(t.mk)); }
+function monthMatch(t){ return !isPastTrip(t) && (t.onDemand || !activeMonths.size || (t.mk && activeMonths.has(t.mk))); }
 
 Object.keys(byRegion).forEach(key=>{
   const reg=REGIONS[key]; if(!reg) return;
