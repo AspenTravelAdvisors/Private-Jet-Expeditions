@@ -590,8 +590,10 @@ function closePanel(){
 }
 document.getElementById('close').addEventListener('click',closePanel);
 map.on('click',()=>{
-  // While a route is locked, panning/tapping the map must not remove it.
-  if(routeLocked){ document.getElementById('datePop').classList.remove('open'); return; }
+  document.getElementById('datePop').classList.remove('open');
+  // A drawn route stays put when the map is panned or tapped — it clears only
+  // when another item (region pin or card) is chosen, or the panel is closed.
+  if(routeLocked || pinnedTrip){ return; }
   closePanel();
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
@@ -621,6 +623,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
   /* Left rail fades to transparent + blurred, then collapses into its pill */
   .rail{transition:opacity .26s ease,transform .26s ease,visibility .26s}
   body.rail-hidden .rail{opacity:0;transform:translateX(-12px) scale(.97);visibility:hidden;pointer-events:none}
+  body.rail-hidden #datePop{display:none}
   /* Right detail panel collapses into its pill */
   body.panel-collapsed .panel.open{transform:translateX(105%)}
   body.panel-collapsed #datePop{display:none}
@@ -662,7 +665,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
   var panelPill=document.getElementById('panelPill');
   var panel=document.querySelector('.panel');
   var mq=window.matchMedia('(max-width:640px)');
-  var railCollapsed=mq.matches;               // start collapsed on small screens
+  var railCollapsed=false;                    // filters visible on load (incl. mobile)
   function setIcon(el,ch){ var p=el&&el.querySelector('.pi'); if(p)p.innerHTML=ch; }
   function syncRail(){
     body.classList.toggle('rail-hidden',railCollapsed);
@@ -679,13 +682,13 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
       var open=panel.classList.contains('open');
       body.classList.toggle('panel-active',open);
       if(!open){ body.classList.remove('panel-collapsed'); }
-      if(open && mq.matches){ railCollapsed=true; syncRail(); }
+      railCollapsed=open; syncRail();   // hide filters while details open, restore on close
       syncPanel();
     }).observe(panel,{attributes:true,attributeFilter:['class']});
   }
   var rb=document.getElementById('routeBack');
   if(rb){ rb.addEventListener('click',function(){ body.classList.remove('tracing'); }); }
-  if(mq.addEventListener){ mq.addEventListener('change',function(e){ railCollapsed=e.matches; syncRail(); }); }
+  /* viewport changes no longer force the filter menu closed */
   syncRail(); syncPanel();
   /* Auto-hide the top bar while dragging the map; tap the map to bring it back */
   (function(){ function hook(m){ m.on('dragstart',function(){ body.classList.add('nav-hidden'); });
