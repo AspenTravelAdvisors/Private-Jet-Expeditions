@@ -275,8 +275,18 @@ _dataReady.then(() => {
 
 /* ===== Normalize: attach city list + derive regions for routed trips ===== */
 function dedupeOrder(a){const s=new Set(),o=[];a.forEach(x=>{if(!s.has(x)){s.add(x);o.push(x);}});return o;}
+function tripSlug(s){return s.toLowerCase().replace(/&/g,'and').replace(/['’]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
 TRIPS.forEach(t=>{
-  if(t.route && ROUTES[t.route]){ t.cities=ROUTES[t.route]; t.g=dedupeOrder(t.cities.map(c=>c.r)); }
+  // Routed world trips reference an explicit ROUTES key; every other trip
+  // falls back to its day-by-day city route keyed by the slugged trip name.
+  const key = (t.route && ROUTES[t.route]) ? t.route
+            : (ROUTES[tripSlug(t.n)] ? tripSlug(t.n) : null);
+  if(key){
+    t.cities = ROUTES[key];
+    // World trips derive their region list from the route; regional trips keep
+    // their curated g[] (used for region filtering & marker highlighting).
+    if(t.route || !t.g) t.g = dedupeOrder(t.cities.map(c=>c.r));
+  }
   if(t.d){ const p=t.d.split('/'); t.mk=p[2]+'-'+String(+p[0]).padStart(2,'0'); }
 });
 
