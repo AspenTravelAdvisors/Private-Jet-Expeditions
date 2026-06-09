@@ -346,14 +346,28 @@ const baseLayer=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/service
 const markers={}; // regionKey -> {marker, el, trips}
 let activeBrand=null, activeView=null, pinnedTrip=null, routeLocked=false;
 let activeMonths=new Set();
+const activeIds=new Set();let activeSearchTerms=[];
 function isPastTrip(t){
   if(t.onDemand || !t.d) return false;
   const p=t.d.split('/'), td=new Date(); td.setHours(0,0,0,0);
   return new Date(+p[2],+p[0]-1,+p[1]) < td;
 }
+function norm(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();}
+function words(s){return norm(s).split(/\s+/).filter(w=>w&&!['the','and','or','of','in','to','for','private','jet','jets','journey','journeys','trip','trips','tour','tours','luxury'].includes(w));}
+function cssEsc(s){return window.CSS&&CSS.escape?CSS.escape(s):String(s).replace(/\\/g,'\\\\').replace(/"/g,'\\"');}
+function textMatches(t){
+  if(!activeSearchTerms.length)return true;
+  const regionNames=(t.g||[]).map(k=>REGIONS[k]&&REGIONS[k].name).filter(Boolean);
+  const cityNames=(t.cities||[]).map(c=>c.n).filter(Boolean);
+  const hay=norm([t.n,BRANDS[t.b]&&BRANDS[t.b].short,t.d,...regionNames,...cityNames].filter(Boolean).join(' '));
+  return activeSearchTerms.every(term=>hay.includes(term));
+}
 function matchesFilters(t){
   if(isPastTrip(t)) return false;
-  return (!activeBrand || t.b===activeBrand) && (t.onDemand || !activeMonths.size || (t.mk && activeMonths.has(t.mk)));
+  return (!activeBrand || t.b===activeBrand)
+    && (t.onDemand || !activeMonths.size || (t.mk && activeMonths.has(t.mk)))
+    && (!activeIds.size || activeIds.has(String(t.id)) || activeIds.has('jt_'+t.id))
+    && textMatches(t);
 }
 /* on-demand trips (no fixed departure) always pass the month filter so they
    sit at the bottom of every selected month */
@@ -437,7 +451,7 @@ function updateDateSummary(){
   const labels=Array.from(activeMonths).sort().map(k=>MON[+k.slice(5)-1]+' '+k.slice(0,4));
   s.textContent=labels.length===1?labels[0]:labels.length+' months selected';
 }
-function refreshView(){ routeLocked=false; document.body.classList.remove('tracing'); if(activeView){ activeView==='__world__'?openWorld():openRegion(activeView); } }
+function refreshView(){ routeLocked=false; document.body.classList.remove('tracing'); if(activeView){ activeView==='__world__'?openWorld():(activeView==='__search__'?openSearchResults():openRegion(activeView)); } }
 function buildDateGrid(){
   const grid=document.getElementById('dateGrid');
   const months=Array.from(new Set(TRIPS.filter(t=>t.mk).map(t=>t.mk))).sort();
@@ -479,6 +493,7 @@ Object.keys(BRANDS).forEach(key=>{
   const m=BRANDS[key];
   const row=document.createElement('div');
   row.className='op';
+  row.dataset.brand=key;
   const lg=logoEl(key);
   const txt=document.createElement('div');
   const n=brandCounts[key]||0;
@@ -496,11 +511,11 @@ function toggleBrand(key,row){
   if(wasActive){ activeBrand=null; }
   else { activeBrand=key; row.classList.add('active'); }
   applyFilter();
-  document.getElementById('reset').classList.toggle('show', !!activeBrand);
-  if(activeView){ activeView==='__world__' ? openWorld() : openRegion(activeView); }
+  document.getElementById('reset').classList.toggle('show', !!activeBrand||activeIds.size||activeSearchTerms.length);
+  if(activeView){ activeView==='__world__' ? openWorld() : (activeView==='__search__'?openSearchResults():openRegion(activeView)); }
 }
 function applyFilter(){
-  const anyFilter = !!activeBrand || activeMonths.size>0;
+  const anyFilter = !!activeBrand || activeMonths.size>0 || activeIds.size>0 || activeSearchTerms.length>0;
   Object.entries(markers).forEach(([key,obj])=>{
     if(obj.el.classList.contains('route')) return;
     const hit = obj.trips.some(matchesFilters);
@@ -511,8 +526,9 @@ function applyFilter(){
 document.getElementById('reset').addEventListener('click',()=>{
   routeLocked=false; document.body.classList.remove('tracing');
   activeBrand=null;document.querySelectorAll('.op').forEach(r=>r.classList.remove('active'));
+  activeIds.clear();activeSearchTerms=[];
   applyFilter();document.getElementById('reset').classList.remove('show');
-  if(activeView){ activeView==='__world__' ? openWorld() : openRegion(activeView); }
+  if(activeView){ activeView==='__world__' ? openWorld() : (activeView==='__search__'?openSearchResults():openRegion(activeView)); }
 });
 
 /* ===== Card builder ===== */
@@ -557,16 +573,54 @@ function sortTrips(trips){
     const k=sortKey(a)-sortKey(b); return k!==0?k:a.n.localeCompare(b.n);
   });
 }
+function findBrand(raw){
+  const v=norm(raw);if(!v)return null;
+  return Object.keys(BRANDS).find(k=>norm(k)===v||norm(BRANDS[k]&&BRANDS[k].short)===v)
+    ||Object.keys(BRANDS).find(k=>norm(k).includes(v)||norm(BRANDS[k]&&BRANDS[k].short).includes(v)||v.includes(norm(BRANDS[k]&&BRANDS[k].short)));
+}
+function findRegionKey(raw){
+  const v=norm(raw);if(!v)return null;
+  const aliases={asia:'EASTASIA',japan:'EASTASIA',polynesia:'POLY',tahiti:'POLY',antarctica:'ANTARCTICA',arctic:'AURORA',northernlights:'AURORA',northernlight:'AURORA',africa:'AFRICA',namibia:'AFRICA',europe:'EUROPE',mediterranean:'EUROPE',amazon:'SAM',patagonia:'SAM',southamerica:'SAM'};
+  if(aliases[v]&&REGIONS[aliases[v]])return aliases[v];
+  return Object.keys(REGIONS).find(k=>norm(k)===v||norm(REGIONS[k]&&REGIONS[k].name)===v||norm(REGIONS[k]&&REGIONS[k].ab)===v)
+    ||Object.keys(REGIONS).find(k=>norm(k).includes(v)||norm(REGIONS[k]&&REGIONS[k].name).includes(v)||v.includes(norm(REGIONS[k]&&REGIONS[k].name)));
+}
+function allMatchingTrips(){
+  const seen=new Set(),out=[];
+  TRIPS.filter(matchesFilters).forEach(t=>{if(!seen.has(t.id)){seen.add(t.id);out.push(t);}});
+  return sortTrips(out);
+}
+function fitTrips(list){
+  const keys=[...new Set(list.flatMap(t=>t.g||[]).filter(k=>REGIONS[k]&&REGIONS[k].coord))];
+  if(!keys.length)return;
+  if(keys.length===1){const c=REGIONS[keys[0]].coord;map.flyTo([c[0],c[1]],Math.max(map.getZoom(),3),{duration:.8});return;}
+  map.fitBounds(L.latLngBounds(keys.map(k=>REGIONS[k].coord)),{padding:[90,90],maxZoom:4.2,animate:true,duration:.8});
+}
 
 /* ===== Region detail panel ===== */
 const panel=document.getElementById('panel');
+function openSearchResults(title){
+  activeView='__search__';
+  if(!routeLocked){ pinnedTrip=null; clearRoute(); document.body.classList.remove('tracing'); }
+  applyFilter();
+  document.getElementById('worldBtn').classList.remove('active');
+  const trips=allMatchingTrips();
+  document.getElementById('pKlabel').textContent='Guide shortlist';
+  document.getElementById('pTitle').textContent=title||'Search results';
+  document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length!==1?'s':'')+' matched this Guide shortlist · tap a card for itinerary & pricing';
+  const list=document.getElementById('pList');
+  list.innerHTML='';
+  trips.forEach(t=>list.appendChild(makeCard(t)));
+  panel.classList.add('open');
+  fitTrips(trips);
+}
 function openRegion(key){
   activeView=key;
   if(!routeLocked){ pinnedTrip=null; clearRoute(); document.body.classList.remove('tracing'); }
   applyFilter();
   document.getElementById('worldBtn').classList.remove('active');
   const reg=REGIONS[key];
-  const trips=sortTrips(byRegion[key].filter(monthMatch));
+  const trips=sortTrips(byRegion[key].filter(matchesFilters));
   document.getElementById('pKlabel').textContent='Private jet destination';
   document.getElementById('pTitle').textContent=reg.name;
   document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length!==1?'s':'')+' reach here · tap a card for itinerary & pricing';
@@ -585,7 +639,7 @@ function openWorld(){
   activeView='__world__'; pinnedTrip=null; routeLocked=false; clearRoute();
   document.body.classList.remove('tracing');
   document.getElementById('worldBtn').classList.add('active');
-  const trips=sortTrips(WORLD_TRIPS.filter(monthMatch));
+  const trips=sortTrips(WORLD_TRIPS.filter(matchesFilters));
   document.getElementById('pKlabel').textContent='Global jet journeys';
   document.getElementById('pTitle').textContent='Around the World';
   document.getElementById('pSub').textContent=trips.length+' circumnavigation'+(trips.length!==1?'s':'')+' · hover a journey to trace its city-to-city flight path, tap for the full itinerary';
@@ -610,6 +664,7 @@ function closePanel(){
 /* Full reset: clear brand filter, close any region/world panel, drop routes, un-dim pins */
 function showAll(){
   activeBrand=null; document.querySelectorAll('.op').forEach(r=>r.classList.remove('active'));
+  activeIds.clear(); activeSearchTerms=[];
   document.getElementById('reset').classList.remove('show');
   closePanel();
 }
@@ -623,6 +678,23 @@ map.on('click',()=>{
   closePanel();
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
+function applyDeepLink(){
+  const sp=new URLSearchParams(location.search);
+  if(![...sp.keys()].length)return;
+  const ids=sp.get('ids');
+  if(ids) ids.split(',').map(s=>s.trim()).filter(Boolean).forEach(id=>activeIds.add(id));
+  const month=sp.get('month');
+  if(month){ activeMonths.add(month); const b=document.querySelector('.month[data-month="'+cssEsc(month)+'"]'); if(b)b.classList.add('active'); document.getElementById('dateBtn').classList.add('active'); updateDateSummary(); }
+  const brand=findBrand(sp.get('brand')||sp.get('operator'));
+  if(brand){ activeBrand=brand; const row=document.querySelector('.op[data-brand="'+cssEsc(brand)+'"]'); if(row)row.classList.add('active'); }
+  activeSearchTerms=[...words(sp.get('q')),...words(sp.get('country'))];
+  if(activeIds.size||activeBrand||activeSearchTerms.length)document.getElementById('reset').classList.add('show');
+  applyFilter();
+  const region=findRegionKey(sp.get('region'));
+  if(region)openRegion(region);
+  else if(activeIds.size||activeBrand||activeMonths.size||activeSearchTerms.length)openSearchResults(activeIds.size?'Guide shortlist':'Filtered journeys');
+}
+applyDeepLink();
 });
 </script>
 
