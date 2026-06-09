@@ -9,7 +9,8 @@
 <style>
   :root{
     --bg:#0a0d13; --panel:#11151d; --panel2:#171c26; --line:#2a3340;
-    --ink:#f4eee2; --muted:#a9a293; --accent:#caa44e; --accent2:#ecdfc2;
+    --ink:#f4eee2; --muted:#a9a293; --accent:#dfe5f2; --accent2:#f7f9fc;
+    --accent-rgb:223,229,242; --accent-hi:#ffffff; --accent-mid:#e8edf6; --accent-deep:#9aa6ba; --accent-text:#111722;
     --shadow:0 12px 44px rgba(0,0,0,.5);
     --sans:'Segoe UI',Roboto,-apple-system,system-ui,Helvetica,Arial,sans-serif;
     --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
@@ -58,13 +59,13 @@
   /* Around-the-world toggle */
   .worldbtn{margin:11px 10px 4px;padding:11px 12px;border-radius:12px;cursor:pointer;
     display:flex;align-items:center;gap:11px;
-    background:linear-gradient(135deg,rgba(202,164,78,.16),rgba(202,164,78,.05));
-    border:1px solid rgba(202,164,78,.5);transition:.16s}
-  .worldbtn:hover{background:linear-gradient(135deg,rgba(202,164,78,.26),rgba(202,164,78,.08))}
-  .worldbtn.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 18px rgba(202,164,78,.25)}
+    background:linear-gradient(135deg,rgba(var(--accent-rgb),.16),rgba(var(--accent-rgb),.05));
+    border:1px solid rgba(var(--accent-rgb),.5);transition:.16s}
+  .worldbtn:hover{background:linear-gradient(135deg,rgba(var(--accent-rgb),.26),rgba(var(--accent-rgb),.08))}
+  .worldbtn.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 18px rgba(var(--accent-rgb),.25)}
   .worldbtn .globe{width:30px;height:30px;flex:0 0 auto;border-radius:50%;display:flex;align-items:center;
-    justify-content:center;font-size:16px;color:#3a2c0d;
-    background:radial-gradient(circle at 35% 30%,#fff7e6,#caa44e 60%,#7a5a1e)}
+    justify-content:center;font-size:16px;color:var(--accent-text);
+    background:radial-gradient(circle at 35% 30%,var(--accent-hi),var(--accent) 60%,var(--accent-deep))}
   .worldbtn .wt{font-size:12.5px;font-weight:700;line-height:1.15;color:var(--ink)}
   .worldbtn .ws{font-size:10.5px;color:var(--accent2);margin-top:2px}
 
@@ -85,12 +86,12 @@
 
   /* ---------- Date range filter (departure month) ---------- */
   .filterbtn{margin:11px 10px 4px;padding:11px 12px;border-radius:12px;cursor:pointer;display:flex;
-    align-items:center;gap:11px;background:linear-gradient(135deg,rgba(202,164,78,.16),rgba(202,164,78,.05));
-    border:1px solid rgba(202,164,78,.5);transition:.16s;color:var(--ink)}
-  .filterbtn:hover{background:linear-gradient(135deg,rgba(202,164,78,.26),rgba(202,164,78,.08))}
-  .filterbtn.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 18px rgba(202,164,78,.25)}
+    align-items:center;gap:11px;background:linear-gradient(135deg,rgba(var(--accent-rgb),.16),rgba(var(--accent-rgb),.05));
+    border:1px solid rgba(var(--accent-rgb),.5);transition:.16s;color:var(--ink)}
+  .filterbtn:hover{background:linear-gradient(135deg,rgba(var(--accent-rgb),.26),rgba(var(--accent-rgb),.08))}
+  .filterbtn.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 18px rgba(var(--accent-rgb),.25)}
   .filterbtn .ico{width:30px;height:30px;flex:0 0 auto;border-radius:50%;display:flex;align-items:center;
-    justify-content:center;font-size:15px;color:#3a2c0d;background:radial-gradient(circle at 35% 30%,#fff7e6,#caa44e 60%,#7a5a1e)}
+    justify-content:center;font-size:15px;color:var(--accent-text);background:radial-gradient(circle at 35% 30%,var(--accent-hi),var(--accent) 60%,var(--accent-deep))}
   .filterbtn .ft{font-size:12.5px;font-weight:700;line-height:1.15}
   .filterbtn .fs{font-size:10.5px;color:var(--accent2);margin-top:2px}
   .datepop{position:absolute;z-index:1002;top:88px;left:264px;width:318px;max-width:calc(100vw - 286px);
@@ -106,8 +107,8 @@
   .months{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
   .month{height:30px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);
     color:var(--muted);font-size:11.5px;cursor:pointer}
-  .month:hover{border-color:rgba(202,164,78,.65);color:var(--ink)}
-  .month.active{background:linear-gradient(135deg,#caa44e,#ffe9b0);border-color:#fff;color:#3a2c0d;font-weight:800}
+  .month:hover{border-color:rgba(var(--accent-rgb),.65);color:var(--ink)}
+  .month.active{background:linear-gradient(135deg,var(--accent),var(--accent-mid));border-color:#fff;color:var(--accent-text);font-weight:800}
 
   /* ---------- Detail panel ---------- */
   .panel{
@@ -117,7 +118,7 @@
     transition:transform .32s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column}
   .panel.open{transform:none}
   .panel .hero{position:relative;padding:24px 22px 18px;border-bottom:1px solid var(--line);
-    background:radial-gradient(120% 120% at 80% 0%,rgba(202,164,78,.20),transparent 60%)}
+    background:radial-gradient(120% 120% at 80% 0%,rgba(var(--accent-rgb),.20),transparent 60%)}
   .panel .close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:8px;
     border:1px solid var(--line);background:var(--panel2);color:var(--ink);cursor:pointer;font-size:15px}
   .panel .klabel{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent)}
@@ -128,8 +129,8 @@
     border-radius:13px;background:var(--panel2);margin-bottom:10px;text-decoration:none;color:var(--ink);
     transition:.16s;position:relative}
   .card:hover{border-color:var(--accent);transform:translateY(-1px);background:#1d232f}
-  .card.routed{border-color:var(--accent);background:#1d232f;box-shadow:0 0 0 1px var(--accent),0 0 20px rgba(202,164,78,.30)}
-  .card.routed::before{content:"\25C9 On map";position:absolute;top:-9px;right:11px;font-size:9.5px;font-weight:800;letter-spacing:.04em;color:#3a2c0d;background:linear-gradient(135deg,#caa44e,#ffe9b0);padding:2px 8px;border-radius:20px;box-shadow:0 2px 6px rgba(0,0,0,.45);z-index:1}
+  .card.routed{border-color:var(--accent);background:#1d232f;box-shadow:0 0 0 1px var(--accent),0 0 20px rgba(var(--accent-rgb),.30)}
+  .card.routed::before{content:"\25C9 On map";position:absolute;top:-9px;right:11px;font-size:9.5px;font-weight:800;letter-spacing:.04em;color:var(--accent-text);background:linear-gradient(135deg,var(--accent),var(--accent-hi));padding:2px 8px;border-radius:20px;box-shadow:0 2px 6px rgba(0,0,0,.45);z-index:1}
   .card.world{background:linear-gradient(135deg,#1a2030,#141925)}
   .card .lg{width:48px;height:48px;border-radius:10px;background:#fff;flex:0 0 auto;
     display:flex;align-items:center;justify-content:center;overflow:hidden;font-weight:800;font-size:15px}
@@ -144,14 +145,14 @@
   /* ---------- Markers ---------- */
   .rmarker{position:relative;transform:translate(-50%,-50%);cursor:pointer}
   .rmarker .ring{width:var(--sz,34px);height:var(--sz,34px);border-radius:50%;
-    background:radial-gradient(circle at 35% 30%,rgba(236,223,194,.95),rgba(202,164,78,.92) 58%,rgba(120,90,30,.92));
-    border:2px solid rgba(255,255,255,.85);box-shadow:0 0 0 4px rgba(202,164,78,.22),0 5px 16px rgba(0,0,0,.55);
-    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#3a2c0d;
+    background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.96),rgba(var(--accent-rgb),.92) 58%,rgba(154,166,186,.92));
+    border:2px solid rgba(255,255,255,.85);box-shadow:0 0 0 4px rgba(var(--accent-rgb),.22),0 5px 16px rgba(0,0,0,.55);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--accent-text);
     transition:.18s}
-  .rmarker:hover .ring{transform:scale(1.12);box-shadow:0 0 0 6px rgba(202,164,78,.3),0 6px 18px rgba(0,0,0,.6)}
+  .rmarker:hover .ring{transform:scale(1.12);box-shadow:0 0 0 6px rgba(var(--accent-rgb),.3),0 6px 18px rgba(0,0,0,.6)}
   .rmarker.dim .ring{opacity:.2;filter:grayscale(.55)}
-  .rmarker.hit .ring,.rmarker.route .ring{background:radial-gradient(circle at 35% 30%,#fff7e6,#ffe9b0 55%,#caa44e);
-    border-color:#fff;box-shadow:0 0 0 5px rgba(236,223,194,.4),0 6px 18px rgba(0,0,0,.55)}
+  .rmarker.hit .ring,.rmarker.route .ring{background:radial-gradient(circle at 35% 30%,var(--accent-hi),var(--accent-mid) 55%,var(--accent));
+    border-color:#fff;box-shadow:0 0 0 5px rgba(var(--accent-rgb),.4),0 6px 18px rgba(0,0,0,.55)}
   .rmarker.route .ring{transform:scale(1.08)}
   .rmarker .tag{position:absolute;left:50%;top:calc(var(--sz,34px) + 8px);transform:translateX(-50%);
     white-space:nowrap;background:rgba(8,11,16,.92);border:1px solid var(--line);color:var(--ink);
@@ -161,9 +162,9 @@
 
   /* route stop dots + tooltips */
   .stopdot{transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;
-    background:radial-gradient(circle at 35% 30%,#fff7e6,#caa44e 65%,#7a5a1e);
+    background:radial-gradient(circle at 35% 30%,var(--accent-hi),var(--accent) 65%,var(--accent-deep));
     border:1.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.6);
-    display:flex;align-items:center;justify-content:center;font:700 10px/1 var(--sans);color:#3a2c0d}
+    display:flex;align-items:center;justify-content:center;font:700 10px/1 var(--sans);color:var(--accent-text)}
   .leaflet-tooltip.stoptip{background:rgba(8,11,16,.94);border:1px solid var(--line);color:var(--ink);
     font:600 11.5px var(--sans);padding:3px 8px;border-radius:7px;box-shadow:0 3px 10px rgba(0,0,0,.55)}
   .leaflet-tooltip.stoptip:before{border-top-color:rgba(8,11,16,.94)}
@@ -426,8 +427,8 @@ function drawRoute(trip,fit){
   const lls=unroll(stops.map(s=>s.ll));
   for(let i=0;i<lls.length-1;i++){
     const pts=arcPts(lls[i],lls[i+1]);
-    L.polyline(pts,{color:'#3a2c0d',weight:6,opacity:.22,lineCap:'round'}).addTo(routeLayer);
-    L.polyline(pts,{color:'#e9cf86',weight:2.2,opacity:.95,lineCap:'round',dashArray:'1 7'}).addTo(routeLayer);
+    L.polyline(pts,{color:'#111722',weight:6,opacity:.28,lineCap:'round'}).addTo(routeLayer);
+    L.polyline(pts,{color:'#f7f9fc',weight:2.2,opacity:.95,lineCap:'round',dashArray:'1 7'}).addTo(routeLayer);
   }
   lls.forEach((c,i)=>{
     const dot=L.divIcon({className:'',html:`<div class="stopdot">${i+1}</div>`,iconSize:[0,0]});
@@ -708,7 +709,7 @@ applyDeepLink();
   /* ---------- Unified bottom toolbar (dock) ---------- */
   .dock{position:absolute;z-index:1200;left:50%;bottom:16px;transform:translateX(-50%);
     display:flex;align-items:center;gap:6px;padding:6px;border-radius:34px;
-    background:rgba(17,21,29,.62);border:1px solid rgba(236,223,194,.16);box-shadow:var(--shadow);
+    background:rgba(17,21,29,.62);border:1px solid rgba(var(--accent-rgb),.16);box-shadow:var(--shadow);
     -webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
     max-width:calc(100vw - 24px)}
   .dockbtn{appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;gap:8px;height:42px;
@@ -735,9 +736,9 @@ applyDeepLink();
   /* Trace-route control on Around-the-World cards */
   .card .tracebtn{display:inline-flex;align-items:center;gap:6px;margin-top:9px;
     padding:6px 11px;border-radius:9px;font-size:11.5px;font-weight:700;cursor:pointer;
-    color:var(--accent);background:rgba(202,164,78,.10);border:1px solid rgba(202,164,78,.45);
+    color:var(--accent);background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-rgb),.45);
     -webkit-tap-highlight-color:transparent;transition:.15s}
-  .card .tracebtn:hover{background:rgba(202,164,78,.20);border-color:var(--accent)}
+  .card .tracebtn:hover{background:rgba(var(--accent-rgb),.20);border-color:var(--accent)}
   .card .tracebtn:active{transform:scale(.97)}
   #routeBack{display:none;position:absolute;z-index:1200;left:50%;bottom:84px;transform:translateX(-50%);
     align-items:center;gap:7px;padding:10px 17px;border-radius:30px;cursor:pointer;
