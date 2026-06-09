@@ -691,7 +691,9 @@ function applyDeepLink(){
   if(activeIds.size||activeBrand||activeSearchTerms.length)document.getElementById('reset').classList.add('show');
   applyFilter();
   const region=findRegionKey(sp.get('region'));
-  if(region)openRegion(region);
+  const world=/^(1|true|yes|y)$/i.test(String(sp.get('world')||'').trim());
+  if(world)openWorld();
+  else if(region)openRegion(region);
   else if(activeIds.size||activeBrand||activeMonths.size||activeSearchTerms.length)openSearchResults(activeIds.size?'Guide shortlist':'Filtered journeys');
 }
 applyDeepLink();
