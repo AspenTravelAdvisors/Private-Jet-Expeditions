@@ -277,7 +277,8 @@ _dataReady.then(() => {
 /* ===== Normalize: attach city list + derive regions for routed trips ===== */
 function dedupeOrder(a){const s=new Set(),o=[];a.forEach(x=>{if(!s.has(x)){s.add(x);o.push(x);}});return o;}
 function tripSlug(s){return s.toLowerCase().replace(/&/g,'and').replace(/['’]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
-TRIPS.forEach(t=>{
+TRIPS.forEach((t,i)=>{
+  t.guideId = 'jt_'+i;
   // Routed world trips reference an explicit ROUTES key; every other trip
   // falls back to its day-by-day city route keyed by the slugged trip name.
   const key = (t.route && ROUTES[t.route]) ? t.route
@@ -367,7 +368,7 @@ function matchesFilters(t){
   if(isPastTrip(t)) return false;
   return (!activeBrand || t.b===activeBrand)
     && (t.onDemand || !activeMonths.size || (t.mk && activeMonths.has(t.mk)))
-    && (!activeIds.size || activeIds.has(String(t.id)) || activeIds.has('jt_'+t.id))
+    && (!activeIds.size || activeIds.has(String(t.id)) || activeIds.has(t.guideId) || activeIds.has('jt_'+t.id))
     && textMatches(t);
 }
 /* on-demand trips (no fixed departure) always pass the month filter so they

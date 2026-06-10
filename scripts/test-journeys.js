@@ -36,6 +36,20 @@ test("query paginates with honest total + deepLink", () => {
   assert.ok(r.deepLink.includes("region=japan"));
 });
 
+test("A&K around-the-world handoff keeps exact shortlist ids", () => {
+  const r = query({ brand: "Abercrombie & Kent", world: "true", limit: 24 });
+  assert.equal(r.total, 2);
+  assert.deepEqual(r.results.map((j) => j.id), ["jt_77", "jt_88"]);
+  assert.ok(r.deepLink.includes("brand=Abercrombie+%26+Kent"));
+  assert.ok(r.deepLink.includes("world=true"));
+});
+
+test("ids filter accepts Guide ids for A&K world journeys", () => {
+  const r = query({ ids: "jt_77,jt_88", world: "true", limit: 24 });
+  assert.equal(r.total, 2);
+  assert.deepEqual(r.results.map((j) => j.id), ["jt_77", "jt_88"]);
+});
+
 test("clampLimit default 6, capped at 24", () => {
   assert.equal(clampLimit(undefined), 6);
   assert.equal(clampLimit(100), 24);
