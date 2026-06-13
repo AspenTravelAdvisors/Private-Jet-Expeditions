@@ -36,6 +36,16 @@ test("query paginates with honest total + deepLink", () => {
   assert.ok(r.deepLink.includes("region=japan"));
 });
 
+test("intent ranks with itinerary-fit rows and returns fit metadata", () => {
+  const r = query({ region: "japan", intent: "culture", limit: 5 });
+  assert.equal(r.count, Math.min(5, r.total));
+  assert.ok(r.deepLink.includes("intent=culture"));
+  assert.ok(r.results.every((j) => j.fit && j.fit.intent === "culture"));
+  for (let i = 1; i < r.results.length; i++) {
+    assert.ok(r.results[i - 1].fit.score >= r.results[i].fit.score);
+  }
+});
+
 test("A&K around-the-world handoff keeps exact shortlist ids", () => {
   const r = query({ brand: "Abercrombie & Kent", world: "true", limit: 24 });
   assert.equal(r.total, 2);
