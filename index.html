@@ -611,6 +611,15 @@ function fitTrips(list){
 
 /* ===== Region detail panel ===== */
 const panel=document.getElementById('panel');
+function revealPanel(){
+  document.body.classList.remove('panel-collapsed');
+  document.dispatchEvent(new Event('atlas:panel-sync'));
+}
+function hidePanel(){
+  document.getElementById('datePop').classList.remove('open');
+  document.body.classList.add('panel-collapsed');
+  document.dispatchEvent(new Event('atlas:panel-sync'));
+}
 function openSearchResults(title){
   activeView='__search__';
   if(!routeLocked){ pinnedTrip=null; clearRoute(); document.body.classList.remove('tracing'); }
@@ -624,6 +633,7 @@ function openSearchResults(title){
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));
   panel.classList.add('open');
+  revealPanel();
   fitTrips(trips);
 }
 function openRegion(key){
@@ -640,6 +650,7 @@ function openRegion(key){
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));
   panel.classList.add('open');
+  revealPanel();
   if(!routeLocked){
     const c=reg.coord;
     map.flyTo([c[0],c[1]], Math.max(map.getZoom(),3), {duration:.8});
@@ -659,6 +670,7 @@ function openWorld(){
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));
   panel.classList.add('open');
+  revealPanel();
 }
 document.getElementById('worldBtn').addEventListener('click',()=>{
   if(activeView==='__world__'){ closePanel(); } else { openWorld(); }
@@ -688,7 +700,7 @@ function showAll(){
   closePanel();
 }
 window.__atlasShowAll=showAll;
-document.getElementById('close').addEventListener('click',()=>closePanel({preserveRoute:true}));
+document.getElementById('close').addEventListener('click',hidePanel);
 map.on('click',()=>{
   document.getElementById('datePop').classList.remove('open');
   // A drawn route stays put when the map is panned or tapped — it clears only
@@ -803,6 +815,7 @@ applyDeepLink();
   }
   railPill.addEventListener('click',function(){ railCollapsed=!railCollapsed; syncRail(); });
   panelPill.addEventListener('click',function(){ body.classList.toggle('panel-collapsed'); syncPanel(); });
+  document.addEventListener('atlas:panel-sync',syncPanel);
   var resetAll=document.getElementById('resetAll');
   if(resetAll){ resetAll.addEventListener('click',function(){ if(window.__atlasShowAll) window.__atlasShowAll(); }); }
   if(panel){
