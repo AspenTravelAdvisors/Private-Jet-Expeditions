@@ -145,6 +145,12 @@
   .card .meta .dt{font-size:12px;color:var(--accent2);margin-top:3px;font-variant-numeric:tabular-nums}
   .card .meta .go{font-size:11.5px;color:var(--accent);margin-top:4px;display:flex;align-items:center;gap:5px}
   .card .meta .rt{font-size:10.5px;color:var(--muted);margin-top:5px;line-height:1.45}
+  .card .meta .itin{margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08);
+    display:grid;gap:3px}
+  .card .meta .itin .ih{font-size:10px;text-transform:uppercase;letter-spacing:.9px;color:var(--accent2);
+    font-weight:800}
+  .card .meta .itin .dayline{font-size:10.5px;line-height:1.35;color:var(--muted)}
+  .card .meta .itin .dayline b{color:var(--ink);font-weight:700}
   .card .arrow{margin-left:auto;color:var(--muted);font-size:18px;flex:0 0 auto}
 
   /* ---------- Markers ---------- */
@@ -310,6 +316,43 @@ function fmtRange(t){
   const right=`${MON[b.m-1]} ${b.day}, ${b.y}`;
   return `${left} – ${right}`;
 }
+function fmtIsoDate(s){
+  const m=String(s||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  return m ? `${MON[+m[2]-1]} ${+m[3]}` : '';
+}
+function dayRangeLabel(a,b){ return a===b ? `Day ${a}` : `Days ${a}-${b}`; }
+function itineraryRanges(t){
+  const rows=[];
+  (t.itin||[]).forEach(e=>{
+    const last=rows[rows.length-1];
+    if(last&&last.n===e.n){
+      last.end=e.d; last.endDate=e.date||last.endDate;
+    }else{
+      rows.push({n:e.n,start:e.d,end:e.d,startDate:e.date||'',endDate:e.date||''});
+    }
+  });
+  return rows;
+}
+function dateRangeLabel(row){
+  const a=fmtIsoDate(row.startDate), b=fmtIsoDate(row.endDate);
+  if(!a) return '';
+  return a===b ? a : `${a}-${b}`;
+}
+function itineraryHTML(t){
+  const rows=itineraryRanges(t);
+  if(!rows.length) return '';
+  return `<div class="itin"><div class="ih">Day-by-day itinerary</div>`+
+    rows.map(r=>{
+      const dates=dateRangeLabel(r);
+      return `<div class="dayline"><b>${dayRangeLabel(r.start,r.end)}</b>${dates?` · ${dates}`:''} · ${r.n}</div>`;
+    }).join('')+
+    `</div>`;
+}
+function stopDaySummary(t,name){
+  const hits=itineraryRanges(t).filter(r=>r.n===name);
+  if(!hits.length) return '';
+  return hits.map(r=>dayRangeLabel(r.start,r.end)).join(', ');
+}
 
 /* ===== logo helper (favicon -> brand glyph) ===== */
 function logoEl(brandKey){
@@ -441,8 +484,10 @@ function drawRoute(trip,fit){
   }
   lls.forEach((c,i)=>{
     const dot=L.divIcon({className:'',html:`<div class="stopdot">${i+1}</div>`,iconSize:[0,0]});
+    const dayInfo=stopDaySummary(trip,stops[i].label);
+    const tipLabel=dayInfo ? `${dayInfo} · ${stops[i].label}` : stops[i].label;
     const stopMarker=L.marker(c,{icon:dot,riseOnHover:true}).addTo(routeLayer)
-      .bindTooltip(`${i+1}. ${stops[i].label}`,{direction:'top',offset:[0,-9],className:'stoptip',opacity:1});
+      .bindTooltip(`${i+1}. ${tipLabel}`,{direction:'top',offset:[0,-9],className:'stoptip',opacity:1});
     stopMarker.on('click',()=>stopMarker.openTooltip());
   });
   trip.g.forEach(k=>{ if(markers[k]) markers[k].el.classList.add('route'); });
@@ -551,22 +596,21 @@ function makeCard(t){
   a._trip=t;
   const lg=logoEl(t.b);
   const meta=document.createElement('div');meta.className='meta';
-  let tail;
-  if(t.world){
-    const path = t.cities ? t.cities.map(c=>c.n).join(' → ') : t.g.map(k=>REGIONS[k].ab).join(' · ');
-    const n = t.cities ? t.cities.length : t.g.length;
-    tail = `<div class="go">✈ Around the World &middot; ${n} stops ↗</div><div class="rt">${path}</div>`;
-  } else {
-    tail = `<div class="go">View itinerary ↗</div>`;
-  }
-  const dateLine = t.d ? `<div class="dt">${fmtRange(t)}</div>` : (t.onDemand ? `<div class="dt">On Demand</div>` : '');
+  const path = t.cities ? t.cities.map(c=>c.n).join(' → ') : (t.g||[]).map(k=>REGIONS[k].ab).join(' · ');
+  const n = t.cities ? t.cities.length : (t.g||[]).length;
+  const duration = t.d ? `${t.days||t.itin&&t.itin.length||''} days` : `${n} stop route`;
+  const label = t.world ? 'Around the World' : ((BRANDS[t.b]&&BRANDS[t.b].short)||'Private Jet');
+  const tail = `<div class="go">✈ ${label} &middot; ${duration}${n?` &middot; ${n} stops`:''} ↗</div>`+
+    (path?`<div class="rt">${path}</div>`:'')+
+    itineraryHTML(t);
+  const dateLine = t.d ? `<div class="dt">${fmtRange(t)}</div>` : (t.onDemand ? `<div class="dt">On Demand</div>` : `<div class="dt">By request</div>`);
   meta.innerHTML=`<div class="nm">${t.n}</div>${dateLine}${tail}`;
   const ar=document.createElement('div');ar.className='arrow';ar.textContent='›';
   a.appendChild(lg);a.appendChild(meta);a.appendChild(ar);
   if(activeBrand && t.b===activeBrand) a.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
-  if(t.world){
+  if(t.cities&&t.cities.length>1){
     a.addEventListener('mouseenter',()=>{ if(!routeLocked){ pinnedTrip=t; drawRoute(t,false); } });
-    a.addEventListener('mouseleave',()=>{ if(routeLocked&&pinnedTrip) drawRoute(pinnedTrip,false); });
+    a.addEventListener('mouseleave',()=>{ if(routeLocked&&pinnedTrip) drawRoute(pinnedTrip,false); else if(!routeLocked){ pinnedTrip=null; clearRoute(); } });
     a.addEventListener('click',()=>{ pinnedTrip=t; drawRoute(t,true); });
     const trace=document.createElement('span');
     trace.className='tracebtn';trace.setAttribute('role','button');trace.tabIndex=0;
@@ -628,7 +672,7 @@ function openSearchResults(title){
   const trips=allMatchingTrips();
   document.getElementById('pKlabel').textContent='Guide shortlist';
   document.getElementById('pTitle').textContent=title||'Search results';
-  document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length!==1?'s':'')+' matched this Guide shortlist · tap a card for itinerary & pricing';
+  document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length!==1?'s':'')+' matched this Guide shortlist · each card includes day-by-day stops, route tracing, itinerary & pricing';
   const list=document.getElementById('pList');
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));
@@ -645,7 +689,7 @@ function openRegion(key){
   const trips=sortTrips(byRegion[key].filter(matchesFilters));
   document.getElementById('pKlabel').textContent='Private jet destination';
   document.getElementById('pTitle').textContent=reg.name;
-  document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length!==1?'s':'')+' reach here · tap a card for itinerary & pricing';
+  document.getElementById('pSub').textContent=trips.length+' private jet journey'+(trips.length!==1?'s':'')+' reach here · each card includes day-by-day stops, route tracing, itinerary & pricing';
   const list=document.getElementById('pList');
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));
@@ -665,7 +709,7 @@ function openWorld(){
   const trips=sortTrips(WORLD_TRIPS.filter(matchesFilters));
   document.getElementById('pKlabel').textContent='Global jet journeys';
   document.getElementById('pTitle').textContent='Around the World';
-  document.getElementById('pSub').textContent=trips.length+' circumnavigation'+(trips.length!==1?'s':'')+' · hover a journey to trace its city-to-city flight path, tap for the full itinerary';
+  document.getElementById('pSub').textContent=trips.length+' circumnavigation'+(trips.length!==1?'s':'')+' · hover a journey to trace its city-to-city flight path, with day-by-day stops shown on every card';
   const list=document.getElementById('pList');
   list.innerHTML='';
   trips.forEach(t=>list.appendChild(makeCard(t)));

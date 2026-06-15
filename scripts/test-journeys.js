@@ -17,6 +17,12 @@ test("dataset loaded (unique ids, every record has a bookable URL)", () => {
   assert.ok(journeys.every((j) => j.name && j.bookUrl));
 });
 
+test("every journey exposes day-by-day itinerary data", () => {
+  assert.ok(journeys.every((j) => Array.isArray(j.itinerary) && j.itinerary.length > 0));
+  assert.ok(journeys.every((j) => j.days === j.itinerary.length));
+  assert.ok(journeys.every((j) => j.itinerary.every((d, i) => d.d === i + 1 && d.n)));
+});
+
 test("region filter accepts marquee keys; japan maps from EASTASIA", () => {
   const r = filterJourneys({ region: "japan" });
   assert.ok(r.length > 0);
