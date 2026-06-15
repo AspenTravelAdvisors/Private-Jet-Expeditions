@@ -441,8 +441,9 @@ function drawRoute(trip,fit){
   }
   lls.forEach((c,i)=>{
     const dot=L.divIcon({className:'',html:`<div class="stopdot">${i+1}</div>`,iconSize:[0,0]});
-    L.marker(c,{icon:dot,riseOnHover:true}).addTo(routeLayer)
+    const stopMarker=L.marker(c,{icon:dot,riseOnHover:true}).addTo(routeLayer)
       .bindTooltip(`${i+1}. ${stops[i].label}`,{direction:'top',offset:[0,-9],className:'stoptip',opacity:1});
+    stopMarker.on('click',()=>stopMarker.openTooltip());
   });
   trip.g.forEach(k=>{ if(markers[k]) markers[k].el.classList.add('route'); });
   markRoutedCard(trip,fit);
@@ -564,8 +565,8 @@ function makeCard(t){
   a.appendChild(lg);a.appendChild(meta);a.appendChild(ar);
   if(activeBrand && t.b===activeBrand) a.style.borderColor=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
   if(t.world){
-    a.addEventListener('mouseenter',()=>drawRoute(t,false));
-    a.addEventListener('mouseleave',()=>{ pinnedTrip?drawRoute(pinnedTrip,false):clearRoute(); });
+    a.addEventListener('mouseenter',()=>{ if(!routeLocked){ pinnedTrip=t; drawRoute(t,false); } });
+    a.addEventListener('mouseleave',()=>{ if(routeLocked&&pinnedTrip) drawRoute(pinnedTrip,false); });
     a.addEventListener('click',()=>{ pinnedTrip=t; drawRoute(t,true); });
     const trace=document.createElement('span');
     trace.className='tracebtn';trace.setAttribute('role','button');trace.tabIndex=0;
@@ -665,10 +666,17 @@ document.getElementById('worldBtn').addEventListener('click',()=>{
 document.getElementById('worldCount').textContent = WORLD_TRIPS.length+' global journeys';
 
 /* ===== Close handling ===== */
-function closePanel(){
-  panel.classList.remove('open'); activeView=null; pinnedTrip=null; routeLocked=false;
-  clearRoute(); applyFilter();
-  document.body.classList.remove('tracing');
+function closePanel(opts){
+  const preserveRoute=!!(opts&&opts.preserveRoute&&pinnedTrip);
+  panel.classList.remove('open'); activeView=null; routeLocked=false;
+  if(preserveRoute){
+    document.body.classList.remove('tracing');
+    markRoutedCard(pinnedTrip,false);
+  }else{
+    pinnedTrip=null;
+    clearRoute(); applyFilter();
+    document.body.classList.remove('tracing');
+  }
   document.getElementById('worldBtn').classList.remove('active');
   document.getElementById('datePop').classList.remove('open');
 }
@@ -680,7 +688,7 @@ function showAll(){
   closePanel();
 }
 window.__atlasShowAll=showAll;
-document.getElementById('close').addEventListener('click',closePanel);
+document.getElementById('close').addEventListener('click',()=>closePanel({preserveRoute:true}));
 map.on('click',()=>{
   document.getElementById('datePop').classList.remove('open');
   // A drawn route stays put when the map is panned or tapped — it clears only
