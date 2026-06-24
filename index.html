@@ -377,6 +377,7 @@
     <h3 id="pTitle">Region</h3>
     <div class="sub" id="pSub"></div>
   </div>
+  <div class="cardteaser">&#128071; Click any result for aircraft photos, day-to-day itinerary &amp; more</div>
   <div class="list" id="pList"></div>
 </section>
 
@@ -756,6 +757,20 @@ document.getElementById('reset').addEventListener('click',()=>{
 });
 
 /* ===== Card builder ===== */
+/* ===== Ask The Guide — opens BeVvip Base Camp pre-filled with this product ===== */
+const GUIDE_URL='https://bevvip-concierge.vercel.app/';
+function askGuideBtn(ctx,link){
+  const b=document.createElement('span');
+  b.className='askguide';b.setAttribute('role','button');b.tabIndex=0;
+  b.title='Ask The Guide about this';
+  b.innerHTML='&#10022; Ask The Guide';
+  const full=ctx+(link?(' (Virtuoso listing: '+link+')'):'');
+  function go(e){ e.preventDefault();e.stopPropagation();
+    window.open(GUIDE_URL+'?ask='+encodeURIComponent(full)+'&src=jet','_blank','noopener'); }
+  b.addEventListener('click',go);
+  b.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')go(e); });
+  return b;
+}
 function makeCard(t){
   const a=document.createElement('a');
   a.className='card'+(t.world?' world':'');
@@ -797,6 +812,10 @@ function makeCard(t){
     trace.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') doTrace(e); });
     meta.appendChild(trace);
   }
+  meta.appendChild(askGuideBtn(
+    'I\'m looking at the "'+t.n+'" private jet journey on the BeVvip Private Jet Atlas — '
+    +label+(duration?', '+duration:'')+(path?'. Route: '+path:'')
+    +'. Can you tell me more about it and help me plan it through BeVvip?', t.u));
   return a;
 }
 function sortTrips(trips){
@@ -1036,6 +1055,10 @@ setTimeout(function(){ if(window.hideAtlasVeil) window.hideAtlasVeil(); },180);
   .card .tracebtn:hover{background:rgba(var(--accent-rgb),.20);border-color:var(--accent)}
   .card .tracebtn:active{transform:scale(.97)}
   .card .tracebtn.on{background:linear-gradient(135deg,var(--accent),var(--accent-hi));color:var(--accent-text);border-color:#fff}
+  .card .askguide{display:inline-flex;align-items:center;gap:6px;margin-top:9px;margin-left:8px;padding:6px 11px;border-radius:9px;font-size:11.5px;font-weight:700;cursor:pointer;color:var(--accent);background:transparent;border:1px solid var(--accent);-webkit-tap-highlight-color:transparent;transition:.15s}
+  .card .askguide:hover{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+  .card .askguide:active{transform:scale(.97)}
+  .panel .cardteaser{display:flex;align-items:center;justify-content:center;gap:7px;margin:12px 16px 0;padding:8px 12px;border:1px dashed var(--accent);border-radius:10px;color:var(--accent);font-size:11.5px;font-weight:600;letter-spacing:.2px;text-align:center;line-height:1.3;opacity:.92}
   .card .tracebtn.on:hover{filter:brightness(1.04)}
   #routeBack{display:none;position:absolute;z-index:1200;left:50%;bottom:84px;transform:translateX(-50%);
     align-items:center;gap:7px;padding:10px 17px;border-radius:30px;cursor:pointer;
