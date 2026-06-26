@@ -4306,6 +4306,224 @@
           100.07
         ]
       }
+    ],
+    "exclusive-thailand-private-jet-by-day-four-seasons-by-night": [
+      {
+        "n": "Bangkok",
+        "r": "SEASIA",
+        "ll": [
+          13.75,
+          100.5
+        ]
+      },
+      {
+        "n": "Chiang Mai",
+        "r": "SEASIA",
+        "ll": [
+          18.79,
+          98.99
+        ]
+      },
+      {
+        "n": "Chiang Rai",
+        "r": "SEASIA",
+        "ll": [
+          19.91,
+          99.84
+        ]
+      },
+      {
+        "n": "Koh Samui",
+        "r": "SEASIA",
+        "ll": [
+          9.51,
+          100.01
+        ]
+      }
+    ],
+    "exclusive-north-india-mumbai-to-varanasi-by-private-jet": [
+      {
+        "n": "Mumbai",
+        "r": "INDIA",
+        "ll": [
+          19.08,
+          72.88
+        ]
+      },
+      {
+        "n": "Udaipur",
+        "r": "INDIA",
+        "ll": [
+          24.58,
+          73.68
+        ]
+      },
+      {
+        "n": "Jodhpur",
+        "r": "INDIA",
+        "ll": [
+          26.24,
+          73.02
+        ]
+      },
+      {
+        "n": "Jaipur",
+        "r": "INDIA",
+        "ll": [
+          26.91,
+          75.79
+        ]
+      },
+      {
+        "n": "Ranthambore",
+        "r": "INDIA",
+        "ll": [
+          26.02,
+          76.5
+        ]
+      },
+      {
+        "n": "Agra",
+        "r": "INDIA",
+        "ll": [
+          27.17,
+          78.04
+        ]
+      },
+      {
+        "n": "Varanasi",
+        "r": "INDIA",
+        "ll": [
+          25.32,
+          82.97
+        ]
+      }
+    ],
+    "east-gobi-and-the-khan-khentii-mongolia-private-jet-adventure": [
+      {
+        "n": "Ikh Nart",
+        "r": "SILK",
+        "ll": [
+          45.72,
+          108.65
+        ]
+      },
+      {
+        "n": "Khan Khentii",
+        "r": "SILK",
+        "ll": [
+          48.5,
+          108.6
+        ]
+      },
+      {
+        "n": "Ulaanbaatar",
+        "r": "SILK",
+        "ll": [
+          47.92,
+          106.92
+        ]
+      }
+    ],
+    "essence-of-india-from-the-taj-mahal-to-jaipur-by-private-jet": [
+      {
+        "n": "New Delhi",
+        "r": "INDIA",
+        "ll": [
+          28.61,
+          77.21
+        ]
+      },
+      {
+        "n": "Agra",
+        "r": "INDIA",
+        "ll": [
+          27.17,
+          78.04
+        ]
+      },
+      {
+        "n": "Ranthambore National Park",
+        "r": "INDIA",
+        "ll": [
+          26.02,
+          76.5
+        ]
+      },
+      {
+        "n": "Alwar",
+        "r": "INDIA",
+        "ll": [
+          27.56,
+          76.62
+        ]
+      },
+      {
+        "n": "Jaipur",
+        "r": "INDIA",
+        "ll": [
+          26.91,
+          75.79
+        ]
+      }
+    ],
+    "atw-three-continents-2027": [
+      {
+        "n": "Kyoto",
+        "r": "EASTASIA",
+        "ll": [
+          35.01,
+          135.77
+        ]
+      },
+      {
+        "n": "Palawan",
+        "r": "SEASIA",
+        "ll": [
+          10.8,
+          119.3
+        ]
+      },
+      {
+        "n": "Borobudur",
+        "r": "SEASIA",
+        "ll": [
+          -7.61,
+          110.2
+        ]
+      },
+      {
+        "n": "Tangalle",
+        "r": "INDIA",
+        "ll": [
+          6.02,
+          80.79
+        ]
+      },
+      {
+        "n": "Dubai",
+        "r": "MIDEAST",
+        "ll": [
+          25.2,
+          55.27
+        ]
+      },
+      {
+        "n": "Venice",
+        "r": "EUROPE",
+        "ll": [
+          45.44,
+          12.33
+        ]
+      },
+      {
+        "n": "Marrakech",
+        "r": "AFRICA",
+        "ll": [
+          31.63,
+          -7.99
+        ]
+      }
     ]
   },
   "TRIPS": [
@@ -12078,6 +12296,128 @@
       ]
     },
     {
+      "d": "10/17/2027",
+      "r": "11/7/2027",
+      "n": "Around the World in Three Continents – Aman Jet Expeditions",
+      "b": "aman",
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18301939/around-the-world-in-three-continents-aman-jet-expedition-2027",
+      "route": "atw-three-continents-2027",
+      "world": true,
+      "days": 22,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Kyoto",
+          "date": "2027-10-17"
+        },
+        {
+          "d": 2,
+          "n": "Kyoto",
+          "date": "2027-10-18"
+        },
+        {
+          "d": 3,
+          "n": "Kyoto",
+          "date": "2027-10-19"
+        },
+        {
+          "d": 4,
+          "n": "Palawan",
+          "date": "2027-10-20"
+        },
+        {
+          "d": 5,
+          "n": "Palawan",
+          "date": "2027-10-21"
+        },
+        {
+          "d": 6,
+          "n": "Palawan",
+          "date": "2027-10-22"
+        },
+        {
+          "d": 7,
+          "n": "Borobudur",
+          "date": "2027-10-23"
+        },
+        {
+          "d": 8,
+          "n": "Borobudur",
+          "date": "2027-10-24"
+        },
+        {
+          "d": 9,
+          "n": "Borobudur",
+          "date": "2027-10-25"
+        },
+        {
+          "d": 10,
+          "n": "Tangalle",
+          "date": "2027-10-26"
+        },
+        {
+          "d": 11,
+          "n": "Tangalle",
+          "date": "2027-10-27"
+        },
+        {
+          "d": 12,
+          "n": "Tangalle",
+          "date": "2027-10-28"
+        },
+        {
+          "d": 13,
+          "n": "Dubai",
+          "date": "2027-10-29"
+        },
+        {
+          "d": 14,
+          "n": "Dubai",
+          "date": "2027-10-30"
+        },
+        {
+          "d": 15,
+          "n": "Dubai",
+          "date": "2027-10-31"
+        },
+        {
+          "d": 16,
+          "n": "Venice",
+          "date": "2027-11-01"
+        },
+        {
+          "d": 17,
+          "n": "Venice",
+          "date": "2027-11-02"
+        },
+        {
+          "d": 18,
+          "n": "Venice",
+          "date": "2027-11-03"
+        },
+        {
+          "d": 19,
+          "n": "Marrakech",
+          "date": "2027-11-04"
+        },
+        {
+          "d": 20,
+          "n": "Marrakech",
+          "date": "2027-11-05"
+        },
+        {
+          "d": 21,
+          "n": "Marrakech",
+          "date": "2027-11-06"
+        },
+        {
+          "d": 22,
+          "n": "Marrakech",
+          "date": "2027-11-07"
+        }
+      ]
+    },
+    {
       "d": "10/18/2027",
       "r": "10/29/2027",
       "n": "China by Private Jet",
@@ -12299,6 +12639,89 @@
           "d": 12,
           "n": "Sao Paulo",
           "date": "2027-11-12"
+        }
+      ]
+    },
+    {
+      "d": "11/7/2027",
+      "r": "11/20/2027",
+      "n": "Discover Southeast Asia – Aman Jet Expeditions",
+      "b": "aman",
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18301921/discover-southeast-asia-aman-jet-expeditions-2027-nov-7-20-2027",
+      "days": 14,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Ninh Thuân",
+          "date": "2027-11-07"
+        },
+        {
+          "d": 2,
+          "n": "Ninh Thuân",
+          "date": "2027-11-08"
+        },
+        {
+          "d": 3,
+          "n": "Luang Prabang",
+          "date": "2027-11-09"
+        },
+        {
+          "d": 4,
+          "n": "Luang Prabang",
+          "date": "2027-11-10"
+        },
+        {
+          "d": 5,
+          "n": "Luang Prabang",
+          "date": "2027-11-11"
+        },
+        {
+          "d": 6,
+          "n": "Siem Reap",
+          "date": "2027-11-12"
+        },
+        {
+          "d": 7,
+          "n": "Siem Reap",
+          "date": "2027-11-13"
+        },
+        {
+          "d": 8,
+          "n": "Siem Reap",
+          "date": "2027-11-14"
+        },
+        {
+          "d": 9,
+          "n": "Phuket",
+          "date": "2027-11-15"
+        },
+        {
+          "d": 10,
+          "n": "Phuket",
+          "date": "2027-11-16"
+        },
+        {
+          "d": 11,
+          "n": "Phuket",
+          "date": "2027-11-17"
+        },
+        {
+          "d": 12,
+          "n": "Bangkok",
+          "date": "2027-11-18"
+        },
+        {
+          "d": 13,
+          "n": "Bangkok",
+          "date": "2027-11-19"
+        },
+        {
+          "d": 14,
+          "n": "Bangkok",
+          "date": "2027-11-20"
         }
       ]
     },
@@ -12958,6 +13381,45 @@
       ]
     },
     {
+      "n": "East Gobi and the Khan Khentii: Mongolia Private Jet Adventure",
+      "b": "remotelands",
+      "g": [
+        "SILK"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15240639/east-gobi-and-the-khan-khentii-mongolia-private-jet-adventure",
+      "days": 7,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Ikh Nart"
+        },
+        {
+          "d": 2,
+          "n": "Ikh Nart"
+        },
+        {
+          "d": 3,
+          "n": "Ikh Nart"
+        },
+        {
+          "d": 4,
+          "n": "Khan Khentii"
+        },
+        {
+          "d": 5,
+          "n": "Khan Khentii"
+        },
+        {
+          "d": 6,
+          "n": "Khan Khentii"
+        },
+        {
+          "d": 7,
+          "n": "Ulaanbaatar"
+        }
+      ]
+    },
+    {
       "n": "Edges of the Living World: Asia & Oceania by Private Jet",
       "b": "tcs",
       "g": [
@@ -13010,6 +13472,57 @@
       ]
     },
     {
+      "n": "Essence of India: From the Taj Mahal to Jaipur by Private Jet",
+      "b": "remotelands",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15224888/essence-of-india-from-the-taj-mahal-to-jaipur-by-private-jet",
+      "days": 10,
+      "itin": [
+        {
+          "d": 1,
+          "n": "New Delhi"
+        },
+        {
+          "d": 2,
+          "n": "New Delhi"
+        },
+        {
+          "d": 3,
+          "n": "Agra"
+        },
+        {
+          "d": 4,
+          "n": "Ranthambore National Park"
+        },
+        {
+          "d": 5,
+          "n": "Ranthambore National Park"
+        },
+        {
+          "d": 6,
+          "n": "Alwar"
+        },
+        {
+          "d": 7,
+          "n": "Alwar"
+        },
+        {
+          "d": 8,
+          "n": "Jaipur"
+        },
+        {
+          "d": 9,
+          "n": "Jaipur"
+        },
+        {
+          "d": 10,
+          "n": "Jaipur"
+        }
+      ]
+    },
+    {
       "n": "Exclusive Colombia Tour",
       "b": "signature",
       "g": [
@@ -13033,6 +13546,116 @@
         {
           "d": 4,
           "n": "Cartagena"
+        }
+      ]
+    },
+    {
+      "n": "Exclusive North India: Mumbai to Varanasi by Private Jet",
+      "b": "remotelands",
+      "g": [
+        "INDIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/14338759/exclusive-north-india-mumbai-to-varanasi-by-private-jet",
+      "days": 12,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Mumbai"
+        },
+        {
+          "d": 2,
+          "n": "Mumbai"
+        },
+        {
+          "d": 3,
+          "n": "Udaipur"
+        },
+        {
+          "d": 4,
+          "n": "Udaipur"
+        },
+        {
+          "d": 5,
+          "n": "Jodhpur"
+        },
+        {
+          "d": 6,
+          "n": "Jodhpur"
+        },
+        {
+          "d": 7,
+          "n": "Jaipur"
+        },
+        {
+          "d": 8,
+          "n": "Jaipur"
+        },
+        {
+          "d": 9,
+          "n": "Ranthambore"
+        },
+        {
+          "d": 10,
+          "n": "Ranthambore"
+        },
+        {
+          "d": 11,
+          "n": "Agra"
+        },
+        {
+          "d": 12,
+          "n": "Varanasi"
+        }
+      ]
+    },
+    {
+      "n": "Exclusive Thailand: Private Jet by Day, Four Seasons by Night",
+      "b": "remotelands",
+      "g": [
+        "SEASIA"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/15245356/exclusive-thailand-private-jet-by-day-four-seasons-by-night",
+      "days": 10,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Bangkok"
+        },
+        {
+          "d": 2,
+          "n": "Bangkok"
+        },
+        {
+          "d": 3,
+          "n": "Chiang Mai"
+        },
+        {
+          "d": 4,
+          "n": "Chiang Mai"
+        },
+        {
+          "d": 5,
+          "n": "Chiang Rai"
+        },
+        {
+          "d": 6,
+          "n": "Chiang Rai"
+        },
+        {
+          "d": 7,
+          "n": "Koh Samui"
+        },
+        {
+          "d": 8,
+          "n": "Koh Samui"
+        },
+        {
+          "d": 9,
+          "n": "Koh Samui"
+        },
+        {
+          "d": 10,
+          "n": "Koh Samui"
         }
       ]
     },
