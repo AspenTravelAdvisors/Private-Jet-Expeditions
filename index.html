@@ -942,7 +942,7 @@ function findRegionKey(raw){
 }
 function allMatchingTrips(){
   const seen=new Set(),out=[];
-  TRIPS.filter(matchesFilters).forEach(t=>{if(!seen.has(t.id)){seen.add(t.id);out.push(t);}});
+  TRIPS.filter(matchesFilters).forEach(t=>{const uid=t.guideId||t.id;if(!seen.has(uid)){seen.add(uid);out.push(t);}});
   return sortTrips(out);
 }
 function fitTrips(list){
