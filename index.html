@@ -103,8 +103,13 @@
   /* Region filter rows reuse .op; pin chip instead of a logo */
   .op .regab{background:radial-gradient(circle at 35% 30%,var(--accent-hi),var(--accent) 60%,var(--accent-deep));
     color:var(--accent-text);font-size:14px}
-  .op .dot.regtick{background:transparent;border:1.5px solid var(--line);width:14px;height:14px;border-radius:5px;opacity:.7}
+  .op .dot.regtick{position:relative;background:transparent;border:1.5px solid var(--line);width:14px;height:14px;border-radius:5px;opacity:.7}
   .op.reg.active .dot.regtick{background:var(--accent);border-color:var(--accent);opacity:1}
+  /* Excluded region: red tick with a minus glyph; whole row reads as "hide" */
+  .op.reg.excluded .dot.regtick{background:var(--neg,#c0392b);border-color:var(--neg,#c0392b);opacity:1}
+  .op.reg.excluded .dot.regtick::after{content:'';position:absolute;left:3px;right:3px;top:50%;height:1.5px;margin-top:-.75px;background:#fff;border-radius:1px}
+  .op.reg.excluded .nm{text-decoration:line-through;opacity:.6}
+  .reghint{padding:6px 12px 8px;font-size:11px;line-height:1.35;color:var(--muted,#8a8a8a);letter-spacing:.02em}
 
   /* ---------- Date range filter (departure month) ---------- */
   .filterbtn{margin:11px 10px 4px;padding:11px 12px;border-radius:12px;cursor:pointer;display:flex;
@@ -392,7 +397,7 @@
     <button type="button" class="secthead" id="jetHead">Jet experience<span class="chev">&#9662;</span></button>
     <div class="sectbody ops" id="opList"></div>
     <button type="button" class="secthead collapsed" id="regionHead">Region<span class="chev">&#9662;</span></button>
-    <div class="sectbody ops reglist collapsed" id="regionList"></div>
+    <div class="sectbody ops reglist collapsed" id="regionList"><div class="reghint">Tap once to focus a region &middot; again to exclude it</div></div>
   </div>
   <div class="reset" id="reset">&#10005; Clear filter</div>
   <div class="sheetFooter" id="railFooter">
@@ -598,7 +603,7 @@ if(window.setAtlasProgress) window.setAtlasProgress(50,'Rendering the world map.
 const markers={}; // regionKey -> {marker, el, trips}
 let activeBrands=new Set(), activeView=null, pinnedTrip=null, routeLocked=false;
 let activeMonths=new Set();
-let activeRegions=new Set();
+let activeRegions=new Set(), excludedRegions=new Set();
 const activeIds=new Set();let activeSearchTerms=[];
 function isPastTrip(t){
   if(t.onDemand || !t.d) return false;
@@ -624,7 +629,14 @@ function matchesNonRegion(t){
     && (!activeIds.size || activeIds.has(String(t.id)) || activeIds.has(t.guideId) || activeIds.has('jt_'+t.id))
     && textMatches(t);
 }
-function regionPass(t){ return !activeRegions.size || (t.g||[]).some(k=>activeRegions.has(k)); }
+/* A trip passes the region filter when it reaches at least one *included* region
+   (or none are selected) AND it touches none of the *excluded* regions. */
+function regionPass(t){
+  const g=t.g||[];
+  const inc = !activeRegions.size || g.some(k=>activeRegions.has(k));
+  const exc = !excludedRegions.size || !g.some(k=>excludedRegions.has(k));
+  return inc && exc;
+}
 function matchesFilters(t){ return matchesNonRegion(t) && regionPass(t); }
 /* on-demand trips (no fixed departure) always pass the month filter so they
    sit at the bottom of every selected month */
@@ -786,7 +798,7 @@ function toggleBrand(key,row){
   if(activeBrands.has(key)){ activeBrands.delete(key); row.classList.remove('active'); }
   else { activeBrands.add(key); row.classList.add('active'); }
   applyFilter();
-  document.getElementById('reset').classList.toggle('show', !!activeBrands.size||activeRegions.size||activeIds.size||activeSearchTerms.length);
+  document.getElementById('reset').classList.toggle('show', !!activeBrands.size||activeRegions.size||excludedRegions.size||activeIds.size||activeSearchTerms.length);
   if(activeView){ activeView==='__world__' ? openWorld() : (activeView==='__search__'?openSearchResults():openRegion(activeView)); }
 }
 /* ===== Region filter rows + collapsible section accordion ===== */
@@ -804,12 +816,17 @@ Object.keys(REGIONS).forEach(key=>{
   row.addEventListener('click',()=>toggleRegionFilter(key,row));
   regionList.appendChild(row);
 });
+/* Three-state cycle per region: off → include → exclude → off.
+   include = only journeys reaching it; exclude = only journeys that skip it. */
 function toggleRegionFilter(key,row){
   routeLocked=false; document.body.classList.remove('tracing');
-  if(activeRegions.has(key)) activeRegions.delete(key); else activeRegions.add(key);
+  if(activeRegions.has(key)){ activeRegions.delete(key); excludedRegions.add(key); }
+  else if(excludedRegions.has(key)){ excludedRegions.delete(key); }
+  else { activeRegions.add(key); }
   row.classList.toggle('active',activeRegions.has(key));
+  row.classList.toggle('excluded',excludedRegions.has(key));
   applyFilter();
-  document.getElementById('reset').classList.toggle('show', !!activeBrands.size||activeRegions.size||activeIds.size||activeSearchTerms.length);
+  document.getElementById('reset').classList.toggle('show', !!activeBrands.size||activeRegions.size||excludedRegions.size||activeIds.size||activeSearchTerms.length);
   if(activeView){ activeView==='__world__'?openWorld():(activeView==='__search__'?openSearchResults():openRegion(activeView)); }
 }
 [['jetHead','opList'],['regionHead','regionList']].forEach(pair=>{
@@ -817,7 +834,7 @@ function toggleRegionFilter(key,row){
   head.addEventListener('click',()=>{ const c=head.classList.toggle('collapsed'); body.classList.toggle('collapsed',c); });
 });
 function applyFilter(){
-  const anyFilter = !!activeBrands.size || activeMonths.size>0 || activeIds.size>0 || activeSearchTerms.length>0 || activeRegions.size>0;
+  const anyFilter = !!activeBrands.size || activeMonths.size>0 || activeIds.size>0 || activeSearchTerms.length>0 || activeRegions.size>0 || excludedRegions.size>0;
   Object.entries(markers).forEach(([key,obj])=>{
     // Dynamic count: how many qualifying journeys reach this region right now
     const n=obj.trips.filter(matchesNonRegion).length;
@@ -828,7 +845,7 @@ function applyFilter(){
     const row=document.querySelector('.reg[data-region="'+cssEsc(key)+'"]');
     if(row){ const sub=row.querySelector('.ct'); if(sub) sub.textContent=`${n} departure${n!==1?'s':''}`; }
     if(obj.el.classList.contains('route')) return;
-    const regionSel = !activeRegions.size || activeRegions.has(key);
+    const regionSel = (!activeRegions.size || activeRegions.has(key)) && !excludedRegions.has(key);
     const hit = n>0 && regionSel;
     obj.el.classList.toggle('dim', anyFilter && !hit);
     obj.el.classList.toggle('hit', anyFilter && hit);
@@ -837,8 +854,8 @@ function applyFilter(){
 }
 document.getElementById('reset').addEventListener('click',()=>{
   routeLocked=false; document.body.classList.remove('tracing');
-  activeBrands.clear();document.querySelectorAll('.op').forEach(r=>r.classList.remove('active'));
-  activeIds.clear();activeSearchTerms=[];activeRegions.clear();
+  activeBrands.clear();document.querySelectorAll('.op').forEach(r=>r.classList.remove('active','excluded'));
+  activeIds.clear();activeSearchTerms=[];activeRegions.clear();excludedRegions.clear();
   applyFilter();document.getElementById('reset').classList.remove('show');
   if(activeView){ activeView==='__world__' ? openWorld() : (activeView==='__search__'?openSearchResults():openRegion(activeView)); }
 });
@@ -1037,8 +1054,8 @@ function closePanel(opts){
 }
 /* Full reset: clear brand filter, close any region/world panel, drop routes, un-dim pins */
 function showAll(){
-  activeBrands.clear(); document.querySelectorAll('.op').forEach(r=>r.classList.remove('active'));
-  activeIds.clear(); activeSearchTerms=[]; activeRegions.clear();
+  activeBrands.clear(); document.querySelectorAll('.op').forEach(r=>r.classList.remove('active','excluded'));
+  activeIds.clear(); activeSearchTerms=[]; activeRegions.clear(); excludedRegions.clear();
   document.getElementById('reset').classList.remove('show');
   closePanel();
 }
@@ -1051,6 +1068,7 @@ window.__atlasShareUrl=function(){
   if(activeBrands.size)p.set('brand',[...activeBrands].join(','));
   if(activeMonths.size)p.set('month',[...activeMonths].join(','));
   if(activeRegions.size)p.set('regions',[...activeRegions].join(','));
+  if(excludedRegions.size)p.set('exRegions',[...excludedRegions].join(','));
   if(activeSearchTerms.length)p.set('q',activeSearchTerms.join(' '));
   if(activeIds.size)p.set('ids',[...activeIds].join(','));
   var qs=p.toString();
@@ -1077,14 +1095,16 @@ function applyDeepLink(){
   if(brandParam){ brandParam.split(',').map(s=>s.trim()).filter(Boolean).forEach(b=>{ const brand=findBrand(b); if(brand){ activeBrands.add(brand); const row=document.querySelector('.op[data-brand="'+cssEsc(brand)+'"]'); if(row)row.classList.add('active'); } }); }
   const regions=sp.get('regions');
   if(regions){ regions.split(',').map(s=>s.trim()).filter(Boolean).forEach(k=>{ if(REGIONS[k]&&markers[k]){ activeRegions.add(k); const r=document.querySelector('.reg[data-region="'+cssEsc(k)+'"]'); if(r)r.classList.add('active'); } }); }
+  const exRegions=sp.get('exRegions');
+  if(exRegions){ exRegions.split(',').map(s=>s.trim()).filter(Boolean).forEach(k=>{ if(REGIONS[k]&&markers[k]&&!activeRegions.has(k)){ excludedRegions.add(k); const r=document.querySelector('.reg[data-region="'+cssEsc(k)+'"]'); if(r)r.classList.add('excluded'); } }); }
   activeSearchTerms=[...words(sp.get('q')),...words(sp.get('country'))];
-  if(activeIds.size||activeBrands.size||activeRegions.size||activeSearchTerms.length)document.getElementById('reset').classList.add('show');
+  if(activeIds.size||activeBrands.size||activeRegions.size||excludedRegions.size||activeSearchTerms.length)document.getElementById('reset').classList.add('show');
   applyFilter();
   const region=findRegionKey(sp.get('region'));
   const world=/^(1|true|yes|y)$/i.test(String(sp.get('world')||'').trim());
   if(world)openWorld();
   else if(region)openRegion(region);
-  else if(activeIds.size||activeBrands.size||activeMonths.size||activeRegions.size||activeSearchTerms.length)openSearchResults(activeIds.size?'Guide shortlist':'Filtered journeys');
+  else if(activeIds.size||activeBrands.size||activeMonths.size||activeRegions.size||excludedRegions.size||activeSearchTerms.length)openSearchResults(activeIds.size?'Guide shortlist':'Filtered journeys');
 }
 applyDeepLink();
 if(window.setAtlasProgress) window.setAtlasProgress(100,'Welcome to the Private Jet Atlas');
