@@ -1139,80 +1139,6 @@
         ]
       }
     ],
-    "national-geographic-african-discovery-by-private-jet": [
-      {
-        "n": "Johannesburg",
-        "r": "AFRICA",
-        "ll": [
-          -26.2,
-          28.04
-        ]
-      },
-      {
-        "n": "Swakopmund",
-        "r": "AFRICA",
-        "ll": [
-          -22.68,
-          14.53
-        ]
-      },
-      {
-        "n": "Victoria Falls",
-        "r": "AFRICA",
-        "ll": [
-          -17.92,
-          25.86
-        ]
-      },
-      {
-        "n": "Kigali",
-        "r": "AFRICA",
-        "ll": [
-          -1.94,
-          30.06
-        ]
-      },
-      {
-        "n": "Volcanoes National Park",
-        "r": "AFRICA",
-        "ll": [
-          -1.47,
-          29.49
-        ]
-      },
-      {
-        "n": "Zanzibar",
-        "r": "AFRICA",
-        "ll": [
-          -6.16,
-          39.2
-        ]
-      },
-      {
-        "n": "Nairobi",
-        "r": "AFRICA",
-        "ll": [
-          -1.29,
-          36.82
-        ]
-      },
-      {
-        "n": "Maasai Mara",
-        "r": "AFRICA",
-        "ll": [
-          -1.5,
-          35.14
-        ]
-      },
-      {
-        "n": "Rome",
-        "r": "EUROPE",
-        "ll": [
-          41.9,
-          12.5
-        ]
-      }
-    ],
     "uncharted-canada-a-small-group-expedition-by-private-air": [
       {
         "n": "Vancouver",
@@ -2022,80 +1948,6 @@
         "ll": [
           -33.87,
           151.21
-        ]
-      }
-    ],
-    "photographing-the-world-by-private-jet-with-national-geographic": [
-      {
-        "n": "Marrakech",
-        "r": "AFRICA",
-        "ll": [
-          31.63,
-          -7.99
-        ]
-      },
-      {
-        "n": "Petra",
-        "r": "MIDEAST",
-        "ll": [
-          30.33,
-          35.44
-        ]
-      },
-      {
-        "n": "Angkor Wat",
-        "r": "SEASIA",
-        "ll": [
-          13.41,
-          103.87
-        ]
-      },
-      {
-        "n": "Bali",
-        "r": "SEASIA",
-        "ll": [
-          -8.65,
-          115.22
-        ]
-      },
-      {
-        "n": "Great Barrier Reef",
-        "r": "ANZ",
-        "ll": [
-          -16.92,
-          145.77
-        ]
-      },
-      {
-        "n": "Easter Island",
-        "r": "SAM",
-        "ll": [
-          -27.11,
-          -109.35
-        ]
-      },
-      {
-        "n": "Machu Picchu",
-        "r": "SAM",
-        "ll": [
-          -13.16,
-          -72.55
-        ]
-      },
-      {
-        "n": "Galapagos Islands",
-        "r": "SAM",
-        "ll": [
-          -0.95,
-          -90.97
-        ]
-      },
-      {
-        "n": "New York",
-        "r": "AMERICAS",
-        "ll": [
-          40.71,
-          -74.01
         ]
       }
     ],
@@ -4524,6 +4376,416 @@
           -7.99
         ]
       }
+    ],
+    "around-the-world-by-private-jet": [
+      {
+        "n": "Washington, D.C.",
+        "r": "AMERICAS",
+        "ll": [
+          38.9,
+          -77.04
+        ]
+      },
+      {
+        "n": "Machu Picchu",
+        "r": "SAM",
+        "ll": [
+          -13.16,
+          -72.55
+        ]
+      },
+      {
+        "n": "Easter Island",
+        "r": "SAM",
+        "ll": [
+          -27.11,
+          -109.35
+        ]
+      },
+      {
+        "n": "Apia, Samoa",
+        "r": "POLY",
+        "ll": [
+          -13.83,
+          -171.77
+        ]
+      },
+      {
+        "n": "Great Barrier Reef",
+        "r": "ANZ",
+        "ll": [
+          -16.92,
+          145.77
+        ]
+      },
+      {
+        "n": "Siem Reap",
+        "r": "SEASIA",
+        "ll": [
+          13.36,
+          103.86
+        ]
+      },
+      {
+        "n": "Kathmandu",
+        "r": "INDIA",
+        "ll": [
+          27.72,
+          85.32
+        ]
+      },
+      {
+        "n": "Paro",
+        "r": "INDIA",
+        "ll": [
+          27.43,
+          89.42
+        ]
+      },
+      {
+        "n": "Agra",
+        "r": "INDIA",
+        "ll": [
+          27.17,
+          78.04
+        ]
+      },
+      {
+        "n": "Serengeti",
+        "r": "AFRICA",
+        "ll": [
+          -2.33,
+          34.83
+        ]
+      },
+      {
+        "n": "Petra",
+        "r": "MIDEAST",
+        "ll": [
+          30.33,
+          35.44
+        ]
+      },
+      {
+        "n": "Marrakech",
+        "r": "AFRICA",
+        "ll": [
+          31.63,
+          -7.99
+        ]
+      },
+      {
+        "n": "Washington, D.C.",
+        "r": "AMERICAS",
+        "ll": [
+          38.9,
+          -77.04
+        ]
+      }
+    ],
+    "atlantic-crossroads-a-discovery-by-private-jet": [
+      {
+        "n": "Dublin",
+        "r": "EUROPE",
+        "ll": [
+          53.35,
+          -6.26
+        ]
+      },
+      {
+        "n": "Funchal, Madeira",
+        "r": "EUROPE",
+        "ll": [
+          32.65,
+          -16.91
+        ]
+      },
+      {
+        "n": "Tangier",
+        "r": "AFRICA",
+        "ll": [
+          35.76,
+          -5.83
+        ]
+      },
+      {
+        "n": "Lanzarote",
+        "r": "EUROPE",
+        "ll": [
+          29.05,
+          -13.59
+        ]
+      },
+      {
+        "n": "Dakar",
+        "r": "AFRICA",
+        "ll": [
+          14.69,
+          -17.45
+        ]
+      },
+      {
+        "n": "Salvador",
+        "r": "SAM",
+        "ll": [
+          -12.98,
+          -38.5
+        ]
+      },
+      {
+        "n": "Buenos Aires",
+        "r": "SAM",
+        "ll": [
+          -34.6,
+          -58.38
+        ]
+      }
+    ],
+    "oceans-and-islands-of-the-world-by-private-jet": [
+      {
+        "n": "Honolulu",
+        "r": "POLY",
+        "ll": [
+          21.31,
+          -157.86
+        ]
+      },
+      {
+        "n": "Bora Bora",
+        "r": "POLY",
+        "ll": [
+          -16.5,
+          -151.74
+        ]
+      },
+      {
+        "n": "Auckland",
+        "r": "ANZ",
+        "ll": [
+          -36.85,
+          174.76
+        ]
+      },
+      {
+        "n": "Adelaide",
+        "r": "ANZ",
+        "ll": [
+          -34.93,
+          138.6
+        ]
+      },
+      {
+        "n": "Palau",
+        "r": "SEASIA",
+        "ll": [
+          7.51,
+          134.58
+        ]
+      },
+      {
+        "n": "Bali",
+        "r": "SEASIA",
+        "ll": [
+          -8.65,
+          115.22
+        ]
+      },
+      {
+        "n": "Sri Lanka",
+        "r": "INDIA",
+        "ll": [
+          7.87,
+          80.77
+        ]
+      },
+      {
+        "n": "Seychelles",
+        "r": "AFRICA",
+        "ll": [
+          -4.68,
+          55.49
+        ]
+      },
+      {
+        "n": "Muscat",
+        "r": "MIDEAST",
+        "ll": [
+          23.59,
+          58.41
+        ]
+      },
+      {
+        "n": "Valletta",
+        "r": "EUROPE",
+        "ll": [
+          35.9,
+          14.51
+        ]
+      },
+      {
+        "n": "Washington, D.C.",
+        "r": "AMERICAS",
+        "ll": [
+          38.9,
+          -77.04
+        ]
+      }
+    ],
+    "the-silk-road-by-private-jet": [
+      {
+        "n": "Istanbul",
+        "r": "EUROPE",
+        "ll": [
+          41.01,
+          28.98
+        ]
+      },
+      {
+        "n": "Yerevan",
+        "r": "SILK",
+        "ll": [
+          40.18,
+          44.51
+        ]
+      },
+      {
+        "n": "Bukhara",
+        "r": "SILK",
+        "ll": [
+          39.77,
+          64.43
+        ]
+      },
+      {
+        "n": "Almaty",
+        "r": "SILK",
+        "ll": [
+          43.24,
+          76.95
+        ]
+      },
+      {
+        "n": "Dunhuang",
+        "r": "SILK",
+        "ll": [
+          40.14,
+          94.66
+        ]
+      },
+      {
+        "n": "Hoi An",
+        "r": "SEASIA",
+        "ll": [
+          15.88,
+          108.33
+        ]
+      },
+      {
+        "n": "Bishkek",
+        "r": "SILK",
+        "ll": [
+          42.87,
+          74.59
+        ]
+      },
+      {
+        "n": "Baku",
+        "r": "SILK",
+        "ll": [
+          40.41,
+          49.87
+        ]
+      },
+      {
+        "n": "Istanbul",
+        "r": "EUROPE",
+        "ll": [
+          41.01,
+          28.98
+        ]
+      }
+    ],
+    "wildlife-of-the-world-by-private-jet": [
+      {
+        "n": "Singapore",
+        "r": "SEASIA",
+        "ll": [
+          1.35,
+          103.82
+        ]
+      },
+      {
+        "n": "Borneo",
+        "r": "SEASIA",
+        "ll": [
+          5.98,
+          116.07
+        ]
+      },
+      {
+        "n": "Jaipur",
+        "r": "INDIA",
+        "ll": [
+          26.91,
+          75.79
+        ]
+      },
+      {
+        "n": "Ranthambhore National Park",
+        "r": "INDIA",
+        "ll": [
+          26.02,
+          76.5
+        ]
+      },
+      {
+        "n": "Yala National Park",
+        "r": "INDIA",
+        "ll": [
+          6.37,
+          81.52
+        ]
+      },
+      {
+        "n": "Male, Maldives",
+        "r": "INDIA",
+        "ll": [
+          3.2,
+          73
+        ]
+      },
+      {
+        "n": "Nosy Be",
+        "r": "AFRICA",
+        "ll": [
+          -13.31,
+          48.26
+        ]
+      },
+      {
+        "n": "Phinda Private Game Reserve",
+        "r": "AFRICA",
+        "ll": [
+          -27.85,
+          32.31
+        ]
+      },
+      {
+        "n": "Kigali / Volcanoes National Park",
+        "r": "AFRICA",
+        "ll": [
+          -1.94,
+          30.06
+        ]
+      },
+      {
+        "n": "Rome",
+        "r": "EUROPE",
+        "ll": [
+          41.9,
+          12.5
+        ]
+      }
     ]
   },
   "TRIPS": [
@@ -4737,89 +4999,6 @@
       ]
     },
     {
-      "d": "7/12/2026",
-      "r": "7/25/2026",
-      "n": "National Geographic African Discovery by Private Jet",
-      "b": "natgeo",
-      "g": [
-        "AFRICA"
-      ],
-      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
-      "days": 14,
-      "itin": [
-        {
-          "d": 1,
-          "n": "Johannesburg",
-          "date": "2026-07-12"
-        },
-        {
-          "d": 2,
-          "n": "Swakopmund",
-          "date": "2026-07-13"
-        },
-        {
-          "d": 3,
-          "n": "Swakopmund",
-          "date": "2026-07-14"
-        },
-        {
-          "d": 4,
-          "n": "Victoria Falls",
-          "date": "2026-07-15"
-        },
-        {
-          "d": 5,
-          "n": "Victoria Falls",
-          "date": "2026-07-16"
-        },
-        {
-          "d": 6,
-          "n": "Kigali",
-          "date": "2026-07-17"
-        },
-        {
-          "d": 7,
-          "n": "Kigali",
-          "date": "2026-07-18"
-        },
-        {
-          "d": 8,
-          "n": "Volcanoes National Park",
-          "date": "2026-07-19"
-        },
-        {
-          "d": 9,
-          "n": "Volcanoes National Park",
-          "date": "2026-07-20"
-        },
-        {
-          "d": 10,
-          "n": "Zanzibar",
-          "date": "2026-07-21"
-        },
-        {
-          "d": 11,
-          "n": "Zanzibar",
-          "date": "2026-07-22"
-        },
-        {
-          "d": 12,
-          "n": "Nairobi",
-          "date": "2026-07-23"
-        },
-        {
-          "d": 13,
-          "n": "Maasai Mara",
-          "date": "2026-07-24"
-        },
-        {
-          "d": 14,
-          "n": "Rome",
-          "date": "2026-07-25"
-        }
-      ]
-    },
-    {
       "d": "7/15/2026",
       "r": "7/28/2026",
       "n": "Uncharted Canada: A Small Group Expedition by Private Air",
@@ -4978,6 +5157,142 @@
           "d": 13,
           "n": "Johannesburg",
           "date": "2026-08-26"
+        }
+      ]
+    },
+    {
+      "d": "8/28/2026",
+      "r": "9/21/2026",
+      "n": "Around the World by Private Jet",
+      "b": "natgeo",
+      "route": "around-the-world-by-private-jet",
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
+      "days": 25,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Washington, D.C.",
+          "date": "2026-08-28"
+        },
+        {
+          "d": 2,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2026-08-29"
+        },
+        {
+          "d": 3,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2026-08-30"
+        },
+        {
+          "d": 4,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2026-08-31"
+        },
+        {
+          "d": 5,
+          "n": "Easter Island",
+          "date": "2026-09-01"
+        },
+        {
+          "d": 6,
+          "n": "Easter Island",
+          "date": "2026-09-02"
+        },
+        {
+          "d": 7,
+          "n": "Cross the International Date Line",
+          "date": "2026-09-03"
+        },
+        {
+          "d": 8,
+          "n": "Apia, Samoa",
+          "date": "2026-09-04"
+        },
+        {
+          "d": 9,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2026-09-05"
+        },
+        {
+          "d": 10,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2026-09-06"
+        },
+        {
+          "d": 11,
+          "n": "Siem Reap",
+          "date": "2026-09-07"
+        },
+        {
+          "d": 12,
+          "n": "Siem Reap",
+          "date": "2026-09-08"
+        },
+        {
+          "d": 13,
+          "n": "Siem Reap",
+          "date": "2026-09-09"
+        },
+        {
+          "d": 14,
+          "n": "Kathmandu / Paro",
+          "date": "2026-09-10"
+        },
+        {
+          "d": 15,
+          "n": "Kathmandu / Paro",
+          "date": "2026-09-11"
+        },
+        {
+          "d": 16,
+          "n": "Kathmandu / Paro",
+          "date": "2026-09-12"
+        },
+        {
+          "d": 17,
+          "n": "Agra",
+          "date": "2026-09-13"
+        },
+        {
+          "d": 18,
+          "n": "Agra",
+          "date": "2026-09-14"
+        },
+        {
+          "d": 19,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2026-09-15"
+        },
+        {
+          "d": 20,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2026-09-16"
+        },
+        {
+          "d": 21,
+          "n": "Petra",
+          "date": "2026-09-17"
+        },
+        {
+          "d": 22,
+          "n": "Petra",
+          "date": "2026-09-18"
+        },
+        {
+          "d": 23,
+          "n": "Marrakech",
+          "date": "2026-09-19"
+        },
+        {
+          "d": 24,
+          "n": "Marrakech",
+          "date": "2026-09-20"
+        },
+        {
+          "d": 25,
+          "n": "Washington, D.C.",
+          "date": "2026-09-21"
         }
       ]
     },
@@ -5559,6 +5874,142 @@
           "d": 11,
           "n": "Ragusa",
           "date": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "d": "9/26/2026",
+      "r": "10/20/2026",
+      "n": "Around the World by Private Jet",
+      "b": "natgeo",
+      "route": "around-the-world-by-private-jet",
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
+      "days": 25,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Washington, D.C.",
+          "date": "2026-09-26"
+        },
+        {
+          "d": 2,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2026-09-27"
+        },
+        {
+          "d": 3,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2026-09-28"
+        },
+        {
+          "d": 4,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2026-09-29"
+        },
+        {
+          "d": 5,
+          "n": "Easter Island",
+          "date": "2026-09-30"
+        },
+        {
+          "d": 6,
+          "n": "Easter Island",
+          "date": "2026-10-01"
+        },
+        {
+          "d": 7,
+          "n": "Cross the International Date Line",
+          "date": "2026-10-02"
+        },
+        {
+          "d": 8,
+          "n": "Apia, Samoa",
+          "date": "2026-10-03"
+        },
+        {
+          "d": 9,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2026-10-04"
+        },
+        {
+          "d": 10,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2026-10-05"
+        },
+        {
+          "d": 11,
+          "n": "Siem Reap",
+          "date": "2026-10-06"
+        },
+        {
+          "d": 12,
+          "n": "Siem Reap",
+          "date": "2026-10-07"
+        },
+        {
+          "d": 13,
+          "n": "Siem Reap",
+          "date": "2026-10-08"
+        },
+        {
+          "d": 14,
+          "n": "Kathmandu / Paro",
+          "date": "2026-10-09"
+        },
+        {
+          "d": 15,
+          "n": "Kathmandu / Paro",
+          "date": "2026-10-10"
+        },
+        {
+          "d": 16,
+          "n": "Kathmandu / Paro",
+          "date": "2026-10-11"
+        },
+        {
+          "d": 17,
+          "n": "Agra",
+          "date": "2026-10-12"
+        },
+        {
+          "d": 18,
+          "n": "Agra",
+          "date": "2026-10-13"
+        },
+        {
+          "d": 19,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2026-10-14"
+        },
+        {
+          "d": 20,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2026-10-15"
+        },
+        {
+          "d": 21,
+          "n": "Petra",
+          "date": "2026-10-16"
+        },
+        {
+          "d": 22,
+          "n": "Petra",
+          "date": "2026-10-17"
+        },
+        {
+          "d": 23,
+          "n": "Marrakech",
+          "date": "2026-10-18"
+        },
+        {
+          "d": 24,
+          "n": "Marrakech",
+          "date": "2026-10-19"
+        },
+        {
+          "d": 25,
+          "n": "Washington, D.C.",
+          "date": "2026-10-20"
         }
       ]
     },
@@ -6475,140 +6926,6 @@
           "d": 11,
           "n": "Sydney",
           "date": "2026-10-29"
-        }
-      ]
-    },
-    {
-      "d": "10/25/2026",
-      "r": "11/16/2026",
-      "n": "Photographing the World by Private Jet with National Geographic",
-      "b": "natgeo",
-      "g": [
-        "EASTASIA",
-        "INDIA",
-        "AFRICA",
-        "SAM",
-        "POLY",
-        "ANZ"
-      ],
-      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
-      "world": true,
-      "days": 23,
-      "itin": [
-        {
-          "d": 1,
-          "n": "Marrakech",
-          "date": "2026-10-25"
-        },
-        {
-          "d": 2,
-          "n": "Petra",
-          "date": "2026-10-26"
-        },
-        {
-          "d": 3,
-          "n": "Petra",
-          "date": "2026-10-27"
-        },
-        {
-          "d": 4,
-          "n": "Petra",
-          "date": "2026-10-28"
-        },
-        {
-          "d": 5,
-          "n": "Angkor Wat",
-          "date": "2026-10-29"
-        },
-        {
-          "d": 6,
-          "n": "Angkor Wat",
-          "date": "2026-10-30"
-        },
-        {
-          "d": 7,
-          "n": "Angkor Wat",
-          "date": "2026-10-31"
-        },
-        {
-          "d": 8,
-          "n": "Bali",
-          "date": "2026-11-01"
-        },
-        {
-          "d": 9,
-          "n": "Bali",
-          "date": "2026-11-02"
-        },
-        {
-          "d": 10,
-          "n": "Bali",
-          "date": "2026-11-03"
-        },
-        {
-          "d": 11,
-          "n": "Great Barrier Reef",
-          "date": "2026-11-04"
-        },
-        {
-          "d": 12,
-          "n": "Great Barrier Reef",
-          "date": "2026-11-05"
-        },
-        {
-          "d": 13,
-          "n": "Great Barrier Reef",
-          "date": "2026-11-06"
-        },
-        {
-          "d": 14,
-          "n": "Easter Island",
-          "date": "2026-11-07"
-        },
-        {
-          "d": 15,
-          "n": "Easter Island",
-          "date": "2026-11-08"
-        },
-        {
-          "d": 16,
-          "n": "Easter Island",
-          "date": "2026-11-09"
-        },
-        {
-          "d": 17,
-          "n": "Machu Picchu",
-          "date": "2026-11-10"
-        },
-        {
-          "d": 18,
-          "n": "Machu Picchu",
-          "date": "2026-11-11"
-        },
-        {
-          "d": 19,
-          "n": "Machu Picchu",
-          "date": "2026-11-12"
-        },
-        {
-          "d": 20,
-          "n": "Galapagos Islands",
-          "date": "2026-11-13"
-        },
-        {
-          "d": 21,
-          "n": "Galapagos Islands",
-          "date": "2026-11-14"
-        },
-        {
-          "d": 22,
-          "n": "Galapagos Islands",
-          "date": "2026-11-15"
-        },
-        {
-          "d": 23,
-          "n": "New York",
-          "date": "2026-11-16"
         }
       ]
     },
@@ -7863,6 +8180,147 @@
       ]
     },
     {
+      "d": "1/1/2027",
+      "r": "1/26/2027",
+      "n": "Around the World by Private Jet",
+      "b": "natgeo",
+      "route": "around-the-world-by-private-jet",
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
+      "days": 26,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Washington, D.C.",
+          "date": "2027-01-01"
+        },
+        {
+          "d": 2,
+          "n": "Washington, D.C.",
+          "date": "2027-01-02"
+        },
+        {
+          "d": 3,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2027-01-03"
+        },
+        {
+          "d": 4,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2027-01-04"
+        },
+        {
+          "d": 5,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2027-01-05"
+        },
+        {
+          "d": 6,
+          "n": "Easter Island",
+          "date": "2027-01-06"
+        },
+        {
+          "d": 7,
+          "n": "Easter Island",
+          "date": "2027-01-07"
+        },
+        {
+          "d": 8,
+          "n": "Cross the International Date Line",
+          "date": "2027-01-08"
+        },
+        {
+          "d": 9,
+          "n": "Apia, Samoa",
+          "date": "2027-01-09"
+        },
+        {
+          "d": 10,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2027-01-10"
+        },
+        {
+          "d": 11,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2027-01-11"
+        },
+        {
+          "d": 12,
+          "n": "Siem Reap",
+          "date": "2027-01-12"
+        },
+        {
+          "d": 13,
+          "n": "Siem Reap",
+          "date": "2027-01-13"
+        },
+        {
+          "d": 14,
+          "n": "Siem Reap",
+          "date": "2027-01-14"
+        },
+        {
+          "d": 15,
+          "n": "Kathmandu / Paro",
+          "date": "2027-01-15"
+        },
+        {
+          "d": 16,
+          "n": "Kathmandu / Paro",
+          "date": "2027-01-16"
+        },
+        {
+          "d": 17,
+          "n": "Kathmandu / Paro",
+          "date": "2027-01-17"
+        },
+        {
+          "d": 18,
+          "n": "Agra",
+          "date": "2027-01-18"
+        },
+        {
+          "d": 19,
+          "n": "Agra",
+          "date": "2027-01-19"
+        },
+        {
+          "d": 20,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2027-01-20"
+        },
+        {
+          "d": 21,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2027-01-21"
+        },
+        {
+          "d": 22,
+          "n": "Petra",
+          "date": "2027-01-22"
+        },
+        {
+          "d": 23,
+          "n": "Petra",
+          "date": "2027-01-23"
+        },
+        {
+          "d": 24,
+          "n": "Marrakech",
+          "date": "2027-01-24"
+        },
+        {
+          "d": 25,
+          "n": "Marrakech",
+          "date": "2027-01-25"
+        },
+        {
+          "d": 26,
+          "n": "Washington, D.C.",
+          "date": "2027-01-26"
+        }
+      ]
+    },
+    {
       "d": "1/20/2027",
       "r": "2/9/2027",
       "n": "Uncharted Discovery: A Four Seasons Private Jet Experience",
@@ -8154,6 +8612,137 @@
           "d": 12,
           "n": "Chichen Itza",
           "date": "2027-02-05"
+        }
+      ]
+    },
+    {
+      "d": "1/31/2027",
+      "r": "2/23/2027",
+      "n": "Oceans and Islands of the World by Private Jet",
+      "b": "natgeo",
+      "route": "oceans-and-islands-of-the-world-by-private-jet",
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
+      "days": 24,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Honolulu",
+          "date": "2027-01-31"
+        },
+        {
+          "d": 2,
+          "n": "Bora Bora",
+          "date": "2027-02-01"
+        },
+        {
+          "d": 3,
+          "n": "Bora Bora",
+          "date": "2027-02-02"
+        },
+        {
+          "d": 4,
+          "n": "Bora Bora",
+          "date": "2027-02-03"
+        },
+        {
+          "d": 5,
+          "n": "Cross the International Date Line",
+          "date": "2027-02-04"
+        },
+        {
+          "d": 6,
+          "n": "Auckland",
+          "date": "2027-02-05"
+        },
+        {
+          "d": 7,
+          "n": "Auckland",
+          "date": "2027-02-06"
+        },
+        {
+          "d": 8,
+          "n": "Adelaide",
+          "date": "2027-02-07"
+        },
+        {
+          "d": 9,
+          "n": "Adelaide",
+          "date": "2027-02-08"
+        },
+        {
+          "d": 10,
+          "n": "Palau",
+          "date": "2027-02-09"
+        },
+        {
+          "d": 11,
+          "n": "Palau",
+          "date": "2027-02-10"
+        },
+        {
+          "d": 12,
+          "n": "Bali",
+          "date": "2027-02-11"
+        },
+        {
+          "d": 13,
+          "n": "Bali",
+          "date": "2027-02-12"
+        },
+        {
+          "d": 14,
+          "n": "Bali",
+          "date": "2027-02-13"
+        },
+        {
+          "d": 15,
+          "n": "Sri Lanka",
+          "date": "2027-02-14"
+        },
+        {
+          "d": 16,
+          "n": "Sri Lanka",
+          "date": "2027-02-15"
+        },
+        {
+          "d": 17,
+          "n": "Sri Lanka",
+          "date": "2027-02-16"
+        },
+        {
+          "d": 18,
+          "n": "Seychelles",
+          "date": "2027-02-17"
+        },
+        {
+          "d": 19,
+          "n": "Seychelles",
+          "date": "2027-02-18"
+        },
+        {
+          "d": 20,
+          "n": "Muscat",
+          "date": "2027-02-19"
+        },
+        {
+          "d": 21,
+          "n": "Muscat",
+          "date": "2027-02-20"
+        },
+        {
+          "d": 22,
+          "n": "Valletta",
+          "date": "2027-02-21"
+        },
+        {
+          "d": 23,
+          "n": "Valletta",
+          "date": "2027-02-22"
+        },
+        {
+          "d": 24,
+          "n": "Washington, D.C.",
+          "date": "2027-02-23"
         }
       ]
     },
@@ -9331,6 +9920,147 @@
       ]
     },
     {
+      "d": "3/30/2027",
+      "r": "4/24/2027",
+      "n": "Around the World by Private Jet",
+      "b": "natgeo",
+      "route": "around-the-world-by-private-jet",
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
+      "days": 26,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Washington, D.C.",
+          "date": "2027-03-30"
+        },
+        {
+          "d": 2,
+          "n": "Washington, D.C.",
+          "date": "2027-03-31"
+        },
+        {
+          "d": 3,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2027-04-01"
+        },
+        {
+          "d": 4,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2027-04-02"
+        },
+        {
+          "d": 5,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2027-04-03"
+        },
+        {
+          "d": 6,
+          "n": "Easter Island",
+          "date": "2027-04-04"
+        },
+        {
+          "d": 7,
+          "n": "Easter Island",
+          "date": "2027-04-05"
+        },
+        {
+          "d": 8,
+          "n": "Cross the International Date Line",
+          "date": "2027-04-06"
+        },
+        {
+          "d": 9,
+          "n": "Apia, Samoa",
+          "date": "2027-04-07"
+        },
+        {
+          "d": 10,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2027-04-08"
+        },
+        {
+          "d": 11,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2027-04-09"
+        },
+        {
+          "d": 12,
+          "n": "Siem Reap",
+          "date": "2027-04-10"
+        },
+        {
+          "d": 13,
+          "n": "Siem Reap",
+          "date": "2027-04-11"
+        },
+        {
+          "d": 14,
+          "n": "Siem Reap",
+          "date": "2027-04-12"
+        },
+        {
+          "d": 15,
+          "n": "Kathmandu / Paro",
+          "date": "2027-04-13"
+        },
+        {
+          "d": 16,
+          "n": "Kathmandu / Paro",
+          "date": "2027-04-14"
+        },
+        {
+          "d": 17,
+          "n": "Kathmandu / Paro",
+          "date": "2027-04-15"
+        },
+        {
+          "d": 18,
+          "n": "Agra",
+          "date": "2027-04-16"
+        },
+        {
+          "d": 19,
+          "n": "Agra",
+          "date": "2027-04-17"
+        },
+        {
+          "d": 20,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2027-04-18"
+        },
+        {
+          "d": 21,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2027-04-19"
+        },
+        {
+          "d": 22,
+          "n": "Petra",
+          "date": "2027-04-20"
+        },
+        {
+          "d": 23,
+          "n": "Petra",
+          "date": "2027-04-21"
+        },
+        {
+          "d": 24,
+          "n": "Marrakech",
+          "date": "2027-04-22"
+        },
+        {
+          "d": 25,
+          "n": "Marrakech",
+          "date": "2027-04-23"
+        },
+        {
+          "d": 26,
+          "n": "Washington, D.C.",
+          "date": "2027-04-24"
+        }
+      ]
+    },
+    {
       "d": "4/11/2027",
       "r": "5/1/2027",
       "n": "The Grandest Tour – Aman Jet Expeditions",
@@ -9639,6 +10369,132 @@
           "d": 22,
           "n": "London",
           "date": "2027-05-06"
+        }
+      ]
+    },
+    {
+      "d": "4/30/2027",
+      "r": "5/22/2027",
+      "n": "Wildlife of the World by Private Jet",
+      "b": "natgeo",
+      "route": "wildlife-of-the-world-by-private-jet",
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
+      "days": 23,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Singapore",
+          "date": "2027-04-30"
+        },
+        {
+          "d": 2,
+          "n": "Borneo",
+          "date": "2027-05-01"
+        },
+        {
+          "d": 3,
+          "n": "Borneo",
+          "date": "2027-05-02"
+        },
+        {
+          "d": 4,
+          "n": "Borneo",
+          "date": "2027-05-03"
+        },
+        {
+          "d": 5,
+          "n": "Jaipur",
+          "date": "2027-05-04"
+        },
+        {
+          "d": 6,
+          "n": "Ranthambhore National Park",
+          "date": "2027-05-05"
+        },
+        {
+          "d": 7,
+          "n": "Ranthambhore National Park",
+          "date": "2027-05-06"
+        },
+        {
+          "d": 8,
+          "n": "Yala and Bundala National Parks",
+          "date": "2027-05-07"
+        },
+        {
+          "d": 9,
+          "n": "Yala and Bundala National Parks",
+          "date": "2027-05-08"
+        },
+        {
+          "d": 10,
+          "n": "Yala and Bundala National Parks",
+          "date": "2027-05-09"
+        },
+        {
+          "d": 11,
+          "n": "Male, Maldives",
+          "date": "2027-05-10"
+        },
+        {
+          "d": 12,
+          "n": "Male, Maldives",
+          "date": "2027-05-11"
+        },
+        {
+          "d": 13,
+          "n": "Male, Maldives",
+          "date": "2027-05-12"
+        },
+        {
+          "d": 14,
+          "n": "Nosy Be",
+          "date": "2027-05-13"
+        },
+        {
+          "d": 15,
+          "n": "Nosy Be",
+          "date": "2027-05-14"
+        },
+        {
+          "d": 16,
+          "n": "Phinda Private Game Reserve",
+          "date": "2027-05-15"
+        },
+        {
+          "d": 17,
+          "n": "Phinda Private Game Reserve",
+          "date": "2027-05-16"
+        },
+        {
+          "d": 18,
+          "n": "Phinda Private Game Reserve",
+          "date": "2027-05-17"
+        },
+        {
+          "d": 19,
+          "n": "Kigali / Volcanoes National Park",
+          "date": "2027-05-18"
+        },
+        {
+          "d": 20,
+          "n": "Kigali / Volcanoes National Park",
+          "date": "2027-05-19"
+        },
+        {
+          "d": 21,
+          "n": "Kigali / Volcanoes National Park",
+          "date": "2027-05-20"
+        },
+        {
+          "d": 22,
+          "n": "Rome",
+          "date": "2027-05-21"
+        },
+        {
+          "d": 23,
+          "n": "Rome",
+          "date": "2027-05-22"
         }
       ]
     },
@@ -10030,6 +10886,117 @@
           "d": 12,
           "n": "Shanghai",
           "date": "2027-05-28"
+        }
+      ]
+    },
+    {
+      "d": "5/27/2027",
+      "r": "6/15/2027",
+      "n": "The Silk Road by Private Jet",
+      "b": "natgeo",
+      "route": "the-silk-road-by-private-jet",
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
+      "days": 20,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Istanbul",
+          "date": "2027-05-27"
+        },
+        {
+          "d": 2,
+          "n": "Istanbul",
+          "date": "2027-05-28"
+        },
+        {
+          "d": 3,
+          "n": "Yerevan",
+          "date": "2027-05-29"
+        },
+        {
+          "d": 4,
+          "n": "Yerevan",
+          "date": "2027-05-30"
+        },
+        {
+          "d": 5,
+          "n": "Yerevan",
+          "date": "2027-05-31"
+        },
+        {
+          "d": 6,
+          "n": "Bukhara",
+          "date": "2027-06-01"
+        },
+        {
+          "d": 7,
+          "n": "Bukhara",
+          "date": "2027-06-02"
+        },
+        {
+          "d": 8,
+          "n": "Almaty",
+          "date": "2027-06-03"
+        },
+        {
+          "d": 9,
+          "n": "Almaty",
+          "date": "2027-06-04"
+        },
+        {
+          "d": 10,
+          "n": "Dunhuang",
+          "date": "2027-06-05"
+        },
+        {
+          "d": 11,
+          "n": "Dunhuang",
+          "date": "2027-06-06"
+        },
+        {
+          "d": 12,
+          "n": "Hoi An",
+          "date": "2027-06-07"
+        },
+        {
+          "d": 13,
+          "n": "Hoi An",
+          "date": "2027-06-08"
+        },
+        {
+          "d": 14,
+          "n": "Hoi An",
+          "date": "2027-06-09"
+        },
+        {
+          "d": 15,
+          "n": "Bishkek",
+          "date": "2027-06-10"
+        },
+        {
+          "d": 16,
+          "n": "Bishkek",
+          "date": "2027-06-11"
+        },
+        {
+          "d": 17,
+          "n": "Baku",
+          "date": "2027-06-12"
+        },
+        {
+          "d": 18,
+          "n": "Baku",
+          "date": "2027-06-13"
+        },
+        {
+          "d": 19,
+          "n": "Baku",
+          "date": "2027-06-14"
+        },
+        {
+          "d": 20,
+          "n": "Baku / Istanbul / Home",
+          "date": "2027-06-15"
         }
       ]
     },
@@ -11125,6 +12092,87 @@
           "d": 13,
           "n": "Gander",
           "date": "2027-08-10"
+        }
+      ]
+    },
+    {
+      "d": "8/8/2027",
+      "r": "8/21/2027",
+      "n": "Atlantic Crossroads: A Discovery by Private Jet",
+      "b": "natgeo",
+      "route": "atlantic-crossroads-a-discovery-by-private-jet",
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
+      "days": 14,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Dublin",
+          "date": "2027-08-08"
+        },
+        {
+          "d": 2,
+          "n": "Funchal, Madeira",
+          "date": "2027-08-09"
+        },
+        {
+          "d": 3,
+          "n": "Funchal, Madeira",
+          "date": "2027-08-10"
+        },
+        {
+          "d": 4,
+          "n": "Tangier",
+          "date": "2027-08-11"
+        },
+        {
+          "d": 5,
+          "n": "Tangier",
+          "date": "2027-08-12"
+        },
+        {
+          "d": 6,
+          "n": "Lanzarote",
+          "date": "2027-08-13"
+        },
+        {
+          "d": 7,
+          "n": "Lanzarote",
+          "date": "2027-08-14"
+        },
+        {
+          "d": 8,
+          "n": "Dakar",
+          "date": "2027-08-15"
+        },
+        {
+          "d": 9,
+          "n": "Dakar",
+          "date": "2027-08-16"
+        },
+        {
+          "d": 10,
+          "n": "Salvador",
+          "date": "2027-08-17"
+        },
+        {
+          "d": 11,
+          "n": "Salvador",
+          "date": "2027-08-18"
+        },
+        {
+          "d": 12,
+          "n": "Buenos Aires",
+          "date": "2027-08-19"
+        },
+        {
+          "d": 13,
+          "n": "Buenos Aires",
+          "date": "2027-08-20"
+        },
+        {
+          "d": 14,
+          "n": "Buenos Aires",
+          "date": "2027-08-21"
         }
       ]
     },
@@ -12566,6 +13614,147 @@
           "d": 13,
           "n": "Tangier",
           "date": "2027-11-04"
+        }
+      ]
+    },
+    {
+      "d": "10/26/2027",
+      "r": "11/20/2027",
+      "n": "Around the World by Private Jet",
+      "b": "natgeo",
+      "route": "around-the-world-by-private-jet",
+      "u": "https://www.expeditionbucketlist.com/national-geographic-private-jet-trips",
+      "days": 26,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Washington, D.C.",
+          "date": "2027-10-26"
+        },
+        {
+          "d": 2,
+          "n": "Washington, D.C.",
+          "date": "2027-10-27"
+        },
+        {
+          "d": 3,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2027-10-28"
+        },
+        {
+          "d": 4,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2027-10-29"
+        },
+        {
+          "d": 5,
+          "n": "Cusco / Machu Picchu or Trujillo",
+          "date": "2027-10-30"
+        },
+        {
+          "d": 6,
+          "n": "Easter Island",
+          "date": "2027-10-31"
+        },
+        {
+          "d": 7,
+          "n": "Easter Island",
+          "date": "2027-11-01"
+        },
+        {
+          "d": 8,
+          "n": "Cross the International Date Line",
+          "date": "2027-11-02"
+        },
+        {
+          "d": 9,
+          "n": "Apia, Samoa",
+          "date": "2027-11-03"
+        },
+        {
+          "d": 10,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2027-11-04"
+        },
+        {
+          "d": 11,
+          "n": "Great Barrier Reef or Daintree Rainforest",
+          "date": "2027-11-05"
+        },
+        {
+          "d": 12,
+          "n": "Siem Reap",
+          "date": "2027-11-06"
+        },
+        {
+          "d": 13,
+          "n": "Siem Reap",
+          "date": "2027-11-07"
+        },
+        {
+          "d": 14,
+          "n": "Siem Reap",
+          "date": "2027-11-08"
+        },
+        {
+          "d": 15,
+          "n": "Kathmandu / Paro",
+          "date": "2027-11-09"
+        },
+        {
+          "d": 16,
+          "n": "Kathmandu / Paro",
+          "date": "2027-11-10"
+        },
+        {
+          "d": 17,
+          "n": "Kathmandu / Paro",
+          "date": "2027-11-11"
+        },
+        {
+          "d": 18,
+          "n": "Agra",
+          "date": "2027-11-12"
+        },
+        {
+          "d": 19,
+          "n": "Agra",
+          "date": "2027-11-13"
+        },
+        {
+          "d": 20,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2027-11-14"
+        },
+        {
+          "d": 21,
+          "n": "Serengeti Plains or Ngorongoro Crater",
+          "date": "2027-11-15"
+        },
+        {
+          "d": 22,
+          "n": "Petra",
+          "date": "2027-11-16"
+        },
+        {
+          "d": 23,
+          "n": "Petra",
+          "date": "2027-11-17"
+        },
+        {
+          "d": 24,
+          "n": "Marrakech",
+          "date": "2027-11-18"
+        },
+        {
+          "d": 25,
+          "n": "Marrakech",
+          "date": "2027-11-19"
+        },
+        {
+          "d": 26,
+          "n": "Washington, D.C.",
+          "date": "2027-11-20"
         }
       ]
     },
