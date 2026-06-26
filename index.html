@@ -572,7 +572,7 @@ const BASES={
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',{maxZoom:8})])}
 };
 const BASE_ORDER=['voyager','dark','satellite'];
-const DEFAULT_BASE='dark';
+const DEFAULT_BASE='satellite';
 const _baseCache={}; let _baseKey=null,_baseLayer=null;
 function _mkBase(k){ return _baseCache[k]||(_baseCache[k]=BASES[k].make()); }
 function setBase(key){
