@@ -40,6 +40,11 @@
       "short": "TCS World Travel",
       "domain": "tcsworldtravel.com",
       "color": "#0f6d75"
+    },
+    "blueparallel": {
+      "short": "Blue Parallel",
+      "domain": "blueparallel.com",
+      "color": "#1677a3"
     }
   },
   "REGIONS": {
@@ -3193,7 +3198,7 @@
         ]
       },
       {
-        "n": "Galapagos Islands",
+        "n": "Galápagos Islands",
         "r": "SAM",
         "ll": [
           -0.95,
@@ -4784,6 +4789,190 @@
         "ll": [
           41.9,
           12.5
+        ]
+      }
+    ],
+    "wildlife-kingdoms-of-brazil-by-small-private-jet": [
+      {
+        "n": "Iguazu Falls, Brazil",
+        "r": "SAM",
+        "ll": [
+          -25.69,
+          -54.44
+        ]
+      },
+      {
+        "n": "The Pantanal",
+        "r": "SAM",
+        "ll": [
+          -16.35,
+          -56.67
+        ]
+      },
+      {
+        "n": "Brazilian Amazon",
+        "r": "SAM",
+        "ll": [
+          -3.47,
+          -62.22
+        ]
+      },
+      {
+        "n": "Fernando de Noronha",
+        "r": "SAM",
+        "ll": [
+          -3.85,
+          -32.42
+        ]
+      }
+    ],
+    "natural-wonders-of-chile-and-argentina-by-small-private-jet": [
+      {
+        "n": "Atacama Desert",
+        "r": "SAM",
+        "ll": [
+          -23.86,
+          -69.13
+        ]
+      },
+      {
+        "n": "Torres del Paine",
+        "r": "SAM",
+        "ll": [
+          -51,
+          -73
+        ]
+      },
+      {
+        "n": "El Calafate / Los Glaciares National Park",
+        "r": "SAM",
+        "ll": [
+          -50.34,
+          -72.27
+        ]
+      },
+      {
+        "n": "Iguazu Falls, Brazil",
+        "r": "SAM",
+        "ll": [
+          -25.69,
+          -54.44
+        ]
+      },
+      {
+        "n": "Iguazu Falls, Argentina",
+        "r": "SAM",
+        "ll": [
+          -25.68,
+          -54.46
+        ]
+      }
+    ],
+    "essential-south-america-by-small-private-jet": [
+      {
+        "n": "Galapagos Islands",
+        "r": "SAM",
+        "ll": [
+          -0.95,
+          -90.97
+        ]
+      },
+      {
+        "n": "Sacred Valley",
+        "r": "SAM",
+        "ll": [
+          -13.32,
+          -72.08
+        ]
+      },
+      {
+        "n": "Cusco & Machu Picchu",
+        "r": "SAM",
+        "ll": [
+          -13.35,
+          -72.16
+        ]
+      },
+      {
+        "n": "Torres del Paine",
+        "r": "SAM",
+        "ll": [
+          -51,
+          -73
+        ]
+      },
+      {
+        "n": "El Calafate / Los Glaciares National Park",
+        "r": "SAM",
+        "ll": [
+          -50.34,
+          -72.27
+        ]
+      },
+      {
+        "n": "Iguazu Falls",
+        "r": "SAM",
+        "ll": [
+          -25.69,
+          -54.44
+        ]
+      },
+      {
+        "n": "Brazilian Amazon",
+        "r": "SAM",
+        "ll": [
+          -3.47,
+          -62.22
+        ]
+      },
+      {
+        "n": "Cartagena",
+        "r": "SAM",
+        "ll": [
+          10.39,
+          -75.48
+        ]
+      }
+    ],
+    "central-america-unlocked-by-small-private-jet": [
+      {
+        "n": "Placencia, Belize",
+        "r": "AMERICAS",
+        "ll": [
+          16.52,
+          -88.37
+        ]
+      },
+      {
+        "n": "Petén, Guatemala",
+        "r": "AMERICAS",
+        "ll": [
+          17.22,
+          -89.62
+        ]
+      },
+      {
+        "n": "Osa Peninsula, Costa Rica",
+        "r": "AMERICAS",
+        "ll": [
+          8.54,
+          -83.57
+        ]
+      },
+      {
+        "n": "Panamá City",
+        "r": "AMERICAS",
+        "ll": [
+          8.98,
+          -79.52
+        ]
+      },
+      {
+        "n": "Gulf of Chiriquí, Panama",
+        "r": "AMERICAS",
+        "ll": [
+          7.96,
+          -82.03
         ]
       }
     ]
@@ -14472,6 +14661,62 @@
       ]
     },
     {
+      "n": "Central America Unlocked By Small Private Jet",
+      "b": "blueparallel",
+      "g": [
+        "AMERICAS"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18540105/central-america-unlocked-by-small-private-jet",
+      "route": "central-america-unlocked-by-small-private-jet",
+      "days": 11,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Placencia, Belize"
+        },
+        {
+          "d": 2,
+          "n": "Placencia, Belize"
+        },
+        {
+          "d": 3,
+          "n": "Petén, Guatemala"
+        },
+        {
+          "d": 4,
+          "n": "Petén, Guatemala"
+        },
+        {
+          "d": 5,
+          "n": "Osa Peninsula, Costa Rica"
+        },
+        {
+          "d": 6,
+          "n": "Osa Peninsula, Costa Rica"
+        },
+        {
+          "d": 7,
+          "n": "Panamá City"
+        },
+        {
+          "d": 8,
+          "n": "Gulf of Chiriquí, Panama"
+        },
+        {
+          "d": 9,
+          "n": "Gulf of Chiriquí, Panama"
+        },
+        {
+          "d": 10,
+          "n": "Gulf of Chiriquí, Panama"
+        },
+        {
+          "d": 11,
+          "n": "Gulf of Chiriquí, Panama"
+        }
+      ]
+    },
+    {
       "n": "China's Magnificent Mountaintops by Private Jet",
       "b": "remotelands",
       "g": [
@@ -14708,6 +14953,102 @@
         {
           "d": 10,
           "n": "Jaipur"
+        }
+      ]
+    },
+    {
+      "n": "Essential South America By Small Private Jet",
+      "b": "blueparallel",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18540103/essential-south-america-by-small-private-jet",
+      "route": "essential-south-america-by-small-private-jet",
+      "days": 21,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Galápagos Islands"
+        },
+        {
+          "d": 2,
+          "n": "Galápagos Islands"
+        },
+        {
+          "d": 3,
+          "n": "Galápagos Islands"
+        },
+        {
+          "d": 4,
+          "n": "Galápagos Islands"
+        },
+        {
+          "d": 5,
+          "n": "Sacred Valley"
+        },
+        {
+          "d": 6,
+          "n": "Sacred Valley"
+        },
+        {
+          "d": 7,
+          "n": "Sacred Valley / Machu Picchu"
+        },
+        {
+          "d": 8,
+          "n": "Cusco"
+        },
+        {
+          "d": 9,
+          "n": "Torres del Paine"
+        },
+        {
+          "d": 10,
+          "n": "Torres del Paine"
+        },
+        {
+          "d": 11,
+          "n": "Torres del Paine"
+        },
+        {
+          "d": 12,
+          "n": "El Calafate / Los Glaciares National Park"
+        },
+        {
+          "d": 13,
+          "n": "El Calafate / Los Glaciares National Park"
+        },
+        {
+          "d": 14,
+          "n": "Iguazu Falls"
+        },
+        {
+          "d": 15,
+          "n": "Iguazu Falls"
+        },
+        {
+          "d": 16,
+          "n": "Brazilian Amazon"
+        },
+        {
+          "d": 17,
+          "n": "Brazilian Amazon"
+        },
+        {
+          "d": 18,
+          "n": "Brazilian Amazon"
+        },
+        {
+          "d": 19,
+          "n": "Cartagena"
+        },
+        {
+          "d": 20,
+          "n": "Cartagena"
+        },
+        {
+          "d": 21,
+          "n": "Cartagena"
         }
       ]
     },
@@ -14981,6 +15322,62 @@
       ]
     },
     {
+      "n": "Natural Wonders Of Chile & Argentina, By Small Private Jet",
+      "b": "blueparallel",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18480689/natural-wonders-of-chile-argentina-by-small-private-jet",
+      "route": "natural-wonders-of-chile-and-argentina-by-small-private-jet",
+      "days": 11,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Atacama Desert"
+        },
+        {
+          "d": 2,
+          "n": "Atacama Desert"
+        },
+        {
+          "d": 3,
+          "n": "Atacama Desert"
+        },
+        {
+          "d": 4,
+          "n": "Torres del Paine"
+        },
+        {
+          "d": 5,
+          "n": "Torres del Paine"
+        },
+        {
+          "d": 6,
+          "n": "Torres del Paine"
+        },
+        {
+          "d": 7,
+          "n": "El Calafate / Los Glaciares National Park"
+        },
+        {
+          "d": 8,
+          "n": "El Calafate / Los Glaciares National Park"
+        },
+        {
+          "d": 9,
+          "n": "Iguazu Falls, Brazil"
+        },
+        {
+          "d": 10,
+          "n": "Iguazu Falls, Brazil"
+        },
+        {
+          "d": 11,
+          "n": "Iguazu Falls, Argentina"
+        }
+      ]
+    },
+    {
       "n": "Personalized Panoramas: The Himalayas in India by Private Jet",
       "b": "remotelands",
       "g": [
@@ -15106,6 +15503,66 @@
         {
           "d": 6,
           "n": "Zhangye Danxia"
+        }
+      ]
+    },
+    {
+      "n": "Wildlife Kingdoms Of Brazil By Small Private Jet",
+      "b": "blueparallel",
+      "g": [
+        "SAM"
+      ],
+      "u": "https://www.virtuoso.com/advisor/brianharris/tours/18540106/wildlife-kingdoms-of-brazil-by-small-private-jet",
+      "route": "wildlife-kingdoms-of-brazil-by-small-private-jet",
+      "days": 12,
+      "itin": [
+        {
+          "d": 1,
+          "n": "Iguazu Falls, Brazil"
+        },
+        {
+          "d": 2,
+          "n": "Iguazu Falls, Brazil"
+        },
+        {
+          "d": 3,
+          "n": "The Pantanal"
+        },
+        {
+          "d": 4,
+          "n": "The Pantanal"
+        },
+        {
+          "d": 5,
+          "n": "The Pantanal"
+        },
+        {
+          "d": 6,
+          "n": "Brazilian Amazon"
+        },
+        {
+          "d": 7,
+          "n": "Brazilian Amazon"
+        },
+        {
+          "d": 8,
+          "n": "Brazilian Amazon"
+        },
+        {
+          "d": 9,
+          "n": "Fernando de Noronha"
+        },
+        {
+          "d": 10,
+          "n": "Fernando de Noronha"
+        },
+        {
+          "d": 11,
+          "n": "Fernando de Noronha"
+        },
+        {
+          "d": 12,
+          "n": "Fernando de Noronha"
         }
       ]
     }
